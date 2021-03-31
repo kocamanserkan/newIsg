@@ -1,0 +1,21 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="serkanISGModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="PERSONEL">
+    <Key>
+      <PropertyRef Name="PERSONEL_ID" />
+    </Key>
+    <Property Name="PERSONEL_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="PERSONEL_AD" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="PERSONEL_SOYAD" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="TCKN" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="SICIL_NO" Type="Int32" />
+    <Property Name="YAPTIGI_IS" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="KULLANICI_ADI" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="SIFRE" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="EMAIL" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="IS_BASLANGIC_TARIH" Type="DateTime" Precision="3" />
+  </EntityType>
+  <EntityContainer Name="serkanISGEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="PERSONEL" EntityType="Self.PERSONEL" />
+  </EntityContainer>
+</Schema>

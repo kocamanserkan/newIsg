@@ -1,0 +1,59 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="serkanISGModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="ISTANIM">
+    <Key>
+      <PropertyRef Name="ISID" />
+    </Key>
+    <Property Name="ISID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ISADI" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+  </EntityType>
+  <EntityType Name="PERSONEL">
+    <Key>
+      <PropertyRef Name="PERSONEL_ID" />
+    </Key>
+    <Property Name="PERSONEL_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="PERSONEL_AD" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="PERSONEL_SOYAD" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="TCKN" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="SICIL_NO" Type="Int32" />
+    <Property Name="YAPTIGI_IS" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="KULLANICI_ADI" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="SIFRE" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="EMAIL" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="IS_BASLANGIC_TARIH" Type="DateTime" Precision="3" />
+  </EntityType>
+  <EntityType Name="sysdiagrams">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="principal_id" Type="Int32" Nullable="false" />
+    <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="version" Type="Int32" />
+    <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+  </EntityType>
+  <EntityType Name="UYGUNSUZLUK">
+    <Key>
+      <PropertyRef Name="ID_UYGUNSUZLUK" />
+    </Key>
+    <Property Name="ID_UYGUNSUZLUK" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="AKTIFLIK" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="TUR" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="UYGUNSUZ_DURUM" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="TESPIT_TARIH" Type="DateTime" Precision="0" />
+    <Property Name="SORUMLU_AD" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="TESPIT_EDEN_AD" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="TERMIN_TARIH" Type="DateTime" Precision="0" />
+    <Property Name="ONERI_AKSIYON" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="BIRIM" Type="String" MaxLength="55" FixedLength="false" Unicode="true" />
+    <Property Name="TESPIT_EDEN_ID" Type="Int32" />
+    <Property Name="SORUMLU_ID" Type="Int32" />
+    <Property Name="FOTO" Type="Binary" MaxLength="Max" FixedLength="false" />
+  </EntityType>
+  <EntityContainer Name="serkanISGEntities1" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="ISTANIM" EntityType="Self.ISTANIM" />
+    <EntitySet Name="PERSONEL" EntityType="Self.PERSONEL" />
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" />
+    <EntitySet Name="UYGUNSUZLUK" EntityType="Self.UYGUNSUZLUK" />
+  </EntityContainer>
+</Schema>

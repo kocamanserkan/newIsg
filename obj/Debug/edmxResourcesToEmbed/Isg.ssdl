@@ -1,0 +1,59 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="serkanISGModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="ISTANIM">
+    <Key>
+      <PropertyRef Name="ISID" />
+    </Key>
+    <Property Name="ISID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ISADI" Type="varchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <EntityType Name="PERSONEL">
+    <Key>
+      <PropertyRef Name="PERSONEL_ID" />
+    </Key>
+    <Property Name="PERSONEL_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="PERSONEL_AD" Type="nvarchar" MaxLength="50" />
+    <Property Name="PERSONEL_SOYAD" Type="nvarchar" MaxLength="50" />
+    <Property Name="TCKN" Type="nvarchar" MaxLength="50" />
+    <Property Name="SICIL_NO" Type="int" />
+    <Property Name="YAPTIGI_IS" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="KULLANICI_ADI" Type="nvarchar" MaxLength="50" />
+    <Property Name="SIFRE" Type="nvarchar" MaxLength="50" />
+    <Property Name="EMAIL" Type="nvarchar" MaxLength="50" />
+    <Property Name="IS_BASLANGIC_TARIH" Type="datetime" />
+  </EntityType>
+  <EntityType Name="sysdiagrams">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="principal_id" Type="int" Nullable="false" />
+    <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="version" Type="int" />
+    <Property Name="definition" Type="varbinary(max)" />
+  </EntityType>
+  <EntityType Name="UYGUNSUZLUK">
+    <Key>
+      <PropertyRef Name="ID_UYGUNSUZLUK" />
+    </Key>
+    <Property Name="ID_UYGUNSUZLUK" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="AKTIFLIK" Type="nvarchar" MaxLength="50" />
+    <Property Name="TUR" Type="nvarchar" MaxLength="50" />
+    <Property Name="UYGUNSUZ_DURUM" Type="nvarchar(max)" />
+    <Property Name="TESPIT_TARIH" Type="date" />
+    <Property Name="SORUMLU_AD" Type="nvarchar" MaxLength="50" />
+    <Property Name="TESPIT_EDEN_AD" Type="nvarchar" MaxLength="50" />
+    <Property Name="TERMIN_TARIH" Type="date" />
+    <Property Name="ONERI_AKSIYON" Type="nvarchar(max)" />
+    <Property Name="BIRIM" Type="nvarchar" MaxLength="55" />
+    <Property Name="TESPIT_EDEN_ID" Type="int" />
+    <Property Name="SORUMLU_ID" Type="int" />
+    <Property Name="FOTO" Type="image" />
+  </EntityType>
+  <EntityContainer Name="serkanISGModelStoreContainer">
+    <EntitySet Name="ISTANIM" EntityType="Self.ISTANIM" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="PERSONEL" EntityType="Self.PERSONEL" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="UYGUNSUZLUK" EntityType="Self.UYGUNSUZLUK" Schema="dbo" store:Type="Tables" />
+  </EntityContainer>
+</Schema>

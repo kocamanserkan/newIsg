@@ -1,0 +1,208 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="serkanISGModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="ISTANIM">
+          <Key>
+            <PropertyRef Name="ISID" />
+          </Key>
+          <Property Name="ISID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ISADI" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="PERSONEL">
+          <Key>
+            <PropertyRef Name="PERSONEL_ID" />
+          </Key>
+          <Property Name="PERSONEL_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="PERSONEL_AD" Type="nvarchar" MaxLength="50" />
+          <Property Name="PERSONEL_SOYAD" Type="nvarchar" MaxLength="50" />
+          <Property Name="TCKN" Type="nvarchar" MaxLength="50" />
+          <Property Name="SICIL_NO" Type="int" />
+          <Property Name="YAPTIGI_IS" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="KULLANICI_ADI" Type="nvarchar" MaxLength="50" />
+          <Property Name="SIFRE" Type="nvarchar" MaxLength="50" />
+          <Property Name="EMAIL" Type="nvarchar" MaxLength="50" />
+          <Property Name="IS_BASLANGIC_TARIH" Type="datetime" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="principal_id" Type="int" Nullable="false" />
+          <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="version" Type="int" />
+          <Property Name="definition" Type="varbinary(max)" />
+        </EntityType>
+        <EntityType Name="UYGUNSUZLUK">
+          <Key>
+            <PropertyRef Name="ID_UYGUNSUZLUK" />
+          </Key>
+          <Property Name="ID_UYGUNSUZLUK" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="AKTIFLIK" Type="nvarchar" MaxLength="50" />
+          <Property Name="TUR" Type="nvarchar" MaxLength="50" />
+          <Property Name="UYGUNSUZ_DURUM" Type="nvarchar(max)" />
+          <Property Name="TESPIT_TARIH" Type="date" />
+          <Property Name="SORUMLU_AD" Type="nvarchar" MaxLength="50" />
+          <Property Name="TESPIT_EDEN_AD" Type="nvarchar" MaxLength="50" />
+          <Property Name="TERMIN_TARIH" Type="date" />
+          <Property Name="ONERI_AKSIYON" Type="nvarchar(max)" />
+          <Property Name="BIRIM" Type="nvarchar" MaxLength="55" />
+          <Property Name="TESPIT_EDEN_ID" Type="int" />
+          <Property Name="SORUMLU_ID" Type="int" />
+          <Property Name="FOTO" Type="image" />
+        </EntityType>
+        <EntityContainer Name="serkanISGModelStoreContainer">
+          <EntitySet Name="ISTANIM" EntityType="Self.ISTANIM" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PERSONEL" EntityType="Self.PERSONEL" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="UYGUNSUZLUK" EntityType="Self.UYGUNSUZLUK" Schema="dbo" store:Type="Tables" />
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="serkanISGModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="ISTANIM">
+          <Key>
+            <PropertyRef Name="ISID" />
+          </Key>
+          <Property Name="ISID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ISADI" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+        </EntityType>
+        <EntityType Name="PERSONEL">
+          <Key>
+            <PropertyRef Name="PERSONEL_ID" />
+          </Key>
+          <Property Name="PERSONEL_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="PERSONEL_AD" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="PERSONEL_SOYAD" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="TCKN" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="SICIL_NO" Type="Int32" />
+          <Property Name="YAPTIGI_IS" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="KULLANICI_ADI" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="SIFRE" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="EMAIL" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="IS_BASLANGIC_TARIH" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="principal_id" Type="Int32" Nullable="false" />
+          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="version" Type="Int32" />
+          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="UYGUNSUZLUK">
+          <Key>
+            <PropertyRef Name="ID_UYGUNSUZLUK" />
+          </Key>
+          <Property Name="ID_UYGUNSUZLUK" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="AKTIFLIK" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="TUR" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="UYGUNSUZ_DURUM" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="TESPIT_TARIH" Type="DateTime" Precision="0" />
+          <Property Name="SORUMLU_AD" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="TESPIT_EDEN_AD" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="TERMIN_TARIH" Type="DateTime" Precision="0" />
+          <Property Name="ONERI_AKSIYON" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="BIRIM" Type="String" MaxLength="55" FixedLength="false" Unicode="true" />
+          <Property Name="TESPIT_EDEN_ID" Type="Int32" />
+          <Property Name="SORUMLU_ID" Type="Int32" />
+          <Property Name="FOTO" Type="Binary" MaxLength="Max" FixedLength="false" />
+        </EntityType>
+        <EntityContainer Name="serkanISGEntities1" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="ISTANIM" EntityType="Self.ISTANIM" />
+          <EntitySet Name="PERSONEL" EntityType="Self.PERSONEL" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" />
+          <EntitySet Name="UYGUNSUZLUK" EntityType="Self.UYGUNSUZLUK" />
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="serkanISGModelStoreContainer" CdmEntityContainer="serkanISGEntities1">
+          <EntitySetMapping Name="ISTANIM">
+            <EntityTypeMapping TypeName="serkanISGModel.ISTANIM">
+              <MappingFragment StoreEntitySet="ISTANIM">
+                <ScalarProperty Name="ISID" ColumnName="ISID" />
+                <ScalarProperty Name="ISADI" ColumnName="ISADI" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PERSONEL">
+            <EntityTypeMapping TypeName="serkanISGModel.PERSONEL">
+              <MappingFragment StoreEntitySet="PERSONEL">
+                <ScalarProperty Name="PERSONEL_ID" ColumnName="PERSONEL_ID" />
+                <ScalarProperty Name="PERSONEL_AD" ColumnName="PERSONEL_AD" />
+                <ScalarProperty Name="PERSONEL_SOYAD" ColumnName="PERSONEL_SOYAD" />
+                <ScalarProperty Name="TCKN" ColumnName="TCKN" />
+                <ScalarProperty Name="SICIL_NO" ColumnName="SICIL_NO" />
+                <ScalarProperty Name="YAPTIGI_IS" ColumnName="YAPTIGI_IS" />
+                <ScalarProperty Name="KULLANICI_ADI" ColumnName="KULLANICI_ADI" />
+                <ScalarProperty Name="SIFRE" ColumnName="SIFRE" />
+                <ScalarProperty Name="EMAIL" ColumnName="EMAIL" />
+                <ScalarProperty Name="IS_BASLANGIC_TARIH" ColumnName="IS_BASLANGIC_TARIH" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="sysdiagrams">
+            <EntityTypeMapping TypeName="serkanISGModel.sysdiagrams">
+              <MappingFragment StoreEntitySet="sysdiagrams">
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="definition" ColumnName="definition" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="UYGUNSUZLUK">
+            <EntityTypeMapping TypeName="serkanISGModel.UYGUNSUZLUK">
+              <MappingFragment StoreEntitySet="UYGUNSUZLUK">
+                <ScalarProperty Name="ID_UYGUNSUZLUK" ColumnName="ID_UYGUNSUZLUK" />
+                <ScalarProperty Name="AKTIFLIK" ColumnName="AKTIFLIK" />
+                <ScalarProperty Name="TUR" ColumnName="TUR" />
+                <ScalarProperty Name="UYGUNSUZ_DURUM" ColumnName="UYGUNSUZ_DURUM" />
+                <ScalarProperty Name="TESPIT_TARIH" ColumnName="TESPIT_TARIH" />
+                <ScalarProperty Name="SORUMLU_AD" ColumnName="SORUMLU_AD" />
+                <ScalarProperty Name="TESPIT_EDEN_AD" ColumnName="TESPIT_EDEN_AD" />
+                <ScalarProperty Name="TERMIN_TARIH" ColumnName="TERMIN_TARIH" />
+                <ScalarProperty Name="ONERI_AKSIYON" ColumnName="ONERI_AKSIYON" />
+                <ScalarProperty Name="BIRIM" ColumnName="BIRIM" />
+                <ScalarProperty Name="TESPIT_EDEN_ID" ColumnName="TESPIT_EDEN_ID" />
+                <ScalarProperty Name="SORUMLU_ID" ColumnName="SORUMLU_ID" />
+                <ScalarProperty Name="FOTO" ColumnName="FOTO" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

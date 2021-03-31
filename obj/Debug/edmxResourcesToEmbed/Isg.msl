@@ -1,0 +1,59 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="serkanISGModelStoreContainer" CdmEntityContainer="serkanISGEntities1">
+    <EntitySetMapping Name="ISTANIM">
+      <EntityTypeMapping TypeName="serkanISGModel.ISTANIM">
+        <MappingFragment StoreEntitySet="ISTANIM">
+          <ScalarProperty Name="ISID" ColumnName="ISID" />
+          <ScalarProperty Name="ISADI" ColumnName="ISADI" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="PERSONEL">
+      <EntityTypeMapping TypeName="serkanISGModel.PERSONEL">
+        <MappingFragment StoreEntitySet="PERSONEL">
+          <ScalarProperty Name="PERSONEL_ID" ColumnName="PERSONEL_ID" />
+          <ScalarProperty Name="PERSONEL_AD" ColumnName="PERSONEL_AD" />
+          <ScalarProperty Name="PERSONEL_SOYAD" ColumnName="PERSONEL_SOYAD" />
+          <ScalarProperty Name="TCKN" ColumnName="TCKN" />
+          <ScalarProperty Name="SICIL_NO" ColumnName="SICIL_NO" />
+          <ScalarProperty Name="YAPTIGI_IS" ColumnName="YAPTIGI_IS" />
+          <ScalarProperty Name="KULLANICI_ADI" ColumnName="KULLANICI_ADI" />
+          <ScalarProperty Name="SIFRE" ColumnName="SIFRE" />
+          <ScalarProperty Name="EMAIL" ColumnName="EMAIL" />
+          <ScalarProperty Name="IS_BASLANGIC_TARIH" ColumnName="IS_BASLANGIC_TARIH" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="sysdiagrams">
+      <EntityTypeMapping TypeName="serkanISGModel.sysdiagrams">
+        <MappingFragment StoreEntitySet="sysdiagrams">
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+          <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+          <ScalarProperty Name="version" ColumnName="version" />
+          <ScalarProperty Name="definition" ColumnName="definition" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="UYGUNSUZLUK">
+      <EntityTypeMapping TypeName="serkanISGModel.UYGUNSUZLUK">
+        <MappingFragment StoreEntitySet="UYGUNSUZLUK">
+          <ScalarProperty Name="ID_UYGUNSUZLUK" ColumnName="ID_UYGUNSUZLUK" />
+          <ScalarProperty Name="AKTIFLIK" ColumnName="AKTIFLIK" />
+          <ScalarProperty Name="TUR" ColumnName="TUR" />
+          <ScalarProperty Name="UYGUNSUZ_DURUM" ColumnName="UYGUNSUZ_DURUM" />
+          <ScalarProperty Name="TESPIT_TARIH" ColumnName="TESPIT_TARIH" />
+          <ScalarProperty Name="SORUMLU_AD" ColumnName="SORUMLU_AD" />
+          <ScalarProperty Name="TESPIT_EDEN_AD" ColumnName="TESPIT_EDEN_AD" />
+          <ScalarProperty Name="TERMIN_TARIH" ColumnName="TERMIN_TARIH" />
+          <ScalarProperty Name="ONERI_AKSIYON" ColumnName="ONERI_AKSIYON" />
+          <ScalarProperty Name="BIRIM" ColumnName="BIRIM" />
+          <ScalarProperty Name="TESPIT_EDEN_ID" ColumnName="TESPIT_EDEN_ID" />
+          <ScalarProperty Name="SORUMLU_ID" ColumnName="SORUMLU_ID" />
+          <ScalarProperty Name="FOTO" ColumnName="FOTO" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>
