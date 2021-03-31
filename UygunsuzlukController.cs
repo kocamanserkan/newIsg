@@ -122,7 +122,7 @@ namespace serkanISG
 
                     db.SaveChanges();
                     return Request.CreateResponse(HttpStatusCode.OK, kontrol);
-
+                    //p
                 }
             }
 
@@ -145,7 +145,7 @@ namespace serkanISG
             if (kontrol == null)
             {
                 return Request.CreateResponse(HttpStatusCode.NotFound, "" + id + "li uygunsuzluk kaydı bulunamadı!..");
-
+                //Apiler çalışma....
 
             }
             else
