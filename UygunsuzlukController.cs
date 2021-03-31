@@ -145,7 +145,7 @@ namespace serkanISG
             if (kontrol == null)
             {
                 return Request.CreateResponse(HttpStatusCode.NotFound, "" + id + "li uygunsuzluk kaydı bulunamadı!..");
-                //Apiler çalışma....
+                //Api Added
 
             }
             else
