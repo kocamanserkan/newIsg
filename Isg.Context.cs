@@ -29,5 +29,6 @@ namespace serkanISG
         public virtual DbSet<PERSONEL> PERSONEL { get; set; }
         public virtual DbSet<sysdiagrams> sysdiagrams { get; set; }
         public virtual DbSet<UYGUNSUZLUK> UYGUNSUZLUK { get; set; }
+        public virtual DbSet<LogRegister> LogRegister { get; set; }
     }
 }

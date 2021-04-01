@@ -1,4 +1,5 @@
-﻿using System;
+﻿using serkanISG.MyFilter;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,6 +9,8 @@ using System.Web.Http;
 
 namespace serkanISG
 {
+    //[MyError]
+    [MyAction]
     public class UygunsuzlukController : ApiController
     {
         serkanISGEntities1 db = new serkanISGEntities1();
@@ -15,6 +18,8 @@ namespace serkanISG
         // GET api/<controller>
         public HttpResponseMessage Get(string durum = "all", int? top = 0)
         {
+
+           
             IQueryable<UYGUNSUZLUK> query = db.UYGUNSUZLUK;
             durum = durum.ToLower();
             switch (durum)
@@ -23,29 +28,32 @@ namespace serkanISG
                     break;
                 case "aktif": durum = "1"; query = query.Where(e => e.AKTIFLIK.ToLower() == durum); break;
                 case "pasif": durum = "0"; query = query.Where(e => e.AKTIFLIK.ToLower() == durum); break;
-                  
+
                 default:
-                    return Request.CreateErrorResponse(HttpStatusCode.BadRequest, $"{durum} doğru bir filtreleme aracı değildi. Lütfen Aktif ya da Pasif olarak filtreleyin ");
+                    //throw new 
+                    return Request.CreateErrorResponse(HttpStatusCode.BadRequest, $"['{durum}'] uygunsuzluk durumu için doğru bir filtreleme aracı değildi. Lütfen Aktif ya da Pasif olarak filtreleyin ");
+                    //return Request.CreateErrorResponse(HttpStatusCode.BadRequest, new Exception());
+
             }
 
 
 
             //var uygunsuzlukList = db.UYGUNSUZLUK.ToList().Where(i => i.AKTIFLIK == "1");
-            if (top > 0)
+            if (top >0 )
             {
-                query = query.Take(top.Value);
-
+                return Request.CreateResponse(HttpStatusCode.OK, query.Take(top.Value));
             }
-            
 
-
-
-
+         
             return Request.CreateResponse(HttpStatusCode.OK, query.ToList());
+
+
+
 
         }
 
         // GET api/<controller>/5
+        //[MyAction]
         public HttpResponseMessage Get(int? id)
         {
             if (id == null)
@@ -165,6 +173,7 @@ namespace serkanISG
 
 
         // DELETE api/<controller>/5
+        
         public HttpResponseMessage Delete(int id)
         {
 

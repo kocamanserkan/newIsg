@@ -7,6 +7,16 @@
     <Property Name="ISID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="ISADI" Type="varchar" MaxLength="50" Nullable="false" />
   </EntityType>
+  <EntityType Name="LogRegister">
+    <Key>
+      <PropertyRef Name="LogID" />
+    </Key>
+    <Property Name="LogID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Time" Type="datetime" />
+    <Property Name="LogCaption" Type="nvarchar(max)" />
+    <Property Name="LogDetail" Type="nvarchar" MaxLength="50" />
+    <Property Name="IsBefore" Type="bit" />
+  </EntityType>
   <EntityType Name="PERSONEL">
     <Key>
       <PropertyRef Name="PERSONEL_ID" />
@@ -52,6 +62,7 @@
   </EntityType>
   <EntityContainer Name="serkanISGModelStoreContainer">
     <EntitySet Name="ISTANIM" EntityType="Self.ISTANIM" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="LogRegister" EntityType="Self.LogRegister" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="PERSONEL" EntityType="Self.PERSONEL" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="UYGUNSUZLUK" EntityType="Self.UYGUNSUZLUK" Schema="dbo" store:Type="Tables" />

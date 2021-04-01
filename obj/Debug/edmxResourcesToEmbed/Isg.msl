@@ -55,5 +55,16 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
+    <EntitySetMapping Name="LogRegister">
+      <EntityTypeMapping TypeName="serkanISGModel.LogRegister">
+        <MappingFragment StoreEntitySet="LogRegister">
+          <ScalarProperty Name="IsBefore" ColumnName="IsBefore" />
+          <ScalarProperty Name="LogDetail" ColumnName="LogDetail" />
+          <ScalarProperty Name="LogCaption" ColumnName="LogCaption" />
+          <ScalarProperty Name="Time" ColumnName="Time" />
+          <ScalarProperty Name="LogID" ColumnName="LogID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
   </EntityContainerMapping>
 </Mapping>

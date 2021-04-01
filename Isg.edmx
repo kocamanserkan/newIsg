@@ -4,13 +4,23 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="serkanISGModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="serkanISGModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="ISTANIM">
           <Key>
             <PropertyRef Name="ISID" />
           </Key>
           <Property Name="ISID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="ISADI" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="LogRegister">
+          <Key>
+            <PropertyRef Name="LogID" />
+          </Key>
+          <Property Name="LogID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Time" Type="datetime" />
+          <Property Name="LogCaption" Type="nvarchar(max)" />
+          <Property Name="LogDetail" Type="nvarchar" MaxLength="50" />
+          <Property Name="IsBefore" Type="bit" />
         </EntityType>
         <EntityType Name="PERSONEL">
           <Key>
@@ -57,12 +67,12 @@
         </EntityType>
         <EntityContainer Name="serkanISGModelStoreContainer">
           <EntitySet Name="ISTANIM" EntityType="Self.ISTANIM" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="LogRegister" EntityType="Self.LogRegister" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="PERSONEL" EntityType="Self.PERSONEL" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="UYGUNSUZLUK" EntityType="Self.UYGUNSUZLUK" Schema="dbo" store:Type="Tables" />
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="serkanISGModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -121,7 +131,18 @@
           <EntitySet Name="PERSONEL" EntityType="Self.PERSONEL" />
           <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" />
           <EntitySet Name="UYGUNSUZLUK" EntityType="Self.UYGUNSUZLUK" />
+          <EntitySet Name="LogRegister" EntityType="serkanISGModel.LogRegister" />
         </EntityContainer>
+        <EntityType Name="LogRegister">
+          <Key>
+            <PropertyRef Name="LogID" />
+          </Key>
+          <Property Name="LogID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Time" Type="DateTime" Precision="3" />
+          <Property Name="LogCaption" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="LogDetail" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="IsBefore" Type="Boolean" />
+        </EntityType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -179,6 +200,17 @@
                 <ScalarProperty Name="TESPIT_EDEN_ID" ColumnName="TESPIT_EDEN_ID" />
                 <ScalarProperty Name="SORUMLU_ID" ColumnName="SORUMLU_ID" />
                 <ScalarProperty Name="FOTO" ColumnName="FOTO" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="LogRegister">
+            <EntityTypeMapping TypeName="serkanISGModel.LogRegister">
+              <MappingFragment StoreEntitySet="LogRegister">
+                <ScalarProperty Name="IsBefore" ColumnName="IsBefore" />
+                <ScalarProperty Name="LogDetail" ColumnName="LogDetail" />
+                <ScalarProperty Name="LogCaption" ColumnName="LogCaption" />
+                <ScalarProperty Name="Time" ColumnName="Time" />
+                <ScalarProperty Name="LogID" ColumnName="LogID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

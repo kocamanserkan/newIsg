@@ -378,6 +378,7 @@
       <DependentUpon>Isg.tt</DependentUpon>
     </Compile>
     <Compile Include="Kontrol.cs" />
+    <Compile Include="Logger.cs" />
     <Compile Include="login.aspx.cs">
       <DependentUpon>login.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -393,6 +394,12 @@
     <Compile Include="LoginRegister.aspx.designer.cs">
       <DependentUpon>LoginRegister.aspx</DependentUpon>
     </Compile>
+    <Compile Include="LogRegister.cs">
+      <DependentUpon>Isg.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MyErrorResponse.cs" />
+    <Compile Include="MyFilter\MyActionAttribute.cs" />
+    <Compile Include="MyFilter\MyErrorAttribute.cs" />
     <Compile Include="myProxy\Credentials.cs" />
     <Compile Include="PERSONEL.cs">
       <DependentUpon>Isg.tt</DependentUpon>
@@ -453,7 +460,7 @@
     <Compile Include="UYGUNSUZLUK.cs">
       <DependentUpon>Isg.tt</DependentUpon>
     </Compile>
-    <Compile Include="UygunsuzlukController.cs" />
+    <Compile Include="Controllers\UygunsuzlukController.cs" />
     <Compile Include="ViewSwitcher.ascx.cs">
       <DependentUpon>ViewSwitcher.ascx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>

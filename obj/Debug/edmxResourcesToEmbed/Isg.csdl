@@ -55,5 +55,16 @@
     <EntitySet Name="PERSONEL" EntityType="Self.PERSONEL" />
     <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" />
     <EntitySet Name="UYGUNSUZLUK" EntityType="Self.UYGUNSUZLUK" />
+    <EntitySet Name="LogRegister" EntityType="serkanISGModel.LogRegister" />
   </EntityContainer>
+  <EntityType Name="LogRegister">
+    <Key>
+      <PropertyRef Name="LogID" />
+    </Key>
+    <Property Name="LogID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Time" Type="DateTime" Precision="3" />
+    <Property Name="LogCaption" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="LogDetail" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="IsBefore" Type="Boolean" />
+  </EntityType>
 </Schema>
