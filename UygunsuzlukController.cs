@@ -13,34 +13,64 @@ namespace serkanISG
         serkanISGEntities1 db = new serkanISGEntities1();
 
         // GET api/<controller>
-        public HttpResponseMessage Get()
+        public HttpResponseMessage Get(string durum = "all", int? top = 0)
         {
-            var uygunsuzlukList = db.UYGUNSUZLUK.ToList().Where(i => i.AKTIFLIK == "1");
+            IQueryable<UYGUNSUZLUK> query = db.UYGUNSUZLUK;
+            durum = durum.ToLower();
+            switch (durum)
+            {
+                case "all":
+                    break;
+                case "aktif": durum = "1"; query = query.Where(e => e.AKTIFLIK.ToLower() == durum); break;
+                case "pasif": durum = "0"; query = query.Where(e => e.AKTIFLIK.ToLower() == durum); break;
+                  
+                default:
+                    return Request.CreateErrorResponse(HttpStatusCode.BadRequest, $"{durum} doğru bir filtreleme aracı değildi. Lütfen Aktif ya da Pasif olarak filtreleyin ");
+            }
+
+
+
+            //var uygunsuzlukList = db.UYGUNSUZLUK.ToList().Where(i => i.AKTIFLIK == "1");
+            if (top > 0)
+            {
+                query = query.Take(top.Value);
+
+            }
             
-            return Request.CreateResponse(HttpStatusCode.OK, uygunsuzlukList);
+
+
+
+
+            return Request.CreateResponse(HttpStatusCode.OK, query.ToList());
 
         }
 
         // GET api/<controller>/5
-        public HttpResponseMessage Get(int id)
+        public HttpResponseMessage Get(int? id)
         {
-            UYGUNSUZLUK uygunsuzlukById = new UYGUNSUZLUK();
-
-
-            uygunsuzlukById = db.UYGUNSUZLUK.FirstOrDefault(i => i.ID_UYGUNSUZLUK == id);
-
-
-
-            if (uygunsuzlukById != null)
+            if (id == null)
             {
-                return Request.CreateResponse(HttpStatusCode.OK, uygunsuzlukById);
+                return Request.CreateResponse(HttpStatusCode.BadRequest, "Hata: Uygunsuzluk ID si rakamlardan oluşmalıdır.");
             }
             else
             {
+                UYGUNSUZLUK uygunsuzlukById = new UYGUNSUZLUK();
+                uygunsuzlukById = db.UYGUNSUZLUK.FirstOrDefault(i => i.ID_UYGUNSUZLUK == id);
 
-                return Request.CreateErrorResponse(HttpStatusCode.NotFound, "" + id + " " + " ' uygunsuzluk bulunamadı!");
 
+
+                if (uygunsuzlukById != null)
+                {
+                    return Request.CreateResponse(HttpStatusCode.OK, uygunsuzlukById);
+                }
+                else
+                {
+
+                    return Request.CreateResponse(HttpStatusCode.NotFound, "" + Convert.ToString(id) + " ID'li uygunsuzluk bulunamadı!");
+
+                }
             }
+           
 
 
 
