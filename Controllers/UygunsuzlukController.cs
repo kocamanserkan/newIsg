@@ -10,7 +10,9 @@ using System.Web.Http;
 namespace serkanISG
 {
     //[MyError]
+    //[MyAuthorization]
     [MyAction]
+    [MyAuthorization]
     public class UygunsuzlukController : ApiController
     {
         serkanISGEntities1 db = new serkanISGEntities1();

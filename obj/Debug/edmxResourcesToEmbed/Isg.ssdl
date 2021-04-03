@@ -16,6 +16,7 @@
     <Property Name="LogCaption" Type="nvarchar(max)" />
     <Property Name="LogDetail" Type="nvarchar" MaxLength="50" />
     <Property Name="IsBefore" Type="bit" />
+    <Property Name="UserInfo" Type="nvarchar" MaxLength="50" />
   </EntityType>
   <EntityType Name="PERSONEL">
     <Key>

@@ -21,6 +21,7 @@
           <Property Name="LogCaption" Type="nvarchar(max)" />
           <Property Name="LogDetail" Type="nvarchar" MaxLength="50" />
           <Property Name="IsBefore" Type="bit" />
+          <Property Name="UserInfo" Type="nvarchar" MaxLength="50" />
         </EntityType>
         <EntityType Name="PERSONEL">
           <Key>
@@ -142,6 +143,7 @@
           <Property Name="LogCaption" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="LogDetail" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="IsBefore" Type="Boolean" />
+          <Property Name="UserInfo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
         </EntityType>
       </Schema>
     </edmx:ConceptualModels>
@@ -206,6 +208,7 @@
           <EntitySetMapping Name="LogRegister">
             <EntityTypeMapping TypeName="serkanISGModel.LogRegister">
               <MappingFragment StoreEntitySet="LogRegister">
+                <ScalarProperty Name="UserInfo" ColumnName="UserInfo" />
                 <ScalarProperty Name="IsBefore" ColumnName="IsBefore" />
                 <ScalarProperty Name="LogDetail" ColumnName="LogDetail" />
                 <ScalarProperty Name="LogCaption" ColumnName="LogCaption" />

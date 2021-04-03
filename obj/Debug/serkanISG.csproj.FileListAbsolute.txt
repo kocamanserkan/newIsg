@@ -791,3 +791,5 @@ C:\Users\asus\Desktop\mavihub\newIsg\bin\ru\DevExpress.Xpo.v20.2.resources.dll
 C:\Users\asus\Desktop\mavihub\newIsg\obj\Debug\serkanISG.csproj.CopyComplete
 C:\Users\asus\Desktop\mavihub\newIsg\obj\Debug\serkanISG.dll
 C:\Users\asus\Desktop\mavihub\newIsg\obj\Debug\serkanISG.pdb
+C:\Users\asus\Desktop\mavihub\newIsg\obj\Debug\serkanISG.csprojAssemblyReference.cache
+C:\Users\asus\Desktop\mavihub\newIsg\bin\FTH.Extension.dll

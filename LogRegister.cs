@@ -19,5 +19,6 @@ namespace serkanISG
         public string LogCaption { get; set; }
         public string LogDetail { get; set; }
         public Nullable<bool> IsBefore { get; set; }
+        public string UserInfo { get; set; }
     }
 }

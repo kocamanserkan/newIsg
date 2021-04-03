@@ -58,6 +58,9 @@
     <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <HintPath>packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
     </Reference>
+    <Reference Include="FTH.Extension, Version=1.0.0.0, Culture=neutral, PublicKeyToken=892fe265899643f6, processorArchitecture=MSIL">
+      <HintPath>packages\FTH.Extension.1.0.0\lib\net40\FTH.Extension.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System" />
@@ -341,6 +344,7 @@
   <ItemGroup>
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\LogonController.cs" />
     <Compile Include="DataBase.cs" />
     <Compile Include="Default.aspx.cs">
       <DependentUpon>Default.aspx</DependentUpon>
@@ -386,6 +390,7 @@
     <Compile Include="login.aspx.designer.cs">
       <DependentUpon>login.aspx</DependentUpon>
     </Compile>
+    <Compile Include="LoginApiAuth.cs" />
     <Compile Include="LoginController.cs" />
     <Compile Include="LoginRegister.aspx.cs">
       <DependentUpon>LoginRegister.aspx</DependentUpon>
@@ -394,11 +399,13 @@
     <Compile Include="LoginRegister.aspx.designer.cs">
       <DependentUpon>LoginRegister.aspx</DependentUpon>
     </Compile>
+    <Compile Include="LogonToken.cs" />
     <Compile Include="LogRegister.cs">
       <DependentUpon>Isg.tt</DependentUpon>
     </Compile>
     <Compile Include="MyErrorResponse.cs" />
     <Compile Include="MyFilter\MyActionAttribute.cs" />
+    <Compile Include="MyFilter\MyAuthorizationAttribute.cs" />
     <Compile Include="MyFilter\MyErrorAttribute.cs" />
     <Compile Include="myProxy\Credentials.cs" />
     <Compile Include="PERSONEL.cs">

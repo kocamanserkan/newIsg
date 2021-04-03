@@ -66,5 +66,6 @@
     <Property Name="LogCaption" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
     <Property Name="LogDetail" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
     <Property Name="IsBefore" Type="Boolean" />
+    <Property Name="UserInfo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
   </EntityType>
 </Schema>

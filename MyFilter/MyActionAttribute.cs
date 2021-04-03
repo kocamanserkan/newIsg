@@ -26,9 +26,10 @@ namespace serkanISG.MyFilter
                 {
                     IsBefore = true,
                     LogCaption = $"{actionContext.ControllerContext.ControllerDescriptor.ControllerName} - {actionContext.ActionDescriptor.ActionName}",
+                    UserInfo = $"{Encoding.UTF8.GetString(Convert.FromBase64String(actionContext.Request.Headers.Authorization.Parameter))} ",
                     Time = DateTime.Now,
                     LogDetail = sb.ToString()
-                });
+                }) ; ;
 
                 db.SaveChanges();
 
@@ -47,7 +48,8 @@ namespace serkanISG.MyFilter
                 db.LogRegister.Add(new LogRegister()
                 {
                     IsBefore = false,
-                    LogCaption = $"{actionExecutedContext.ActionContext.ControllerContext.ControllerDescriptor.ControllerName} - {actionExecutedContext.ActionContext.ActionDescriptor.ActionName}",
+                    UserInfo = $"{Encoding.UTF8.GetString(Convert.FromBase64String(actionExecutedContext.Request.Headers.Authorization.Parameter))} ",
+                    LogCaption = $"{actionExecutedContext.ActionContext.ControllerContext.ControllerDescriptor.ControllerName} -- {actionExecutedContext.ActionContext.ActionDescriptor.ActionName}",
                     Time = DateTime.Now,
                     LogDetail = Convert.ToString(actionExecutedContext.ActionContext.Response.StatusCode)
                 }) ;
