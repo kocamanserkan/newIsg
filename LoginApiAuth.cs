@@ -17,16 +17,6 @@ namespace serkanISG
 
             }
 
-
-
-
-
-
-            
-
-
-
-
             //if(name=="sekoccan" && pass == "x1")
             //{
             //    return true;

@@ -11,8 +11,9 @@ namespace serkanISG
 {
     //[MyError]
     //[MyAuthorization]
+    [Authorize]
     [MyAction]
-    [MyAuthorization]
+    //[MyAuthorization]
     public class UygunsuzlukController : ApiController
     {
         serkanISGEntities1 db = new serkanISGEntities1();
