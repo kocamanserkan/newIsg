@@ -37,7 +37,7 @@ namespace serkanISG
         protected void Page_Load(object sender, EventArgs e)
         {
 
-            txtFullAd.Text = Request.Cookies["Kurabiye"]["full_ad"].ToString();
+          
             lblAD.Text = Request.Cookies["Kurabiye"]["full_ad"].ToString();
         }
 

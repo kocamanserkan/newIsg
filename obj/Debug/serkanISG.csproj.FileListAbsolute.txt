@@ -591,8 +591,6 @@ C:\Users\asus\source\repos\serkanISG\bin\de\DevExpress.Xpo.v20.2.resources.dll
 C:\Users\asus\source\repos\serkanISG\bin\es\DevExpress.Xpo.v20.2.resources.dll
 C:\Users\asus\source\repos\serkanISG\bin\ja\DevExpress.Xpo.v20.2.resources.dll
 C:\Users\asus\source\repos\serkanISG\bin\ru\DevExpress.Xpo.v20.2.resources.dll
-C:\Users\asus\Desktop\mavihub\newIsg\obj\Debug\serkanISG.csprojAssemblyReference.cache
-C:\Users\asus\Desktop\mavihub\newIsg\obj\Debug\serkanISG.csproj.CoreCompileInputs.cache
 C:\Users\asus\Desktop\mavihub\newIsg\bin\serkanISG.dll.config
 C:\Users\asus\Desktop\mavihub\newIsg\bin\serkanISG.dll
 C:\Users\asus\Desktop\mavihub\newIsg\bin\serkanISG.pdb
@@ -684,6 +682,8 @@ C:\Users\asus\Desktop\mavihub\newIsg\bin\Newtonsoft.Json.xml
 C:\Users\asus\Desktop\mavihub\newIsg\bin\Antlr3.Runtime.pdb
 C:\Users\asus\Desktop\mavihub\newIsg\bin\Microsoft.AspNet.FriendlyUrls.xml
 C:\Users\asus\Desktop\mavihub\newIsg\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
+C:\Users\asus\Desktop\mavihub\newIsg\obj\Debug\serkanISG.csproj.CoreCompileInputs.cache
 C:\Users\asus\Desktop\mavihub\newIsg\obj\Debug\serkanISG.csproj.CopyComplete
 C:\Users\asus\Desktop\mavihub\newIsg\obj\Debug\serkanISG.dll
 C:\Users\asus\Desktop\mavihub\newIsg\obj\Debug\serkanISG.pdb
+C:\Users\asus\Desktop\mavihub\newIsg\obj\Debug\serkanISG.csprojAssemblyReference.cache

@@ -56,6 +56,13 @@
     <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" />
     <EntitySet Name="UYGUNSUZLUK" EntityType="Self.UYGUNSUZLUK" />
     <EntitySet Name="LogRegister" EntityType="serkanISGModel.LogRegister" />
+    <EntitySet Name="LOKASYONN" EntityType="serkanISGModel.LOKASYONN" />
+    <EntitySet Name="ILLER" EntityType="serkanISGModel.ILLER" />
+    <EntitySet Name="BILDIRIM" EntityType="serkanISGModel.BILDIRIM" />
+    <EntitySet Name="TANIMIS" EntityType="serkanISGModel.TANIMIS" />
+    <EntitySet Name="KATEGORI" EntityType="serkanISGModel.KATEGORI" />
+    <EntitySet Name="VARDIYA" EntityType="serkanISGModel.VARDIYA" />
+    <EntitySet Name="BIRIM" EntityType="serkanISGModel.BIRIM" />
   </EntityContainer>
   <EntityType Name="LogRegister">
     <Key>
@@ -67,5 +74,66 @@
     <Property Name="LogDetail" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
     <Property Name="IsBefore" Type="Boolean" />
     <Property Name="UserInfo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="LOKASYONN">
+    <Key>
+      <PropertyRef Name="ID_LOKASYON" />
+    </Key>
+    <Property Name="ID_LOKASYON" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="AD_LOKASYON" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="SEHIR_LOKASYON" Type="String" MaxLength="55" FixedLength="false" Unicode="true" />
+    <Property Name="ACIKLAMA_LOKASYON" Type="String" MaxLength="55" FixedLength="false" Unicode="true" />
+    <Property Name="KROKI_LOKASYON" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="ILLER">
+    <Key>
+      <PropertyRef Name="code" />
+      <PropertyRef Name="name" />
+    </Key>
+    <Property Name="code" Type="String" Nullable="false" MaxLength="2" FixedLength="true" Unicode="false" />
+    <Property Name="name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="BILDIRIM">
+    <Key>
+      <PropertyRef Name="ID_BILDIRIM" />
+    </Key>
+    <Property Name="ID_BILDIRIM" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="TarihSaat" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="PERSONEL_AD" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="KATEGORI" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="ACIKLAMA" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="ONLEMBOOL" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="LOKASYON" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="DURUM" Type="Boolean" />
+    <Property Name="BIRIM" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="TANIMIS">
+    <Key>
+      <PropertyRef Name="ID_IS" />
+    </Key>
+    <Property Name="ID_IS" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="AD_IS" Type="String" MaxLength="70" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="KATEGORI">
+    <Key>
+      <PropertyRef Name="ID_KATEGORI" />
+    </Key>
+    <Property Name="ID_KATEGORI" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="AD_KATEGORI" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="DURUM" Type="Boolean" />
+  </EntityType>
+  <EntityType Name="VARDIYA">
+    <Key>
+      <PropertyRef Name="ID_VARDIYA" />
+    </Key>
+    <Property Name="ID_VARDIYA" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="AD_VARDIYA" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="BIRIM">
+    <Key>
+      <PropertyRef Name="ID_BIRIM" />
+    </Key>
+    <Property Name="ID_BIRIM" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="AD_BIRIM" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
   </EntityType>
 </Schema>

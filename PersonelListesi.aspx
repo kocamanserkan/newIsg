@@ -4,75 +4,7 @@
 
 
 
-    <!-- <div class="pre-loader">
-		<div class="pre-loader-box">
-			<div class="loader-logo"><img src="vendors/images/deskapp-logo.svg" alt=""></div>
-			<div class='loader-progress' id="progress_div">
-				<div class='bar' id='bar1'></div>
-			</div>
-			<div class='percent' id='percent1'>0%</div>
-			<div class="loading-text">
-				Loading...
-			</div>
-		</div>
-	</div> -->
-
-    <div class="header">
-
-        <div class="header-right">
-
-
-            <div class="user-info-dropdown">
-                <div class="dropdown">
-                    <a class="dropdown-toggle" href="#" role="button" data-toggle="dropdown">
-                        <span class="user-icon">
-                            <img src="vendors/images/photo1.jpg" alt="">
-                        </span>
-                        <asp:Label ID="lblAd" CssClass="user-name" runat="server" Text="Label"></asp:Label>
-
-                    </a>
-                    <div class="dropdown-menu dropdown-menu-right dropdown-menu-icon-list">
-                        <a class="dropdown-item" href="profile.html"><i class="dw dw-user1"></i>Profilim</a>
-                        <a class="dropdown-item" href="profile.html"><i class="dw dw-settings2"></i>Ayarlar</a>
-
-                        <a class="dropdown-item" href="login.aspx"><i class="dw dw-logout"></i>Çıkış</a>
-                    </div>
-                </div>
-            </div>
-
-        </div>
-    </div>
-    <div class="left-side-bar">
-        <div class="brand-logo">
-            <a href="PersonelPaneli.aspx">
-                <img src="vendors/images/logo.png" alt="" class="dark-logo">
-                <img src="vendors/images/logo.png" alt="" class="light-logo">
-            </a>
-            <div class="close-sidebar" data-toggle="left-sidebar-close">
-                <i class="ion-close-round"></i>
-            </div>
-        </div>
-        <div class="menu-block customscroll">
-            <div class="sidebar-menu">
-                <ul id="accordion-menu">
-                    <li class="dropdown">
-                        <a href="javascript:;" class="dropdown-toggle">
-                            <span class="micon dw dw-house-1"></span><span class="mtext">Uygunsuzluk Modülü</span>
-                        </a>
-                        <ul class="submenu">
-                            <li><a href="Uygunsuzluk.aspx">Uygunsuzluk İşlemleri</a></li>
-                            <%--<li><a href="UygunsuzlukGiris.aspx">Uygunsuzluk Giriş</a></li>
-                            <li><a href="PersonelListesi.aspx">Personel Listesi</a></li>--%>
-                            <li><a href="PersonelListesi.aspx">Personel Listesi</a></li>
-
-                        </ul>
-                    </li>
-                </ul>
-            </div>
-        </div>
-    </div>
-    <div class="mobile-menu-overlay"></div>
-
+  
 
     <div class="pd-ltr-20 xs-pd-20-10" style="margin-left: 10%; width: 1230px;">
         <div class="min-height-200px">

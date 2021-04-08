@@ -15,7 +15,7 @@ namespace serkanISG
         
         protected void Page_Load(object sender, EventArgs e)
         {
-            lbl_Kullaniciad.Text = Request.Cookies["Kurabiye"]["kullanici_Adi"].ToString();
+            //lbl_Kullaniciad.Text = Request.Cookies["Kurabiye"]["kullanici_Adi"].ToString();
 
             if (!Page.IsPostBack && !Page.IsCallback)
             {
@@ -40,8 +40,8 @@ namespace serkanISG
             }
 
 
-            lbl_HeaderAd.Text = lbl_ad.Text;
-            lbl_HeaderAd.Text = Request.Cookies["Kurabiye"]["full_ad"].ToString();
+            //lbl_HeaderAd.Text = lbl_ad.Text;
+            //lbl_HeaderAd.Text = Request.Cookies["Kurabiye"]["full_ad"].ToString();
 
             //if (!string.IsNullOrEmpty(Request.Cookies["Profil"].Value.ToString()))
             //{

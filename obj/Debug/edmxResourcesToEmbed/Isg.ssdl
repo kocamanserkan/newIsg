@@ -1,11 +1,52 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Schema Namespace="serkanISGModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="BILDIRIM">
+    <Key>
+      <PropertyRef Name="ID_BILDIRIM" />
+    </Key>
+    <Property Name="ID_BILDIRIM" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="TarihSaat" Type="nvarchar" MaxLength="50" />
+    <Property Name="PERSONEL_AD" Type="nvarchar" MaxLength="50" />
+    <Property Name="KATEGORI" Type="nvarchar" MaxLength="100" />
+    <Property Name="ACIKLAMA" Type="nvarchar" MaxLength="50" />
+    <Property Name="ONLEMBOOL" Type="nvarchar" MaxLength="50" />
+    <Property Name="LOKASYON" Type="nvarchar" MaxLength="50" />
+    <Property Name="DURUM" Type="bit" />
+    <Property Name="BIRIM" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'serkanISG.dbo.BIRIM' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="BIRIM">
+    <Key>
+      <PropertyRef Name="ID_BIRIM" />
+    </Key>
+    <Property Name="ID_BIRIM" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="AD_BIRIM" Type="nvarchar" MaxLength="100" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'serkanISG.dbo.ILLER' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="ILLER">
+    <Key>
+      <PropertyRef Name="code" />
+      <PropertyRef Name="name" />
+    </Key>
+    <Property Name="code" Type="char" MaxLength="2" Nullable="false" />
+    <Property Name="name" Type="nvarchar" MaxLength="50" Nullable="false" />
+  </EntityType>
   <EntityType Name="ISTANIM">
     <Key>
       <PropertyRef Name="ISID" />
     </Key>
     <Property Name="ISID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="ISADI" Type="varchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <EntityType Name="KATEGORI">
+    <Key>
+      <PropertyRef Name="ID_KATEGORI" />
+    </Key>
+    <Property Name="ID_KATEGORI" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="AD_KATEGORI" Type="nvarchar(max)" />
+    <Property Name="DURUM" Type="bit" />
   </EntityType>
   <EntityType Name="LogRegister">
     <Key>
@@ -17,6 +58,16 @@
     <Property Name="LogDetail" Type="nvarchar" MaxLength="50" />
     <Property Name="IsBefore" Type="bit" />
     <Property Name="UserInfo" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="LOKASYONN">
+    <Key>
+      <PropertyRef Name="ID_LOKASYON" />
+    </Key>
+    <Property Name="ID_LOKASYON" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="AD_LOKASYON" Type="nvarchar(max)" />
+    <Property Name="SEHIR_LOKASYON" Type="nvarchar" MaxLength="55" />
+    <Property Name="ACIKLAMA_LOKASYON" Type="nvarchar" MaxLength="55" />
+    <Property Name="KROKI_LOKASYON" Type="nvarchar(max)" />
   </EntityType>
   <EntityType Name="PERSONEL">
     <Key>
@@ -43,6 +94,13 @@
     <Property Name="version" Type="int" />
     <Property Name="definition" Type="varbinary(max)" />
   </EntityType>
+  <EntityType Name="TANIMIS">
+    <Key>
+      <PropertyRef Name="ID_IS" />
+    </Key>
+    <Property Name="ID_IS" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="AD_IS" Type="nvarchar" MaxLength="70" />
+  </EntityType>
   <EntityType Name="UYGUNSUZLUK">
     <Key>
       <PropertyRef Name="ID_UYGUNSUZLUK" />
@@ -61,11 +119,35 @@
     <Property Name="SORUMLU_ID" Type="int" />
     <Property Name="FOTO" Type="image" />
   </EntityType>
+  <EntityType Name="VARDIYA">
+    <Key>
+      <PropertyRef Name="ID_VARDIYA" />
+    </Key>
+    <Property Name="ID_VARDIYA" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="AD_VARDIYA" Type="nvarchar" MaxLength="50" />
+  </EntityType>
   <EntityContainer Name="serkanISGModelStoreContainer">
+    <EntitySet Name="BILDIRIM" EntityType="Self.BILDIRIM" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="ISTANIM" EntityType="Self.ISTANIM" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="KATEGORI" EntityType="Self.KATEGORI" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="LogRegister" EntityType="Self.LogRegister" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="LOKASYONN" EntityType="Self.LOKASYONN" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="PERSONEL" EntityType="Self.PERSONEL" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="TANIMIS" EntityType="Self.TANIMIS" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="UYGUNSUZLUK" EntityType="Self.UYGUNSUZLUK" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="VARDIYA" EntityType="Self.VARDIYA" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="BIRIM" EntityType="Self.BIRIM" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [BIRIM].[ID_BIRIM] AS [ID_BIRIM], 
+    [BIRIM].[AD_BIRIM] AS [AD_BIRIM]
+    FROM [dbo].[BIRIM] AS [BIRIM]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="ILLER" EntityType="Self.ILLER" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [ILLER].[code] AS [code], 
+    [ILLER].[name] AS [name]
+    FROM [dbo].[ILLER] AS [ILLER]</DefiningQuery>
+    </EntitySet>
   </EntityContainer>
 </Schema>

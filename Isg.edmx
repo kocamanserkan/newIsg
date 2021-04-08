@@ -5,12 +5,53 @@
     <!-- SSDL content -->
     <edmx:StorageModels>
     <Schema Namespace="serkanISGModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="BILDIRIM">
+          <Key>
+            <PropertyRef Name="ID_BILDIRIM" />
+          </Key>
+          <Property Name="ID_BILDIRIM" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="TarihSaat" Type="nvarchar" MaxLength="50" />
+          <Property Name="PERSONEL_AD" Type="nvarchar" MaxLength="50" />
+          <Property Name="KATEGORI" Type="nvarchar" MaxLength="100" />
+          <Property Name="ACIKLAMA" Type="nvarchar" MaxLength="50" />
+          <Property Name="ONLEMBOOL" Type="nvarchar" MaxLength="50" />
+          <Property Name="LOKASYON" Type="nvarchar" MaxLength="50" />
+          <Property Name="DURUM" Type="bit" />
+          <Property Name="BIRIM" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'serkanISG.dbo.BIRIM' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="BIRIM">
+          <Key>
+            <PropertyRef Name="ID_BIRIM" />
+          </Key>
+          <Property Name="ID_BIRIM" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="AD_BIRIM" Type="nvarchar" MaxLength="100" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'serkanISG.dbo.ILLER' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="ILLER">
+          <Key>
+            <PropertyRef Name="code" />
+            <PropertyRef Name="name" />
+          </Key>
+          <Property Name="code" Type="char" MaxLength="2" Nullable="false" />
+          <Property Name="name" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
         <EntityType Name="ISTANIM">
           <Key>
             <PropertyRef Name="ISID" />
           </Key>
           <Property Name="ISID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="ISADI" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="KATEGORI">
+          <Key>
+            <PropertyRef Name="ID_KATEGORI" />
+          </Key>
+          <Property Name="ID_KATEGORI" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="AD_KATEGORI" Type="nvarchar(max)" />
+          <Property Name="DURUM" Type="bit" />
         </EntityType>
         <EntityType Name="LogRegister">
           <Key>
@@ -22,6 +63,16 @@
           <Property Name="LogDetail" Type="nvarchar" MaxLength="50" />
           <Property Name="IsBefore" Type="bit" />
           <Property Name="UserInfo" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="LOKASYONN">
+          <Key>
+            <PropertyRef Name="ID_LOKASYON" />
+          </Key>
+          <Property Name="ID_LOKASYON" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="AD_LOKASYON" Type="nvarchar(max)" />
+          <Property Name="SEHIR_LOKASYON" Type="nvarchar" MaxLength="55" />
+          <Property Name="ACIKLAMA_LOKASYON" Type="nvarchar" MaxLength="55" />
+          <Property Name="KROKI_LOKASYON" Type="nvarchar(max)" />
         </EntityType>
         <EntityType Name="PERSONEL">
           <Key>
@@ -48,6 +99,13 @@
           <Property Name="version" Type="int" />
           <Property Name="definition" Type="varbinary(max)" />
         </EntityType>
+        <EntityType Name="TANIMIS">
+          <Key>
+            <PropertyRef Name="ID_IS" />
+          </Key>
+          <Property Name="ID_IS" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="AD_IS" Type="nvarchar" MaxLength="70" />
+        </EntityType>
         <EntityType Name="UYGUNSUZLUK">
           <Key>
             <PropertyRef Name="ID_UYGUNSUZLUK" />
@@ -66,12 +124,36 @@
           <Property Name="SORUMLU_ID" Type="int" />
           <Property Name="FOTO" Type="image" />
         </EntityType>
+        <EntityType Name="VARDIYA">
+          <Key>
+            <PropertyRef Name="ID_VARDIYA" />
+          </Key>
+          <Property Name="ID_VARDIYA" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="AD_VARDIYA" Type="nvarchar" MaxLength="50" />
+        </EntityType>
         <EntityContainer Name="serkanISGModelStoreContainer">
+          <EntitySet Name="BILDIRIM" EntityType="Self.BILDIRIM" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="ISTANIM" EntityType="Self.ISTANIM" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="KATEGORI" EntityType="Self.KATEGORI" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="LogRegister" EntityType="Self.LogRegister" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="LOKASYONN" EntityType="Self.LOKASYONN" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="PERSONEL" EntityType="Self.PERSONEL" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TANIMIS" EntityType="Self.TANIMIS" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="UYGUNSUZLUK" EntityType="Self.UYGUNSUZLUK" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="VARDIYA" EntityType="Self.VARDIYA" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="BIRIM" EntityType="Self.BIRIM" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [BIRIM].[ID_BIRIM] AS [ID_BIRIM], 
+    [BIRIM].[AD_BIRIM] AS [AD_BIRIM]
+    FROM [dbo].[BIRIM] AS [BIRIM]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="ILLER" EntityType="Self.ILLER" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [ILLER].[code] AS [code], 
+    [ILLER].[name] AS [name]
+    FROM [dbo].[ILLER] AS [ILLER]</DefiningQuery>
+          </EntitySet>
         </EntityContainer>
       </Schema></edmx:StorageModels>
     <!-- CSDL content -->
@@ -133,6 +215,13 @@
           <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" />
           <EntitySet Name="UYGUNSUZLUK" EntityType="Self.UYGUNSUZLUK" />
           <EntitySet Name="LogRegister" EntityType="serkanISGModel.LogRegister" />
+          <EntitySet Name="LOKASYONN" EntityType="serkanISGModel.LOKASYONN" />
+          <EntitySet Name="ILLER" EntityType="serkanISGModel.ILLER" />
+          <EntitySet Name="BILDIRIM" EntityType="serkanISGModel.BILDIRIM" />
+          <EntitySet Name="TANIMIS" EntityType="serkanISGModel.TANIMIS" />
+          <EntitySet Name="KATEGORI" EntityType="serkanISGModel.KATEGORI" />
+          <EntitySet Name="VARDIYA" EntityType="serkanISGModel.VARDIYA" />
+          <EntitySet Name="BIRIM" EntityType="serkanISGModel.BIRIM" />
         </EntityContainer>
         <EntityType Name="LogRegister">
           <Key>
@@ -144,6 +233,67 @@
           <Property Name="LogDetail" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="IsBefore" Type="Boolean" />
           <Property Name="UserInfo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="LOKASYONN">
+          <Key>
+            <PropertyRef Name="ID_LOKASYON" />
+          </Key>
+          <Property Name="ID_LOKASYON" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="AD_LOKASYON" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="SEHIR_LOKASYON" Type="String" MaxLength="55" FixedLength="false" Unicode="true" />
+          <Property Name="ACIKLAMA_LOKASYON" Type="String" MaxLength="55" FixedLength="false" Unicode="true" />
+          <Property Name="KROKI_LOKASYON" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="ILLER">
+          <Key>
+            <PropertyRef Name="code" />
+            <PropertyRef Name="name" />
+          </Key>
+          <Property Name="code" Type="String" Nullable="false" MaxLength="2" FixedLength="true" Unicode="false" />
+          <Property Name="name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="BILDIRIM">
+          <Key>
+            <PropertyRef Name="ID_BILDIRIM" />
+          </Key>
+          <Property Name="ID_BILDIRIM" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TarihSaat" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="PERSONEL_AD" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="KATEGORI" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="ACIKLAMA" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ONLEMBOOL" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="LOKASYON" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="DURUM" Type="Boolean" />
+          <Property Name="BIRIM" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="TANIMIS">
+          <Key>
+            <PropertyRef Name="ID_IS" />
+          </Key>
+          <Property Name="ID_IS" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="AD_IS" Type="String" MaxLength="70" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="KATEGORI">
+          <Key>
+            <PropertyRef Name="ID_KATEGORI" />
+          </Key>
+          <Property Name="ID_KATEGORI" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="AD_KATEGORI" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="DURUM" Type="Boolean" />
+        </EntityType>
+        <EntityType Name="VARDIYA">
+          <Key>
+            <PropertyRef Name="ID_VARDIYA" />
+          </Key>
+          <Property Name="ID_VARDIYA" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="AD_VARDIYA" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="BIRIM">
+          <Key>
+            <PropertyRef Name="ID_BIRIM" />
+          </Key>
+          <Property Name="ID_BIRIM" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="AD_BIRIM" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
         </EntityType>
       </Schema>
     </edmx:ConceptualModels>
@@ -214,6 +364,73 @@
                 <ScalarProperty Name="LogCaption" ColumnName="LogCaption" />
                 <ScalarProperty Name="Time" ColumnName="Time" />
                 <ScalarProperty Name="LogID" ColumnName="LogID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="LOKASYONN">
+            <EntityTypeMapping TypeName="serkanISGModel.LOKASYONN">
+              <MappingFragment StoreEntitySet="LOKASYONN">
+                <ScalarProperty Name="KROKI_LOKASYON" ColumnName="KROKI_LOKASYON" />
+                <ScalarProperty Name="ACIKLAMA_LOKASYON" ColumnName="ACIKLAMA_LOKASYON" />
+                <ScalarProperty Name="SEHIR_LOKASYON" ColumnName="SEHIR_LOKASYON" />
+                <ScalarProperty Name="AD_LOKASYON" ColumnName="AD_LOKASYON" />
+                <ScalarProperty Name="ID_LOKASYON" ColumnName="ID_LOKASYON" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ILLER">
+            <EntityTypeMapping TypeName="serkanISGModel.ILLER">
+              <MappingFragment StoreEntitySet="ILLER">
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="code" ColumnName="code" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="BILDIRIM">
+            <EntityTypeMapping TypeName="serkanISGModel.BILDIRIM">
+              <MappingFragment StoreEntitySet="BILDIRIM">
+                <ScalarProperty Name="BIRIM" ColumnName="BIRIM" />
+                <ScalarProperty Name="DURUM" ColumnName="DURUM" />
+                <ScalarProperty Name="LOKASYON" ColumnName="LOKASYON" />
+                <ScalarProperty Name="ONLEMBOOL" ColumnName="ONLEMBOOL" />
+                <ScalarProperty Name="ACIKLAMA" ColumnName="ACIKLAMA" />
+                <ScalarProperty Name="KATEGORI" ColumnName="KATEGORI" />
+                <ScalarProperty Name="PERSONEL_AD" ColumnName="PERSONEL_AD" />
+                <ScalarProperty Name="TarihSaat" ColumnName="TarihSaat" />
+                <ScalarProperty Name="ID_BILDIRIM" ColumnName="ID_BILDIRIM" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TANIMIS">
+            <EntityTypeMapping TypeName="serkanISGModel.TANIMIS">
+              <MappingFragment StoreEntitySet="TANIMIS">
+                <ScalarProperty Name="AD_IS" ColumnName="AD_IS" />
+                <ScalarProperty Name="ID_IS" ColumnName="ID_IS" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="KATEGORI">
+            <EntityTypeMapping TypeName="serkanISGModel.KATEGORI">
+              <MappingFragment StoreEntitySet="KATEGORI">
+                <ScalarProperty Name="DURUM" ColumnName="DURUM" />
+                <ScalarProperty Name="AD_KATEGORI" ColumnName="AD_KATEGORI" />
+                <ScalarProperty Name="ID_KATEGORI" ColumnName="ID_KATEGORI" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="VARDIYA">
+            <EntityTypeMapping TypeName="serkanISGModel.VARDIYA">
+              <MappingFragment StoreEntitySet="VARDIYA">
+                <ScalarProperty Name="AD_VARDIYA" ColumnName="AD_VARDIYA" />
+                <ScalarProperty Name="ID_VARDIYA" ColumnName="ID_VARDIYA" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="BIRIM">
+            <EntityTypeMapping TypeName="serkanISGModel.BIRIM">
+              <MappingFragment StoreEntitySet="BIRIM">
+                <ScalarProperty Name="AD_BIRIM" ColumnName="AD_BIRIM" />
+                <ScalarProperty Name="ID_BIRIM" ColumnName="ID_BIRIM" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

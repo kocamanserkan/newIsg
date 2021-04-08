@@ -22,7 +22,7 @@ namespace serkanISG
         {
 
 
-            lblAd.Text = Request.Cookies["Kurabiye"]["full_ad"].ToString();
+            //lblAd.Text = Request.Cookies["Kurabiye"]["full_ad"].ToString();
 
 
 
@@ -56,7 +56,7 @@ namespace serkanISG
             db.personelListesi(ddlSorumlua);
             db.personelListesi(ddlTespitedena);
 
-            lblAd.Text = Request.Cookies["Kurabiye"]["full_ad"].ToString();
+            //lblAd.Text = Request.Cookies["Kurabiye"]["full_ad"].ToString();
 
 
 

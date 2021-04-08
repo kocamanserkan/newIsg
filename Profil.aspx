@@ -4,63 +4,6 @@
 
 
 
-    <div class="header">
-
-        <div class="header-right">
-
-
-            <div class="user-info-dropdown">
-                <div class="dropdown">
-                    <a class="dropdown-toggle" href="#" role="button" data-toggle="dropdown">
-                        <span class="user-icon">
-                            <img src="vendors/images/photo1.jpg" alt="">
-                        </span>
-                        <%-- <span class="user-name">Ross C. Lopez</span>--%>
-                        <asp:Label ID="lbl_HeaderAd" class="user-name" runat="server" Text="Label"></asp:Label>
-                    </a>
-                    <div class="dropdown-menu dropdown-menu-right dropdown-menu-icon-list">
-                        <a class="dropdown-item" href="Profil.aspx"><i class="dw dw-user1"></i>Profilim</a>
-
-                        <a class="dropdown-item" href="Login.aspx"><i class="dw dw-logout"></i>Çıkış</a>
-                    </div>
-                </div>
-            </div>
-
-        </div>
-    </div>
-
-    <div class="right-sidebar">
-    </div>
-
-    <div class="left-side-bar">
-        <div class="brand-logo">
-            <a href="PersonelPaneli">
-                <img src="vendors/images/deskapp-logo.svg" alt="" class="dark-logo">
-                <img src="vendors/images/deskapp-logo-white.svg" alt="" class="light-logo">
-            </a>
-            <div class="close-sidebar" data-toggle="left-sidebar-close">
-                <i class="ion-close-round"></i>
-            </div>
-        </div>
-        <div class="menu-block customscroll">
-            <div class="sidebar-menu">
-                <ul id="accordion-menu">
-                    <li class="dropdown">
-                        <a href="javascript:;" class="dropdown-toggle">
-                            <span class="micon dw dw-house-1"></span><span class="mtext">Uygunsuzluk Modülü</span>
-                        </a>
-                        <ul class="submenu">
-                            <li><a href="PersonelPaneli.aspx">Personel Paneli</a></li>
-                            <li><a href="Uygunsuzluk.aspx">Uygunsuzluk İşlemleri</a></li>
-                            <li><a href="PersonelListesi.aspx">Kayıt Listesi</a></li>
-
-                        </ul>
-                </ul>
-            </div>
-        </div>
-    </div>
-    <div class="mobile-menu-overlay"></div>
-
     <div class="main-container">
         <div class="pd-ltr-20 xs-pd-20-10" style="width: 1016px; margin-left: -124px;">
             <div class="min-height-200px">

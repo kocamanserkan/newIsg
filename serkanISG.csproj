@@ -90,6 +90,7 @@
     <Reference Include="System.Web.Http.WebHost, Version=5.2.7.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>packages\Microsoft.AspNet.WebApi.WebHost.5.2.7\lib\net45\System.Web.Http.WebHost.dll</HintPath>
     </Reference>
+    <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Drawing" />
     <Reference Include="System.Web" />
@@ -144,11 +145,13 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="BirimTanim.aspx" />
     <Content Include="Content\bootstrap-theme.css" />
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\Site.css" />
+    <Content Include="Content\upload.css" />
     <Content Include="Default.aspx" />
     <Content Include="devEx.aspx" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
@@ -173,12 +176,17 @@
       <DependentUpon>Isg.edmx</DependentUpon>
       <LastGenOutput>Isg.cs</LastGenOutput>
     </Content>
-    <Content Include="ISTANIM.aspx" />
+    <Content Include="IsgBildirim.aspx" />
+    <Content Include="ISTANIMLARI.aspx" />
+    <Content Include="KategoriTanim.aspx" />
     <Content Include="login.aspx" />
+    <Content Include="LOKASYON.aspx" />
     <Content Include="PersonelListesi.aspx" />
     <Content Include="PopUpEx.aspx" />
     <Content Include="Profil.aspx" />
+    <Content Include="Scripts\upload.js" />
     <Content Include="Uygunsuzluk.aspx" />
+    <Content Include="VardiyaTanim.aspx" />
     <Content Include="vendors\fonts\dropways.eot" />
     <Content Include="vendors\fonts\dropways.ttf" />
     <Content Include="vendors\fonts\dropways.woff" />
@@ -358,6 +366,19 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="AuthorizationServerProvider.cs" />
+    <Compile Include="BILDIRIM.cs">
+      <DependentUpon>Isg.tt</DependentUpon>
+    </Compile>
+    <Compile Include="BIRIM.cs">
+      <DependentUpon>Isg.tt</DependentUpon>
+    </Compile>
+    <Compile Include="BirimTanim.aspx.cs">
+      <DependentUpon>BirimTanim.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="BirimTanim.aspx.designer.cs">
+      <DependentUpon>BirimTanim.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Controllers\LogonController.cs" />
     <Compile Include="DataBase.cs" />
     <Compile Include="Default.aspx.cs">
@@ -377,6 +398,9 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="ILLER.cs">
+      <DependentUpon>Isg.tt</DependentUpon>
+    </Compile>
     <Compile Include="Isg.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -392,15 +416,32 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Isg.edmx</DependentUpon>
     </Compile>
-    <Compile Include="ISTANIM.aspx.cs">
-      <DependentUpon>ISTANIM.aspx</DependentUpon>
+    <Compile Include="IsgBildirim.aspx.cs">
+      <DependentUpon>IsgBildirim.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="ISTANIM.aspx.designer.cs">
-      <DependentUpon>ISTANIM.aspx</DependentUpon>
+    <Compile Include="IsgBildirim.aspx.designer.cs">
+      <DependentUpon>IsgBildirim.aspx</DependentUpon>
     </Compile>
     <Compile Include="ISTANIM.cs">
       <DependentUpon>Isg.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ISTANIMLARI.aspx.cs">
+      <DependentUpon>ISTANIMLARI.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ISTANIMLARI.aspx.designer.cs">
+      <DependentUpon>ISTANIMLARI.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="KATEGORI.cs">
+      <DependentUpon>Isg.tt</DependentUpon>
+    </Compile>
+    <Compile Include="KategoriTanim.aspx.cs">
+      <DependentUpon>KategoriTanim.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="KategoriTanim.aspx.designer.cs">
+      <DependentUpon>KategoriTanim.aspx</DependentUpon>
     </Compile>
     <Compile Include="Kontrol.cs" />
     <Compile Include="Logger.cs" />
@@ -422,6 +463,16 @@
     </Compile>
     <Compile Include="LogonToken.cs" />
     <Compile Include="LogRegister.cs">
+      <DependentUpon>Isg.tt</DependentUpon>
+    </Compile>
+    <Compile Include="LOKASYON.aspx.cs">
+      <DependentUpon>LOKASYON.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="LOKASYON.aspx.designer.cs">
+      <DependentUpon>LOKASYON.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="LOKASYONN.cs">
       <DependentUpon>Isg.tt</DependentUpon>
     </Compile>
     <Compile Include="MyErrorResponse.cs" />
@@ -486,6 +537,9 @@
     <Compile Include="sysdiagrams.cs">
       <DependentUpon>Isg.tt</DependentUpon>
     </Compile>
+    <Compile Include="TANIMIS.cs">
+      <DependentUpon>Isg.tt</DependentUpon>
+    </Compile>
     <Compile Include="Uygunsuzluk.aspx.cs">
       <DependentUpon>Uygunsuzluk.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -497,6 +551,16 @@
       <DependentUpon>Isg.tt</DependentUpon>
     </Compile>
     <Compile Include="Controllers\UygunsuzlukController.cs" />
+    <Compile Include="VARDIYA.cs">
+      <DependentUpon>Isg.tt</DependentUpon>
+    </Compile>
+    <Compile Include="VardiyaTanim.aspx.cs">
+      <DependentUpon>VardiyaTanim.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="VardiyaTanim.aspx.designer.cs">
+      <DependentUpon>VardiyaTanim.aspx</DependentUpon>
+    </Compile>
     <Compile Include="ViewSwitcher.ascx.cs">
       <DependentUpon>ViewSwitcher.ascx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -508,6 +572,7 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Membership\" />
+    <Folder Include="Upload\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

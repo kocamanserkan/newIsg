@@ -19,7 +19,7 @@ namespace serkanISG
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            lblAd.Text = Request.Cookies["Kurabiye"]["full_ad"].ToString();
+            //lblAd.Text = Request.Cookies["Kurabiye"]["full_ad"].ToString();
 
             //if (!string.IsNullOrEmpty(Request.Cookies["Username"].Value.ToString()))
             //{

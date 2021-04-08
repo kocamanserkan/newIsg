@@ -67,5 +67,72 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
+    <EntitySetMapping Name="LOKASYONN">
+      <EntityTypeMapping TypeName="serkanISGModel.LOKASYONN">
+        <MappingFragment StoreEntitySet="LOKASYONN">
+          <ScalarProperty Name="KROKI_LOKASYON" ColumnName="KROKI_LOKASYON" />
+          <ScalarProperty Name="ACIKLAMA_LOKASYON" ColumnName="ACIKLAMA_LOKASYON" />
+          <ScalarProperty Name="SEHIR_LOKASYON" ColumnName="SEHIR_LOKASYON" />
+          <ScalarProperty Name="AD_LOKASYON" ColumnName="AD_LOKASYON" />
+          <ScalarProperty Name="ID_LOKASYON" ColumnName="ID_LOKASYON" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ILLER">
+      <EntityTypeMapping TypeName="serkanISGModel.ILLER">
+        <MappingFragment StoreEntitySet="ILLER">
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="code" ColumnName="code" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="BILDIRIM">
+      <EntityTypeMapping TypeName="serkanISGModel.BILDIRIM">
+        <MappingFragment StoreEntitySet="BILDIRIM">
+          <ScalarProperty Name="BIRIM" ColumnName="BIRIM" />
+          <ScalarProperty Name="DURUM" ColumnName="DURUM" />
+          <ScalarProperty Name="LOKASYON" ColumnName="LOKASYON" />
+          <ScalarProperty Name="ONLEMBOOL" ColumnName="ONLEMBOOL" />
+          <ScalarProperty Name="ACIKLAMA" ColumnName="ACIKLAMA" />
+          <ScalarProperty Name="KATEGORI" ColumnName="KATEGORI" />
+          <ScalarProperty Name="PERSONEL_AD" ColumnName="PERSONEL_AD" />
+          <ScalarProperty Name="TarihSaat" ColumnName="TarihSaat" />
+          <ScalarProperty Name="ID_BILDIRIM" ColumnName="ID_BILDIRIM" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TANIMIS">
+      <EntityTypeMapping TypeName="serkanISGModel.TANIMIS">
+        <MappingFragment StoreEntitySet="TANIMIS">
+          <ScalarProperty Name="AD_IS" ColumnName="AD_IS" />
+          <ScalarProperty Name="ID_IS" ColumnName="ID_IS" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="KATEGORI">
+      <EntityTypeMapping TypeName="serkanISGModel.KATEGORI">
+        <MappingFragment StoreEntitySet="KATEGORI">
+          <ScalarProperty Name="DURUM" ColumnName="DURUM" />
+          <ScalarProperty Name="AD_KATEGORI" ColumnName="AD_KATEGORI" />
+          <ScalarProperty Name="ID_KATEGORI" ColumnName="ID_KATEGORI" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="VARDIYA">
+      <EntityTypeMapping TypeName="serkanISGModel.VARDIYA">
+        <MappingFragment StoreEntitySet="VARDIYA">
+          <ScalarProperty Name="AD_VARDIYA" ColumnName="AD_VARDIYA" />
+          <ScalarProperty Name="ID_VARDIYA" ColumnName="ID_VARDIYA" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="BIRIM">
+      <EntityTypeMapping TypeName="serkanISGModel.BIRIM">
+        <MappingFragment StoreEntitySet="BIRIM">
+          <ScalarProperty Name="AD_BIRIM" ColumnName="AD_BIRIM" />
+          <ScalarProperty Name="ID_BIRIM" ColumnName="ID_BIRIM" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
   </EntityContainerMapping>
 </Mapping>
