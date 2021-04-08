@@ -257,9 +257,7 @@
                     </div>
                 </div>
             </div>
-            <div class="footer-wrap pd-20 mb-20 card-box">
-                Uygunsuzluk Modülü By <a href="https://github.com/mavihub" target="_blank">Serkan Kocaman</a>
-            </div>
+           
         </div>
     </div>
 

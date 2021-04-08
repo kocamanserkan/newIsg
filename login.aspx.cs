@@ -37,6 +37,7 @@ namespace serkanISG
                 cookie.Values.Add("full_ad", db.fullAd(txtKULLANICIADI).Text);
 
                 Response.Cookies.Add(cookie);
+                Response.Redirect("PERSONEL/PersonelPaneli.aspx");
                 Response.Redirect("PersonelPaneli.aspx");
                 Response.Redirect("Uygunsuzluk.aspx");
                 Response.Redirect("PersonelListesi.aspx");
@@ -52,7 +53,7 @@ namespace serkanISG
                 Cookie.Expires = DateTime.Now.AddHours(3);
                 Response.Cookies.Add(Cookie);
 
-                Response.Redirect("PersonelPaneli.aspx");
+                Response.Redirect("PERSONEL/PersonelPaneli.aspx");
                 Response.Redirect("Uygunsuzluk.aspx");
                 Response.Redirect("PersonelListesi.aspx");
                 Response.Redirect("Profil.aspx");

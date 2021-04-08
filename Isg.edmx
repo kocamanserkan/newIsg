@@ -19,8 +19,6 @@
           <Property Name="DURUM" Type="bit" />
           <Property Name="BIRIM" Type="nvarchar" MaxLength="50" />
         </EntityType>
-        <!--Errors Found During Generation:
-warning 6002: The table/view 'serkanISG.dbo.BIRIM' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <EntityType Name="BIRIM">
           <Key>
             <PropertyRef Name="ID_BIRIM" />
@@ -133,6 +131,7 @@ warning 6002: The table/view 'serkanISG.dbo.ILLER' does not have a primary key d
         </EntityType>
         <EntityContainer Name="serkanISGModelStoreContainer">
           <EntitySet Name="BILDIRIM" EntityType="Self.BILDIRIM" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="BIRIM" EntityType="Self.BIRIM" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="ISTANIM" EntityType="Self.ISTANIM" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="KATEGORI" EntityType="Self.KATEGORI" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="LogRegister" EntityType="Self.LogRegister" Schema="dbo" store:Type="Tables" />
@@ -142,12 +141,6 @@ warning 6002: The table/view 'serkanISG.dbo.ILLER' does not have a primary key d
           <EntitySet Name="TANIMIS" EntityType="Self.TANIMIS" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="UYGUNSUZLUK" EntityType="Self.UYGUNSUZLUK" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="VARDIYA" EntityType="Self.VARDIYA" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="BIRIM" EntityType="Self.BIRIM" store:Type="Tables" store:Schema="dbo">
-            <DefiningQuery>SELECT 
-    [BIRIM].[ID_BIRIM] AS [ID_BIRIM], 
-    [BIRIM].[AD_BIRIM] AS [AD_BIRIM]
-    FROM [dbo].[BIRIM] AS [BIRIM]</DefiningQuery>
-          </EntitySet>
           <EntitySet Name="ILLER" EntityType="Self.ILLER" store:Type="Tables" store:Schema="dbo">
             <DefiningQuery>SELECT 
     [ILLER].[code] AS [code], 

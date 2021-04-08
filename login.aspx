@@ -4,9 +4,6 @@
      <div class="row">
                 <div id="alert" class="col-md-12">
 
-
-
-
                 </div>
 
             </div>
@@ -87,99 +84,77 @@
     <script>    
 
 
-        function CreateEmployee() {
+<%--        function CreateEmployee() {
 
 <%--            var nickname = $("#<%=txtKULLANICIADI.ClientID%>")
             var password = $("#<%=txtPAROLA.ClientID%>")--%>
 
-            var nickname = $("#txtKULLANICIADI").val();
-            var password = $("#txtPAROLA").val();
+     //       var nickname = $("#txtKULLANICIADI").val();
+     //       var password = $("#txtPAROLA").val();
            
 
-            var emp = {
+     //       var emp = {
 
-                "nickname": nickname,
-                "password": password
+     //           "nickname": nickname,
+     //           "password": password
           
 
-            };
+     //       };
 
-            $.ajax({
-                method: "POST",
-                url: "../api/login",
-                type: "json",
-                data: emp
-            }).done(function () {
+     //       $.ajax({
+     //           method: "POST",
+     //           url: "../api/login",
+     //           type: "json",
+     //           data: emp
+     //       }).done(function () {
 
-                alert("Merhaba"+" "+nickname+"")
-
-
-                $(document).ready(function () {
-                    window.location.href = "/PersonelPaneli";
-                });
+     //           alert("Merhaba"+" "+nickname+"")
 
 
-            }).fail(function () {
+     //           $(document).ready(function () {
+     //               window.location.href = "/PersonelPaneli";
+     //           });
+
+
+     //       }).fail(function () {
                
-                var mesag = "<div class='alert alert-danger text-center' role='alert'>Kullanıcı Adı veya Şifre Hatalı</div>"
+     //           var mesag = "<div class='alert alert-danger text-center' role='alert'>Kullanıcı Adı veya Şifre Hatalı</div>"
 
-                $("#alert").append(mesag);
+     //           $("#alert").append(mesag);
 
-                $("#txtKULLANICIADI").val('');
-                $("#txtPAROLA").val('');
-
-
-         /*alert("Kullanıcı adı veya Şifre Hatalı")*/
+     //           $("#txtKULLANICIADI").val('');
+     //           $("#txtPAROLA").val('');
 
 
-
-            });
+     //    /*alert("Kullanıcı adı veya Şifre Hatalı")*/
 
 
 
+     //       });
+
+
+     //   }
+
+
+     //   $(function () {
 
 
 
-        }
-
-
-
-
-        $(function () {
-
-
-
-            $("#btnGiris").click(function () {
-                $("#alert").empty();
+     //       $("#btnGiris").click(function () {
+     //           $("#alert").empty();
              
-                CreateEmployee();
+     //           CreateEmployee();
 
-            })
-
-
-
-
-
-        })
-
-
-      
-
-
-
-            
+     //       })
 
 
 
 
 
-
-  
-
+     //   })
 
 
-
-
+     //--%>
 
 
     </script>

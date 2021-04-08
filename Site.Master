@@ -3,126 +3,145 @@
 <!DOCTYPE html>
 
 <html lang="en">
-   <head>
-      
-        <!-- Basic Page Info -->
-        <meta charset="utf-8">
-        <title>Uygunsuzluk Modülü</title>
+<head>
 
-        <!-- Site favicon -->
-        <link rel="apple-touch-icon" sizes="180x180" href="vendors/images/apple-touch-icon.png">
-        <link rel="icon" type="image/png" sizes="32x32" href="vendors/images/favicon-32x32.png">
-        <link rel="icon" type="image/png" sizes="16x16" href="vendors/images/favicon-16x16.png">
+    <!-- Basic Page Info -->
+    <meta charset="utf-8">
+    <title>Uygunsuzluk Modülü</title>
 
-        <!-- Mobile Specific Metas -->
-        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <!-- Site favicon -->
+    <link rel="apple-touch-icon" sizes="180x180" href="vendors/images/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="vendors/images/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="vendors/images/favicon-16x16.png">
 
-        <!-- Google Font -->
-        <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-        <!-- CSS -->
-        <link rel="stylesheet" type="text/css" href="vendors/styles/core.css">
-        <link rel="stylesheet" type="text/css" href="vendors/styles/icon-font.min.css">
-        <link rel="stylesheet" type="text/css" href="vendors/styles/style.css">
+    <!-- Mobile Specific Metas -->
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
-        <!-- Global site tag (gtag.js) - Google Analytics -->
-        <script async src="https://www.googletagmanager.com/gtag/js?id=UA-119386393-1"></script>
-        <script>
-            window.dataLayer = window.dataLayer || [];
-            function gtag() { dataLayer.push(arguments); }
-            gtag('js', new Date());
+    <!-- Google Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <!-- CSS -->
+    <link rel="stylesheet" type="text/css" href="vendors/styles/core.css">
+    <link rel="stylesheet" type="text/css" href="vendors/styles/icon-font.min.css">
+    <link rel="stylesheet" type="text/css" href="vendors/styles/style.css">
 
-            gtag('config', 'UA-119386393-1');
-        </script>
-    </head>
-   
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-119386393-1"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+
+        gtag('config', 'UA-119386393-1');
+    </script>
+</head>
+
 <body class="login-page">
 
     <form runat="server">
-           <div class="header">
+        <div class="header">
 
-        <div class="header-right">
-
-
-            <div class="user-info-dropdown">
-                <div class="dropdown">
-                    <a class="dropdown-toggle" href="#" role="button" data-toggle="dropdown">
-                        <span class="user-icon">
-                            <img src="vendors/images/photo1.jpg" alt="">
-                        </span>
-                        <asp:Label ID="lblAd" CssClass="user-name" runat="server" Text="Label"></asp:Label>
-
-                    </a>
-                    <div class="dropdown-menu dropdown-menu-right dropdown-menu-icon-list">
-                        <a class="dropdown-item" href="profil.aspx"><i class="dw dw-user1"></i>Profilim</a>
+            <div class="header-right">
 
 
-                        <a class="dropdown-item" href="login.aspx"><i class="dw dw-logout"></i>Çıkış</a>
+                <div class="user-info-dropdown">
+                    <div class="dropdown">
+                        <a class="dropdown-toggle" href="#" role="button" data-toggle="dropdown">
+                            <span class="user-icon">
+                                <img src="vendors/images/photo1.jpg" alt="">
+                            </span>
+                            <asp:Label ID="lblAd" CssClass="user-name" runat="server" Text="Label"></asp:Label>
+
+                        </a>
+                        <div class="dropdown-menu dropdown-menu-right dropdown-menu-icon-list">
+                            <a class="dropdown-item" href="profil.aspx"><i class="dw dw-user1"></i>Profilim</a>
+
+
+                            <a class="dropdown-item" href="login.aspx"><i class="dw dw-logout"></i>Çıkış</a>
+                        </div>
                     </div>
                 </div>
-            </div>
 
-        </div>
-    </div>
-    <div class="left-side-bar">
-        <div class="brand-logo">
-            <a href="PersonelPaneli.aspx">
-                <img src="vendors/images/logo.png" alt="" class="dark-logo">
-                <img src="vendors/images/logo.png" alt="" class="light-logo">
-            </a>
-            <div class="close-sidebar" data-toggle="left-sidebar-close">
-                <i class="ion-close-round"></i>
             </div>
         </div>
-        <div class="menu-block customscroll">
-            <div class="sidebar-menu">
-                <ul id="accordion-menu">
-                    <li class="dropdown">
-                        <a href="javascript:;" class="dropdown-toggle">
-                            <span class="micon dw dw-house-1"></span><span class="mtext">Uygunsuzluk İşlemleri</span>
-                        </a>
-                        <ul class="submenu">
+        <div class="left-side-bar">
+            <div class="brand-logo">
+                <a href="PersonelPaneli.aspx">
+                    <img src="vendors/images/logo.png" alt="" class="dark-logo">
+                    <img src="vendors/images/logo.png" alt="" class="light-logo">
+                </a>
+                <div class="close-sidebar" data-toggle="left-sidebar-close">
+                    <i class="ion-close-round"></i>
+                </div>
+            </div>
+            <div class="menu-block customscroll">
+                <div class="sidebar-menu">
+                    <ul id="accordion-menu">
+                        <li class="dropdown">
+                            <a href="javascript:;" class="dropdown-toggle">
+                                <span class="micon dw dw-house-1"></span><span class="mtext">Uygunsuzluk İşlemleri</span>
+                            </a>
+                            <ul class="submenu">
+                                <li><a href="../TANIM/Uygunsuzluk">Uygunsuzluk İşlemleri</a></li>
+                            </ul>
+                        </li>
+                        <li class="dropdown">
+                            <a href="javascript:;" class="dropdown-toggle">
+                                <span class="micon dw dw-house-1"></span><span class="mtext">Bildirim İşlemleri</span>
+                            </a>
+                            <ul class="submenu">
+                                <li><a href="../ISGBildirim.aspx">Seviye-1 İSG Bildirimi </a></li>
+                            </ul>
+                        </li>
+                        <li class="dropdown">
+                            <a href="javascript:;" class="dropdown-toggle">
+                                <span class="micon dw dw-house-1"></span><span class="mtext">Personel İşlemleri</span>
+                            </a>
+                            <ul class="submenu">
 
-                           
-                             <li><a href="Uygunsuzluk.aspx">Uygunsuzluk İşlemleri</a></li>
+                                <li><a href="../PERSONEL/PersonelPaneli.aspx">Personel Paneli</a></li>
+                                <li><a href="../PERSONEL/PersonelListesi.aspx">Personel Kayıt İşlemleri</a></li>
 
-                        </ul>
-                    </li>
-                     <li class="dropdown">
-                        <a href="javascript:;" class="dropdown-toggle">
-                            <span class="micon dw dw-house-1"></span><span class="mtext">Tanımlar</span>
-                        </a>
-                        <ul class="submenu">     
-                             <li><a href="PersonelPaneli.aspx">Personel Paneli</a></li>
-                            <li><a href="PersonelListesi.aspx">Personel Kayıt İşlemleri</a></li>
-                            <li><a href="ISTANIMLARI.aspx">İş Tanımları</a></li>
-                            <li><a href="Lokasyon.aspx">Lokasyon Tanımları</a></li>
-                            <li><a href="KategoriTanim.aspx">Kategori Tanımları</a></li>
-                             <li><a href="VardiyaTanim.aspx">Vardiya Tanımları</a></li>
-                           
-                        </ul>
-                    </li>
-                </ul>
+
+                            </ul>
+                        </li>
+                        <li class="dropdown">
+                            <a href="javascript:;" class="dropdown-toggle">
+                                <span class="micon dw dw-house-1"></span><span class="mtext">Tanımlar</span>
+                            </a>
+                            <ul class="submenu">
+
+                                <li><a href="../TANIM/ISTANIMLARI.aspx">İş Tanımları</a></li>
+                                <li><a href="../TANIM/Lokasyon.aspx">Lokasyon Tanımları</a></li>
+                                <li><a href="../TANIM/KategoriTanim.aspx">Kategori Tanımları</a></li>
+                                <li><a href="../TANIM/VardiyaTanim.aspx">Vardiya Tanımları</a></li>
+                                <li><a href="../TANIM/BirimTanim.aspx">Birim Tanımları</a></li>
+
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
             </div>
         </div>
-    </div>
-    <div class="mobile-menu-overlay"></div>
+        <div class="mobile-menu-overlay"></div>
 
-       
+
         <div class="container body-content">
             <asp:ContentPlaceHolder ID="MainContent" runat="server">
             </asp:ContentPlaceHolder>
             <hr />
             <footer>
-                
+                <div style="margin-left: 176px;" class="footer-wrap pd-20 mb-20 card-box">
+                    ISG <a href="https://github.com/mavihub" target="_blank">Serkan Kocaman</a>
+                </div>
             </footer>
         </div>
 
     </form>
-    	<!-- js -->
-  
-	<script src="vendors/scripts/core.js"></script>
-	<script src="vendors/scripts/script.min.js"></script>
-	<script src="vendors/scripts/process.js"></script>
-	<script src="vendors/scripts/layout-settings.js"></script>
+    <!-- js -->
+
+    <script src="vendors/scripts/core.js"></script>
+    <script src="vendors/scripts/script.min.js"></script>
+    <script src="vendors/scripts/process.js"></script>
+    <script src="vendors/scripts/layout-settings.js"></script>
 </body>
 </html>
