@@ -58,11 +58,11 @@
     <EntitySet Name="LogRegister" EntityType="serkanISGModel.LogRegister" />
     <EntitySet Name="LOKASYONN" EntityType="serkanISGModel.LOKASYONN" />
     <EntitySet Name="ILLER" EntityType="serkanISGModel.ILLER" />
-    <EntitySet Name="BILDIRIM" EntityType="serkanISGModel.BILDIRIM" />
     <EntitySet Name="TANIMIS" EntityType="serkanISGModel.TANIMIS" />
     <EntitySet Name="KATEGORI" EntityType="serkanISGModel.KATEGORI" />
     <EntitySet Name="VARDIYA" EntityType="serkanISGModel.VARDIYA" />
     <EntitySet Name="BIRIM" EntityType="serkanISGModel.BIRIM" />
+    <EntitySet Name="BILDIRIMLVL1" EntityType="serkanISGModel.BILDIRIMLVL1" />
   </EntityContainer>
   <EntityType Name="LogRegister">
     <Key>
@@ -93,20 +93,6 @@
     <Property Name="code" Type="String" Nullable="false" MaxLength="2" FixedLength="true" Unicode="false" />
     <Property Name="name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
   </EntityType>
-  <EntityType Name="BILDIRIM">
-    <Key>
-      <PropertyRef Name="ID_BILDIRIM" />
-    </Key>
-    <Property Name="ID_BILDIRIM" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="TarihSaat" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-    <Property Name="PERSONEL_AD" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-    <Property Name="KATEGORI" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
-    <Property Name="ACIKLAMA" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-    <Property Name="ONLEMBOOL" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-    <Property Name="LOKASYON" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-    <Property Name="DURUM" Type="Boolean" />
-    <Property Name="BIRIM" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-  </EntityType>
   <EntityType Name="TANIMIS">
     <Key>
       <PropertyRef Name="ID_IS" />
@@ -135,5 +121,24 @@
     </Key>
     <Property Name="ID_BIRIM" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="AD_BIRIM" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="BILDIRIMLVL1">
+    <Key>
+      <PropertyRef Name="ID_BILDIRIM" />
+    </Key>
+    <Property Name="ID_BILDIRIM" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="TARIHSAAT" Type="String" MaxLength="65" FixedLength="false" Unicode="true" />
+    <Property Name="PERSONEL_AD" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="KATEGORI" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="ACIKLAMA" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="ONLEMBOOL" Type="String" MaxLength="55" FixedLength="false" Unicode="true" />
+    <Property Name="LOKASYON" Type="String" MaxLength="110" FixedLength="false" Unicode="true" />
+    <Property Name="BIRIM" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+    <Property Name="AKSIYON" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="DURUM" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="BILDIRIM_DURUM" Type="String" MaxLength="60" FixedLength="false" Unicode="true" />
+    <Property Name="VARDIYA" Type="String" MaxLength="60" FixedLength="false" Unicode="true" />
+    <Property Name="MUDAHIL_PERSONEL" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="GORSEL" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
   </EntityType>
 </Schema>

@@ -86,21 +86,6 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <EntitySetMapping Name="BILDIRIM">
-      <EntityTypeMapping TypeName="serkanISGModel.BILDIRIM">
-        <MappingFragment StoreEntitySet="BILDIRIM">
-          <ScalarProperty Name="BIRIM" ColumnName="BIRIM" />
-          <ScalarProperty Name="DURUM" ColumnName="DURUM" />
-          <ScalarProperty Name="LOKASYON" ColumnName="LOKASYON" />
-          <ScalarProperty Name="ONLEMBOOL" ColumnName="ONLEMBOOL" />
-          <ScalarProperty Name="ACIKLAMA" ColumnName="ACIKLAMA" />
-          <ScalarProperty Name="KATEGORI" ColumnName="KATEGORI" />
-          <ScalarProperty Name="PERSONEL_AD" ColumnName="PERSONEL_AD" />
-          <ScalarProperty Name="TarihSaat" ColumnName="TarihSaat" />
-          <ScalarProperty Name="ID_BILDIRIM" ColumnName="ID_BILDIRIM" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
     <EntitySetMapping Name="TANIMIS">
       <EntityTypeMapping TypeName="serkanISGModel.TANIMIS">
         <MappingFragment StoreEntitySet="TANIMIS">
@@ -131,6 +116,26 @@
         <MappingFragment StoreEntitySet="BIRIM">
           <ScalarProperty Name="AD_BIRIM" ColumnName="AD_BIRIM" />
           <ScalarProperty Name="ID_BIRIM" ColumnName="ID_BIRIM" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="BILDIRIMLVL1">
+      <EntityTypeMapping TypeName="serkanISGModel.BILDIRIMLVL1">
+        <MappingFragment StoreEntitySet="BILDIRIMLVL1">
+          <ScalarProperty Name="GORSEL" ColumnName="GORSEL" />
+          <ScalarProperty Name="MUDAHIL_PERSONEL" ColumnName="MUDAHIL_PERSONEL" />
+          <ScalarProperty Name="VARDIYA" ColumnName="VARDIYA" />
+          <ScalarProperty Name="BILDIRIM_DURUM" ColumnName="BILDIRIM_DURUM" />
+          <ScalarProperty Name="DURUM" ColumnName="DURUM" />
+          <ScalarProperty Name="AKSIYON" ColumnName="AKSIYON" />
+          <ScalarProperty Name="BIRIM" ColumnName="BIRIM" />
+          <ScalarProperty Name="LOKASYON" ColumnName="LOKASYON" />
+          <ScalarProperty Name="ONLEMBOOL" ColumnName="ONLEMBOOL" />
+          <ScalarProperty Name="ACIKLAMA" ColumnName="ACIKLAMA" />
+          <ScalarProperty Name="KATEGORI" ColumnName="KATEGORI" />
+          <ScalarProperty Name="PERSONEL_AD" ColumnName="PERSONEL_AD" />
+          <ScalarProperty Name="TARIHSAAT" ColumnName="TARIHSAAT" />
+          <ScalarProperty Name="ID_BILDIRIM" ColumnName="ID_BILDIRIM" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

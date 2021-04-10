@@ -145,6 +145,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="mailDeneme.aspx" />
     <Content Include="PERSONEL\vendors\fonts\dropways.css" />
     <Content Include="PERSONEL\vendors\fonts\dropways.svg" />
     <Content Include="PERSONEL\vendors\fonts\font-awesome\css\font-awesome.css" />
@@ -602,12 +603,20 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="AuthorizationServerProvider.cs" />
-    <Compile Include="BILDIRIM.cs">
+    <Compile Include="BILDIRIMLVL1.cs">
       <DependentUpon>Isg.tt</DependentUpon>
     </Compile>
     <Compile Include="BIRIM.cs">
       <DependentUpon>Isg.tt</DependentUpon>
     </Compile>
+    <Compile Include="mailDeneme.aspx.cs">
+      <DependentUpon>mailDeneme.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="mailDeneme.aspx.designer.cs">
+      <DependentUpon>mailDeneme.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="MailSend.cs" />
     <Compile Include="TANIM\BirimTanim.aspx.cs">
       <DependentUpon>BirimTanim.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>

@@ -686,3 +686,4 @@ C:\Users\asus\Desktop\mavihub\newIsg\obj\Debug\serkanISG.csproj.CoreCompileInput
 C:\Users\asus\Desktop\mavihub\newIsg\obj\Debug\serkanISG.csproj.CopyComplete
 C:\Users\asus\Desktop\mavihub\newIsg\obj\Debug\serkanISG.dll
 C:\Users\asus\Desktop\mavihub\newIsg\obj\Debug\serkanISG.pdb
+C:\Users\asus\Desktop\mavihub\newIsg\obj\Debug\serkanISG.csprojAssemblyReference.cache

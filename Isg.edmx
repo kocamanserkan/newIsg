@@ -5,19 +5,24 @@
     <!-- SSDL content -->
     <edmx:StorageModels>
     <Schema Namespace="serkanISGModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
-        <EntityType Name="BILDIRIM">
+        <EntityType Name="BILDIRIMLVL1">
           <Key>
             <PropertyRef Name="ID_BILDIRIM" />
           </Key>
           <Property Name="ID_BILDIRIM" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="TarihSaat" Type="nvarchar" MaxLength="50" />
-          <Property Name="PERSONEL_AD" Type="nvarchar" MaxLength="50" />
+          <Property Name="TARIHSAAT" Type="nvarchar" MaxLength="65" />
+          <Property Name="PERSONEL_AD" Type="nvarchar" MaxLength="100" />
           <Property Name="KATEGORI" Type="nvarchar" MaxLength="100" />
-          <Property Name="ACIKLAMA" Type="nvarchar" MaxLength="50" />
-          <Property Name="ONLEMBOOL" Type="nvarchar" MaxLength="50" />
-          <Property Name="LOKASYON" Type="nvarchar" MaxLength="50" />
-          <Property Name="DURUM" Type="bit" />
-          <Property Name="BIRIM" Type="nvarchar" MaxLength="50" />
+          <Property Name="ACIKLAMA" Type="nvarchar(max)" />
+          <Property Name="ONLEMBOOL" Type="nvarchar" MaxLength="55" />
+          <Property Name="LOKASYON" Type="nvarchar" MaxLength="110" />
+          <Property Name="BIRIM" Type="nvarchar" MaxLength="150" />
+          <Property Name="AKSIYON" Type="nvarchar(max)" />
+          <Property Name="DURUM" Type="nvarchar" MaxLength="50" />
+          <Property Name="BILDIRIM_DURUM" Type="nvarchar" MaxLength="60" />
+          <Property Name="VARDIYA" Type="nvarchar" MaxLength="60" />
+          <Property Name="MUDAHIL_PERSONEL" Type="nvarchar" MaxLength="100" />
+          <Property Name="GORSEL" Type="nvarchar" MaxLength="200" />
         </EntityType>
         <EntityType Name="BIRIM">
           <Key>
@@ -130,7 +135,7 @@ warning 6002: The table/view 'serkanISG.dbo.ILLER' does not have a primary key d
           <Property Name="AD_VARDIYA" Type="nvarchar" MaxLength="50" />
         </EntityType>
         <EntityContainer Name="serkanISGModelStoreContainer">
-          <EntitySet Name="BILDIRIM" EntityType="Self.BILDIRIM" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="BILDIRIMLVL1" EntityType="Self.BILDIRIMLVL1" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="BIRIM" EntityType="Self.BIRIM" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="ISTANIM" EntityType="Self.ISTANIM" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="KATEGORI" EntityType="Self.KATEGORI" Schema="dbo" store:Type="Tables" />
@@ -210,11 +215,11 @@ warning 6002: The table/view 'serkanISG.dbo.ILLER' does not have a primary key d
           <EntitySet Name="LogRegister" EntityType="serkanISGModel.LogRegister" />
           <EntitySet Name="LOKASYONN" EntityType="serkanISGModel.LOKASYONN" />
           <EntitySet Name="ILLER" EntityType="serkanISGModel.ILLER" />
-          <EntitySet Name="BILDIRIM" EntityType="serkanISGModel.BILDIRIM" />
           <EntitySet Name="TANIMIS" EntityType="serkanISGModel.TANIMIS" />
           <EntitySet Name="KATEGORI" EntityType="serkanISGModel.KATEGORI" />
           <EntitySet Name="VARDIYA" EntityType="serkanISGModel.VARDIYA" />
           <EntitySet Name="BIRIM" EntityType="serkanISGModel.BIRIM" />
+          <EntitySet Name="BILDIRIMLVL1" EntityType="serkanISGModel.BILDIRIMLVL1" />
         </EntityContainer>
         <EntityType Name="LogRegister">
           <Key>
@@ -245,20 +250,6 @@ warning 6002: The table/view 'serkanISG.dbo.ILLER' does not have a primary key d
           <Property Name="code" Type="String" Nullable="false" MaxLength="2" FixedLength="true" Unicode="false" />
           <Property Name="name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
         </EntityType>
-        <EntityType Name="BILDIRIM">
-          <Key>
-            <PropertyRef Name="ID_BILDIRIM" />
-          </Key>
-          <Property Name="ID_BILDIRIM" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="TarihSaat" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="PERSONEL_AD" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="KATEGORI" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
-          <Property Name="ACIKLAMA" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="ONLEMBOOL" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="LOKASYON" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="DURUM" Type="Boolean" />
-          <Property Name="BIRIM" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-        </EntityType>
         <EntityType Name="TANIMIS">
           <Key>
             <PropertyRef Name="ID_IS" />
@@ -287,6 +278,25 @@ warning 6002: The table/view 'serkanISG.dbo.ILLER' does not have a primary key d
           </Key>
           <Property Name="ID_BIRIM" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="AD_BIRIM" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="BILDIRIMLVL1">
+          <Key>
+            <PropertyRef Name="ID_BILDIRIM" />
+          </Key>
+          <Property Name="ID_BILDIRIM" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TARIHSAAT" Type="String" MaxLength="65" FixedLength="false" Unicode="true" />
+          <Property Name="PERSONEL_AD" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="KATEGORI" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="ACIKLAMA" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="ONLEMBOOL" Type="String" MaxLength="55" FixedLength="false" Unicode="true" />
+          <Property Name="LOKASYON" Type="String" MaxLength="110" FixedLength="false" Unicode="true" />
+          <Property Name="BIRIM" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="AKSIYON" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="DURUM" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="BILDIRIM_DURUM" Type="String" MaxLength="60" FixedLength="false" Unicode="true" />
+          <Property Name="VARDIYA" Type="String" MaxLength="60" FixedLength="false" Unicode="true" />
+          <Property Name="MUDAHIL_PERSONEL" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="GORSEL" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
         </EntityType>
       </Schema>
     </edmx:ConceptualModels>
@@ -379,21 +389,6 @@ warning 6002: The table/view 'serkanISG.dbo.ILLER' does not have a primary key d
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="BILDIRIM">
-            <EntityTypeMapping TypeName="serkanISGModel.BILDIRIM">
-              <MappingFragment StoreEntitySet="BILDIRIM">
-                <ScalarProperty Name="BIRIM" ColumnName="BIRIM" />
-                <ScalarProperty Name="DURUM" ColumnName="DURUM" />
-                <ScalarProperty Name="LOKASYON" ColumnName="LOKASYON" />
-                <ScalarProperty Name="ONLEMBOOL" ColumnName="ONLEMBOOL" />
-                <ScalarProperty Name="ACIKLAMA" ColumnName="ACIKLAMA" />
-                <ScalarProperty Name="KATEGORI" ColumnName="KATEGORI" />
-                <ScalarProperty Name="PERSONEL_AD" ColumnName="PERSONEL_AD" />
-                <ScalarProperty Name="TarihSaat" ColumnName="TarihSaat" />
-                <ScalarProperty Name="ID_BILDIRIM" ColumnName="ID_BILDIRIM" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="TANIMIS">
             <EntityTypeMapping TypeName="serkanISGModel.TANIMIS">
               <MappingFragment StoreEntitySet="TANIMIS">
@@ -424,6 +419,26 @@ warning 6002: The table/view 'serkanISG.dbo.ILLER' does not have a primary key d
               <MappingFragment StoreEntitySet="BIRIM">
                 <ScalarProperty Name="AD_BIRIM" ColumnName="AD_BIRIM" />
                 <ScalarProperty Name="ID_BIRIM" ColumnName="ID_BIRIM" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="BILDIRIMLVL1">
+            <EntityTypeMapping TypeName="serkanISGModel.BILDIRIMLVL1">
+              <MappingFragment StoreEntitySet="BILDIRIMLVL1">
+                <ScalarProperty Name="GORSEL" ColumnName="GORSEL" />
+                <ScalarProperty Name="MUDAHIL_PERSONEL" ColumnName="MUDAHIL_PERSONEL" />
+                <ScalarProperty Name="VARDIYA" ColumnName="VARDIYA" />
+                <ScalarProperty Name="BILDIRIM_DURUM" ColumnName="BILDIRIM_DURUM" />
+                <ScalarProperty Name="DURUM" ColumnName="DURUM" />
+                <ScalarProperty Name="AKSIYON" ColumnName="AKSIYON" />
+                <ScalarProperty Name="BIRIM" ColumnName="BIRIM" />
+                <ScalarProperty Name="LOKASYON" ColumnName="LOKASYON" />
+                <ScalarProperty Name="ONLEMBOOL" ColumnName="ONLEMBOOL" />
+                <ScalarProperty Name="ACIKLAMA" ColumnName="ACIKLAMA" />
+                <ScalarProperty Name="KATEGORI" ColumnName="KATEGORI" />
+                <ScalarProperty Name="PERSONEL_AD" ColumnName="PERSONEL_AD" />
+                <ScalarProperty Name="TARIHSAAT" ColumnName="TARIHSAAT" />
+                <ScalarProperty Name="ID_BILDIRIM" ColumnName="ID_BILDIRIM" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

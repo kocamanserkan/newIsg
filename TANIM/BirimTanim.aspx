@@ -7,8 +7,9 @@
     <script src="https://code.jquery.com/jquery-3.3.1.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js" integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T" crossorigin="anonymous"></script>
-    <script src="Scripts/MyFunctions.js"></script>
-    <link href="Content/MyCSS.css" rel="stylesheet" />
+    
+    <script src="../Scripts/MyFunctions.js"></script>
+    <link href="../Content/MyCSS.css" rel="stylesheet" />
     <div class="pd-ltr-20 xs-pd-20-10" style="margin-left: 10%; width: 1230px;">
         <div class="min-height-200px">
 
@@ -94,6 +95,9 @@
             </div>
         </div>
     </div>
+
+
+
     <div id="snackbar" style="width: 20%; overflow: visible; margin-left: 60%; position: relative; min-height: 40%;">Kayıt Eklendi</div>
 
 

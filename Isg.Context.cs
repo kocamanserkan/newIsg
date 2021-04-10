@@ -32,10 +32,10 @@ namespace serkanISG
         public virtual DbSet<LogRegister> LogRegister { get; set; }
         public virtual DbSet<LOKASYONN> LOKASYONN { get; set; }
         public virtual DbSet<ILLER> ILLER { get; set; }
-        public virtual DbSet<BILDIRIM> BILDIRIM { get; set; }
         public virtual DbSet<TANIMIS> TANIMIS { get; set; }
         public virtual DbSet<KATEGORI> KATEGORI { get; set; }
         public virtual DbSet<VARDIYA> VARDIYA { get; set; }
         public virtual DbSet<BIRIM> BIRIM { get; set; }
+        public virtual DbSet<BILDIRIMLVL1> BILDIRIMLVL1 { get; set; }
     }
 }

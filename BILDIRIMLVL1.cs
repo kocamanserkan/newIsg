@@ -12,16 +12,21 @@ namespace serkanISG
     using System;
     using System.Collections.Generic;
     
-    public partial class BILDIRIM
+    public partial class BILDIRIMLVL1
     {
         public int ID_BILDIRIM { get; set; }
-        public string TarihSaat { get; set; }
+        public string TARIHSAAT { get; set; }
         public string PERSONEL_AD { get; set; }
         public string KATEGORI { get; set; }
         public string ACIKLAMA { get; set; }
         public string ONLEMBOOL { get; set; }
         public string LOKASYON { get; set; }
-        public Nullable<bool> DURUM { get; set; }
         public string BIRIM { get; set; }
+        public string AKSIYON { get; set; }
+        public string DURUM { get; set; }
+        public string BILDIRIM_DURUM { get; set; }
+        public string VARDIYA { get; set; }
+        public string MUDAHIL_PERSONEL { get; set; }
+        public string GORSEL { get; set; }
     }
 }

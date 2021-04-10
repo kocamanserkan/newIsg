@@ -130,8 +130,9 @@ namespace serkanISG
 
             if (db.SaveChanges() > 0)
             {
-                ScriptManager.RegisterStartupScript(this, this.GetType(), "script", "myFunction('Kayıt sss silindi!','succsess');window.location = 'ISTANIMLARI.aspx';", true);
 
+                ScriptManager.RegisterStartupScript(this, this.GetType(), "script", "myFunction('Kayıt sss silindi!','succsess');", true);
+                grdISTANIM.DataSource = db.TANIMIS.ToList();
                 grdISTANIM.DataBind();
 
 

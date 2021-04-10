@@ -13,146 +13,168 @@ namespace serkanISG
         serkanISGEntities1 db = new serkanISGEntities1();
         protected void Page_Load(object sender, EventArgs e)
         {
-            grdBildirim.DataSource = db.BILDIRIM.ToList();
+           
+            grdBILDIRIM.DataSource = db.BILDIRIMLVL1.ToList();
+            if (!IsPostBack)
+            {
 
-            grdBildirim.DataBind();
-            
+                try
+                {
+                    grdBILDIRIM.DataBind();
+
+
+                    ddlVardiya.DataSource = db.VARDIYA.Select(i => i.AD_VARDIYA).ToList();
+                    ddlBildirimYapan.DataSource = db.PERSONEL.Select(i => i.PERSONEL_AD.ToUpper() + " " + i.PERSONEL_SOYAD.ToUpper()).ToList();
+                    ddlBirim.DataSource = db.BIRIM.Select(i => i.AD_BIRIM).ToList();
+                    ddlKategori.DataSource = db.KATEGORI.Where(i => i.DURUM == true).Select(i => i.AD_KATEGORI).ToList();
+                    ddlLokasyon.DataSource = db.LOKASYONN.Select(i => i.AD_LOKASYON).ToList();
+                    ddlMudahilPerson.DataSource = db.PERSONEL.Select(i => i.PERSONEL_AD.ToUpper() + " " + i.PERSONEL_SOYAD.ToUpper()).ToList();
+                    ddlSorumluPersonel.DataSource = db.PERSONEL.Select(i => i.PERSONEL_AD.ToUpper() + " " + i.PERSONEL_SOYAD.ToUpper()).ToList();
+
+
+                    ddlVardiya.DataBind();
+                    ddlBildirimYapan.DataBind();
+                    ddlBirim.DataBind();
+                    ddlKategori.DataBind();
+                    ddlLokasyon.DataBind();
+                    ddlMudahilPerson.DataBind();
+                    ddlSorumluPersonel.DataBind();
+
+                    txtTarih.Text = DateTime.Now.ToString("yyyy-MM-dd");
+                    txtSaat.Text = DateTime.Now.ToString("HH:mm");
+                    txtTerminTarih.Text = DateTime.Now.ToString("yyyy-MM-dd");
+
+                    ScriptManager.RegisterStartupScript(this, this.GetType(), "script", "myFunction('Hay Aksi!  Beklenmedik bir hata oluştu :(','succsess');", true);
+
+
+                }
+                catch (Exception)
+                {
+
+                    ScriptManager.RegisterStartupScript(this, this.GetType(), "script", "myFunction('Hay Aksi!  Beklenmedik bir hata oluştu :(','fail');", true);
+                }
+
+              
+
+              
+            }
+        }
+
+        protected void btnEKLE_Click(object sender, EventArgs e)
+        {
+
+            try
+            {
+                    BILDIRIMLVL1 yeniBildirim = new BILDIRIMLVL1();
+
+                    string tarih = txtTarih.Text;
+                    string saat = txtSaat.Text;
+                    string Date = tarih + " " + saat;
+                    yeniBildirim.TARIHSAAT = Date;
+                    yeniBildirim.VARDIYA = ddlVardiya.Text;
+                    yeniBildirim.PERSONEL_AD = ddlBildirimYapan.Text;
+                    yeniBildirim.BIRIM = ddlBirim.Text;
+                    yeniBildirim.KATEGORI = ddlKategori.Text;
+                    yeniBildirim.LOKASYON = ddlLokasyon.Text;
+                    yeniBildirim.ONLEMBOOL = ddlOnlemBool.Text;
+                    yeniBildirim.ACIKLAMA = txtBildirimMetin.Text;
+                    yeniBildirim.AKSIYON = txtAksiyon.Text;
+                    yeniBildirim.GORSEL = imgBildirim.FileName.ToString();
+                    yeniBildirim.MUDAHIL_PERSONEL = ddlMudahilPerson.Text;
+                    yeniBildirim.DURUM = "Aktif";
+                    yeniBildirim.BILDIRIM_DURUM = "Onay Bekliyor";
+
+                    uygunsuzlukEkle(kontrol);
+
+
+                    imgBildirim.PostedFile.SaveAs(Server.MapPath("~/upload/") + imgBildirim.FileName.ToString());
+
+                    db.BILDIRIMLVL1.Add(yeniBildirim);
+                    if (db.SaveChanges() > 0)
+                    {
+                        ScriptManager.RegisterStartupScript(this, this.GetType(), "script", "myFunction('Bildirim Kaydı Başarıyla Oluşturulmuştur','succsess');", true);
+                        grdBILDIRIM.DataSource = db.BILDIRIMLVL1.ToList();
+                        grdBILDIRIM.DataBind();
+
+                    }
+                    else
+                    {
+                        ScriptManager.RegisterStartupScript(this, this.GetType(), "script", "myFunction(Hay Aksi :('Bildirim Kaydı Oluşturulamadı'fail');", true);
+                    }
+
+
+              
+              
+            }
+            catch (Exception)
+            {
+
+                ScriptManager.RegisterStartupScript(this, this.GetType(), "script", "myFunction(Hay Aksi :(','fail');", true);
+            }
 
 
         }
-        protected void btnLokasyonSave_Click(object sender, EventArgs e)
+
+
+        public void uygunsuzlukEkle(CheckBox kontrol)
         {
+            if (kontrol.Checked == true)
+            {
+                UYGUNSUZLUK yeniUygsunsuzluk = new UYGUNSUZLUK();
+                yeniUygsunsuzluk.BIRIM = ddlBirim.Text;
+                yeniUygsunsuzluk.AKTIFLIK = "1";
+                yeniUygsunsuzluk.ONERI_AKSIYON = txtAksiyon.Text;
+                yeniUygsunsuzluk.TERMIN_TARIH = Convert.ToDateTime(txtTerminTarih.Text);
+                yeniUygsunsuzluk.TESPIT_EDEN_AD = ddlBildirimYapan.Text;
+                yeniUygsunsuzluk.TESPIT_TARIH = Convert.ToDateTime(txtTarih.Text);
+                yeniUygsunsuzluk.TUR = "Minör";
+                yeniUygsunsuzluk.UYGUNSUZ_DURUM = txtUygunsuzDurum.Text;
+                yeniUygsunsuzluk.SORUMLU_AD = ddlSorumluPersonel.Text;
+                db.UYGUNSUZLUK.Add(yeniUygsunsuzluk);
+               
 
-
-
-
-            //LOKASYONN newLocation = new LOKASYONN();
-            //newLocation.AD_LOKASYON = txtLOKASYON_AD.Text;
-            //newLocation.ACIKLAMA_LOKASYON = txtAciklama.Text;
-            //newLocation.SEHIR_LOKASYON = ddlSehir.Text;
-            //newLocation.KROKI_LOKASYON = imgKroki.FileName.ToString();
-
-            //db.LOKASYONN.Add(newLocation);
-
-            //db.SaveChanges();
-            //grdLOKASYON.DataBind();
-
-            //imgKroki.PostedFile.SaveAs(Server.MapPath("~/upload/") + imgKroki.FileName.ToString());
-
-            //Response.Write("<script>alert('Lokasyon Eklenmiştir..');window.location = 'LOKASYON.aspx';</script>");
-
-        }
-
-
-        protected void link_Click(object sender, EventArgs e)
-        {
-            //LOKASYONN edit = new LOKASYONN();
-
-            //LinkButton linkbutton = (LinkButton)sender;  // get the link button which trigger the event
-            //GridViewRow row = (GridViewRow)linkbutton.NamingContainer; // get the GridViewRow that contains the linkbutton
-            //int deleteID = Convert.ToInt32(linkbutton.CommandArgument);
-            //edit = db.LOKASYONN.FirstOrDefault(i => i.ID_LOKASYON == deleteID);
-            //txtEditID.Text = HttpUtility.HtmlDecode(row.Cells[1].Text.ToString());
-            //txtLokasyonAd_Edit.Text = HttpUtility.HtmlDecode(row.Cells[2].Text.ToString());  // get the first cell value of the row
-            //ddlSehir_Edit.Text = HttpUtility.HtmlDecode(row.Cells[3].Text.ToString());
-            //txt_Aciklama_Edit.Text = HttpUtility.HtmlDecode(row.Cells[4].Text.ToString());
-            //ass.ImageUrl = "~/Upload/" + edit.KROKI_LOKASYON.ToString();
-
-            //ScriptManager.RegisterStartupScript(this, GetType(), "serkan", "$('#myModal').modal()", true);//show the modal
-
-
-
-
-
-
-        }
-
-        protected void edit_Kaydet_Click(object sender, EventArgs e)
-        {
-            //LOKASYONN edit_loca = new LOKASYONN();
-            //int locaId = Convert.ToInt32(txtEditID.Text);
-            //edit_loca = db.LOKASYONN.FirstOrDefault(i => i.ID_LOKASYON == locaId);
-
-            //if (db.LOKASYONN.FirstOrDefault(i => i.AD_LOKASYON.ToUpper() == txtLokasyonAd_Edit.Text.ToUpper()) != null)
-            //{
-            //    ScriptManager.RegisterStartupScript(this, this.GetType(), "script", "alert('İş Tanım güncellemesi yapılamamıştır. Güncellenen iş tanımı hali hazırda mevcut!');", true);
-            //}
-            //else
-            //{
-
-            //    edit_loca.AD_LOKASYON = txtLokasyonAd_Edit.Text;
-            //    edit_loca.ACIKLAMA_LOKASYON = txt_Aciklama_Edit.Text;
-            //    edit_loca.SEHIR_LOKASYON = ddlSehir_Edit.Text;
-            //    edit_loca.KROKI_LOKASYON = imgEdit.FileName.ToString();
-
-            //}
-
-            //if (db.SaveChanges() > 0)
-            //{
-            //    ScriptManager.RegisterStartupScript(this, this.GetType(), "script", "alert('Güncelleme Gerçekleşmiştir!');", true);
-            //    grdLOKASYON.DataBind();
-
-            //}
-            //else
-            //{
-            //    ScriptManager.RegisterStartupScript(this, this.GetType(), "script", "alert('Hata!! Güncelleme sırasında hata oluştu!');", true);
-            //    grdLOKASYON.DataBind();
-
-            //}
-
-
-
-
+            }
+            else
+            {
+                return;
+            }
         }
 
         protected void btn_sil_Click(object sender, EventArgs e)
         {
-            //LOKASYONN deleteLoca = new LOKASYONN();
+           
+            BILDIRIMLVL1 deleteBILDIRIM = new BILDIRIMLVL1();
+            LinkButton linkbutton = (LinkButton)sender;  // get the link button which trigger the event
+            GridViewRow row = (GridViewRow)linkbutton.NamingContainer; // get the GridViewRow that contains the linkbutton
+                                                                       // get the first cell value of the row
+                                                                       // if you want to get controls in templatefield , just use row.FindControl
+            int deleteID = Convert.ToInt32(linkbutton.CommandArgument);
 
-            //LinkButton linkbutton = (LinkButton)sender;  // get the link button which trigger the event
-            //GridViewRow row = (GridViewRow)linkbutton.NamingContainer; // get the GridViewRow that contains the linkbutton
-            //                                                           // get the first cell value of the row
-            //                                                           // if you want to get controls in templatefield , just use row.FindControl
-            //int deleteID = Convert.ToInt32(linkbutton.CommandArgument);
+            deleteBILDIRIM = db.BILDIRIMLVL1.FirstOrDefault(i => i.ID_BILDIRIM == deleteID);
+            deleteBILDIRIM.DURUM = "Pasif"; 
+       
 
-            //deleteLoca = db.LOKASYONN.FirstOrDefault(i => i.ID_LOKASYON == deleteID);
-            //db.LOKASYONN.Remove(deleteLoca);
+            if (db.SaveChanges() > 0)
+            {
 
-            //if (db.SaveChanges() > 0)
-            //{
-            //    //ScriptManager.RegisterStartupScript(this, this.GetType(), "script", "alert('Lokasyon Silinmiştir');", true);
-            //    grdLOKASYON.DataBind();
-
-
-            //    Response.Write("<script>alert('Lokasyon Silindi');window.location = 'LOKASYON.aspx';</script>");
-
-
-            //}
-            //else
-            //{
-            //    ScriptManager.RegisterStartupScript(this, this.GetType(), "script", "alert('iş Tanımı silme işlemi sırasında Hata oluştu');", true);
-            //    grdLOKASYON.DataBind();
-            //}
+                ScriptManager.RegisterStartupScript(this, this.GetType(), "script", "myFunction('Bildirim silindi!','succsess');", true);
+                grdBILDIRIM.DataSource = db.BILDIRIMLVL1.ToList();
+                grdBILDIRIM.DataBind();
 
 
+                //Response.Write("<script>MyFunction('İş Tanımı Silindi..','succsess');window.location = 'ISTANIMLARI.aspx';</script>");
 
 
-
+            }
+            else
+            {
+                ScriptManager.RegisterStartupScript(this, this.GetType(), "script", "Myfunction('iş Tanımı silme işlemi sırasında Hata oluştu','fail');", true);
+                grdBILDIRIM.DataBind();
+            }
 
 
 
 
         }
-
-
-
-
-
-
-
-
-
-
-
     }
 }

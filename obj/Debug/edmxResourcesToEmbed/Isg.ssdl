@@ -1,18 +1,23 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Schema Namespace="serkanISGModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
-  <EntityType Name="BILDIRIM">
+  <EntityType Name="BILDIRIMLVL1">
     <Key>
       <PropertyRef Name="ID_BILDIRIM" />
     </Key>
     <Property Name="ID_BILDIRIM" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="TarihSaat" Type="nvarchar" MaxLength="50" />
-    <Property Name="PERSONEL_AD" Type="nvarchar" MaxLength="50" />
+    <Property Name="TARIHSAAT" Type="nvarchar" MaxLength="65" />
+    <Property Name="PERSONEL_AD" Type="nvarchar" MaxLength="100" />
     <Property Name="KATEGORI" Type="nvarchar" MaxLength="100" />
-    <Property Name="ACIKLAMA" Type="nvarchar" MaxLength="50" />
-    <Property Name="ONLEMBOOL" Type="nvarchar" MaxLength="50" />
-    <Property Name="LOKASYON" Type="nvarchar" MaxLength="50" />
-    <Property Name="DURUM" Type="bit" />
-    <Property Name="BIRIM" Type="nvarchar" MaxLength="50" />
+    <Property Name="ACIKLAMA" Type="nvarchar(max)" />
+    <Property Name="ONLEMBOOL" Type="nvarchar" MaxLength="55" />
+    <Property Name="LOKASYON" Type="nvarchar" MaxLength="110" />
+    <Property Name="BIRIM" Type="nvarchar" MaxLength="150" />
+    <Property Name="AKSIYON" Type="nvarchar(max)" />
+    <Property Name="DURUM" Type="nvarchar" MaxLength="50" />
+    <Property Name="BILDIRIM_DURUM" Type="nvarchar" MaxLength="60" />
+    <Property Name="VARDIYA" Type="nvarchar" MaxLength="60" />
+    <Property Name="MUDAHIL_PERSONEL" Type="nvarchar" MaxLength="100" />
+    <Property Name="GORSEL" Type="nvarchar" MaxLength="200" />
   </EntityType>
   <EntityType Name="BIRIM">
     <Key>
@@ -125,7 +130,7 @@ warning 6002: The table/view 'serkanISG.dbo.ILLER' does not have a primary key d
     <Property Name="AD_VARDIYA" Type="nvarchar" MaxLength="50" />
   </EntityType>
   <EntityContainer Name="serkanISGModelStoreContainer">
-    <EntitySet Name="BILDIRIM" EntityType="Self.BILDIRIM" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="BILDIRIMLVL1" EntityType="Self.BILDIRIMLVL1" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="BIRIM" EntityType="Self.BIRIM" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="ISTANIM" EntityType="Self.ISTANIM" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="KATEGORI" EntityType="Self.KATEGORI" Schema="dbo" store:Type="Tables" />
