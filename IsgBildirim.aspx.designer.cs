@@ -159,24 +159,6 @@ namespace serkanISG
         protected global::System.Web.UI.WebControls.DropDownList ddlOnlemBool_edit;
 
         /// <summary>
-        /// ddlDurum_edit control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label ddlDurum_edit;
-
-        /// <summary>
-        /// DropDownList1 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList DropDownList1;
-
-        /// <summary>
         /// ss control.
         /// </summary>
         /// <remarks>
@@ -213,22 +195,31 @@ namespace serkanISG
         protected global::System.Web.UI.WebControls.TextBox txtAksiyon_Edit;
 
         /// <summary>
-        /// FileUpload1 control.
+        /// ass control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.FileUpload FileUpload1;
+        protected global::System.Web.UI.WebControls.Image ass;
 
         /// <summary>
-        /// DropDownList7 control.
+        /// imgEdit control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList DropDownList7;
+        protected global::System.Web.UI.WebControls.FileUpload imgEdit;
+
+        /// <summary>
+        /// ddlMudahilPersonel_edit control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList ddlMudahilPersonel_edit;
 
         /// <summary>
         /// edit_Kaydet control.

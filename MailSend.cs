@@ -1,31 +1,29 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Web;
-using System.IO;
-using System.Net;
 using System.Net.Mail;
 using System.Text;
+using System.Web;
+using System.Web.UI;
+using System.Web.UI.WebControls;
+
 
 namespace serkanISG
 {
     public class MailSend
     {
 
-        public void MailGonder(string from, string to)
+        public void MailGonder(string to,string Subject,string Body)
         {
-
-         
-            MailMessage message = new MailMessage(from, to);
-
-            string mailbody = "In this article you will learn how to send a email using Asp.Net & C#";
-            message.Subject = "Sending Email Using Asp.Net & C#";
-            message.Body = mailbody;
+        
+            MailMessage message = new MailMessage("hissebotu41@gmailcom", to);
+            message.Subject = Subject;
+            message.Body = Body;
             message.BodyEncoding = Encoding.UTF8;
             message.IsBodyHtml = true;
             SmtpClient client = new SmtpClient("smtp.gmail.com", 587); //Gmail smtp    
             System.Net.NetworkCredential basicCredential1 = new
-            System.Net.NetworkCredential("hissebotu41@gmailcom", "ditsxjvaibhddvwd");
+            System.Net.NetworkCredential("hissebotu41@gmail.com", "ditsxjvaibhddvwd");
             client.EnableSsl = true;
             client.UseDefaultCredentials = false;
             client.Credentials = basicCredential1;
@@ -39,8 +37,12 @@ namespace serkanISG
                 throw ex;
             }
 
+
+
+
+
         }
-            
+
 
 
 

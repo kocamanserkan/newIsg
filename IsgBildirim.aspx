@@ -66,7 +66,7 @@
         }
     </style>
     <div class="pd-ltr-20 xs-pd-20-10" style="margin-left: 10%; width: 1230px;">
-        
+
         <div class="min-height-200px">
 
             <!-- Simple Datatable start -->
@@ -78,7 +78,7 @@
             <br />
             <ul>
                 <li>
-                   
+
                     <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myyModal">Bildirim Ekle</button>
                 </li>
             </ul>
@@ -89,8 +89,8 @@
                     <Columns>
                         <asp:TemplateField HeaderText="Düzen">
                             <ItemTemplate>
-                                 <%--<asp:LinkButton runat="server" CssClass="btn btn-warning" ID="btn_edit_link" CausesValidation="false" CommandName="Select" CommandArgument='<%# Eval("ID_BILDIRIM") %>' OnClick="btn_edit_link_Click">Düzenle</asp:LinkButton>--%>
-                                <asp:LinkButton runat="server" CssClass="btn btn-danger" ID="btn_sil" OnClientClick="return fnConfirmDelete();" CausesValidation="false" CommandArgument='<%# Eval("ID_BILDIRIM") %>' OnClick="btn_sil_Click">Sil</asp:LinkButton>
+                                <asp:LinkButton runat="server" CssClass="btn btn-warning" ID="btn_edit_link" CausesValidation="false" CommandName="Select" CommandArgument='<%# Eval("ID_BILDIRIM") %>' OnClick="btn_edit_link_Click">Düzenle</asp:LinkButton>
+                                <asp:LinkButton runat="server" CssClass="btn btn-danger" style="margin-left: 97px;margin-top: -64px; " ID="btn_sil" OnClientClick="return fnConfirmDelete();" CausesValidation="false" CommandArgument='<%# Eval("ID_BILDIRIM") %>' OnClick="btn_sil_Click">Sil</asp:LinkButton>
                             </ItemTemplate>
                         </asp:TemplateField>
                         <asp:BoundField DataField="ID_BILDIRIM" HeaderText="Bildirim Kodu" />
@@ -109,7 +109,7 @@
             </div>
             <!-- Modal düzenle -->
             <div id="myModal" class="modal" tabindex="-1" role="dialog">
-                <div class="modal-dialog" role="document">
+                <div class="modal-dialog modal-lg" role="document">
                     <div class="modal-content">
                         <div class="modal-header">
                             <h5 class="modal-title">Birim Tanım Düzen Ekranı</h5>
@@ -169,13 +169,6 @@
                                                         <asp:ListItem Text="Evet" />
                                                     </asp:DropDownList>
                                                 </div>
-                                                <div class="col-md-6">
-                                                    <asp:Label ID="ddlDurum_edit" CssClass=" col-form-label-lg" runat="server" Text="Önlem Gereksinimi" />
-                                                    <asp:DropDownList ID="DropDownList1" CssClass=" form-control" runat="server">
-                                                        <asp:ListItem Text="Aktif" />
-                                                        <asp:ListItem Text="Pasif" />
-                                                    </asp:DropDownList>
-                                                </div>
 
                                             </div>
                                             <hr />
@@ -202,18 +195,20 @@
                                                         </div>
                                                         <div class="card-body">
                                                             <br>
-                                                            <div class="container">
-                                                                <div class="row">
-                                                                    <div class="col-sm-2 imgUp">
-                                                                        <div class="imagePreview"></div>
-                                                                        <label class="btn btn-primary">
-                                                                            Görsel Güncelle
-                                                                    <asp:FileUpload ID="FileUpload1" runat="server" CssClass="uploadFile img" value="Upload Photo" Style="width: 0px; height: 0px; overflow: hidden;" />
-                                                                        </label>
+                                                            <div style="margin-left: 101px;" class="col-sm-4 imgUp">
+
+                                                                <div class="imagePreview">
+                                                                    <div style="height: 100%" id="a">
+                                                                        <asp:Image ID="ass" Width="100%" Height="100%" runat="server" />
                                                                     </div>
-                                                                    <i class="fa fa-minus imgAdd"></i>
+
                                                                 </div>
-                                                                <!-- row -->
+                                                                <label style="width: 180px" id="deneme" class="btn btn-primary">
+                                                                    <asp:FileUpload ID="imgEdit" runat="server" CssClass="uploadFile img" value="Upload Photo" Style="width: 0px; height: 0px; overflow: hidden;" />
+                                                                   Görsek İçeriği Güncelle
+                                                                </label>
+
+                                                                <!-- container -->
                                                             </div>
                                                             <!-- container -->
                                                         </div>
@@ -229,12 +224,11 @@
                                                         </div>
                                                         <div class="card-body">
 
-                                                            <asp:DropDownList Style="display: none" CssClass=" form-control" ID="DropDownList7" runat="server">
+                                                            <asp:DropDownList CssClass=" form-control" ID="ddlMudahilPersonel_edit" runat="server">
                                                             </asp:DropDownList>
                                                             <br />
-                                                            <a href="#" class="btn btn-danger">Personel Müdahil Et</a>
-                                                            <a href="#" style="display: none" class="btn btn-danger">İptal</a>
-
+                                                            <%-- <a href="#" class="btn btn-danger">Personel Müdahil Et</a>
+                                                            <a href="#" style="display: none" class="btn btn-danger">İptal</a>--%>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -254,177 +248,178 @@
                 </div>
             </div>
         </div>
-  
-
-  
 
 
-    <!-- Modal Ekle -->
-    <div class="modal fade" id="myyModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-        <div class="modal-dialog modal-lg" role="document">
-            <div class="modal-content">
-                <div style="background-color: #0056b3; color: aliceblue" class="modal-header">
-                    <h4 class="modal-title" id="myModalLabel">Bildirim Kayıt Ekranı</h4>
-                    <button type="button" id="kapa" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
 
-                </div>
-                <div class="modal-body">
-                    <div class="row">
-                        <div class="col-md-12">
-                            <div class="card">
-                                <div class="card-header">
-                                    Bildirim Bilgileri
-                                </div>
-                                <div class="card-body">
 
-                                    <div class="row">
-                                        <div class="col-md-6">
-                                            <asp:Label ID="Label3" CssClass=" col-form-label-lg" runat="server" Text="Tarih ve Saat" />
-                                            <asp:TextBox ID="txtTarih" runat="server" CssClass="form-control" Width="200px" TextMode="date" />
-                                            <asp:TextBox ID="txtSaat" runat="server" CssClass="form-control" Width="200px" TextMode="time" />
-                                        </div>
-                                        <div class="col-md-6">
-                                            <asp:Label ID="Label4" CssClass=" col-form-label-lg" runat="server" Text="Vardiya" />
-                                            <asp:DropDownList ID="ddlVardiya" CssClass="form-control" runat="server"></asp:DropDownList>
-                                        </div>
+
+        <!-- Modal Ekle -->
+        <div class="modal fade" id="myyModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+            <div class="modal-dialog modal-lg" role="document">
+                <div class="modal-content">
+                    <div style="background-color: #0056b3; color: aliceblue" class="modal-header">
+                        <h4 class="modal-title" id="myModalLabel">Bildirim Kayıt Ekranı</h4>
+                        <button type="button" id="kapa" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+
+                    </div>
+                    <div class="modal-body">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="card">
+                                    <div class="card-header">
+                                        Bildirim Bilgileri
                                     </div>
-                                    <hr />
-                                    <div class="row">
-                                        <div class="col-md-6">
-                                            <asp:Label ID="Label5" CssClass=" col-form-label-lg" runat="server" Text="Bildirim Yapan" />
-                                            <asp:DropDownList ID="ddlBildirimYapan" CssClass="form-control" runat="server"></asp:DropDownList>
-                                        </div>
-                                        <div class="col-md-6">
-                                            <asp:Label ID="Label6" CssClass=" col-form-label-lg" runat="server" Text="Birim" />
-                                            <asp:DropDownList ID="ddlBirim" CssClass="form-control" runat="server"></asp:DropDownList>
-                                        </div>
-                                    </div>
-                                    <br />
-                                    <div class="row">
-                                        <div class="col-md-6">
-                                            <asp:Label ID="Label7" CssClass=" col-form-label-lg" runat="server" Text="Kategori" />
-                                            <asp:DropDownList ID="ddlKategori" CssClass="form-control" runat="server"></asp:DropDownList>
-                                        </div>
-                                        <div class="col-md-6">
-                                            <asp:Label ID="Label8" CssClass=" col-form-label-lg" runat="server" Text="Lokasyon" />
-                                            <asp:DropDownList ID="ddlLokasyon" CssClass="form-control" runat="server"></asp:DropDownList>
-                                        </div>
-                                    </div>
-                                    <hr />
-                                    <div class="row">
-                                        <div class="col-md-6">
-                                            <asp:Label ID="Label9" CssClass=" col-form-label-lg" runat="server" Text="Önlem Gereksinimi" />
-                                            <asp:DropDownList ID="ddlOnlemBool" CssClass=" form-control" runat="server">
-                                                <asp:ListItem Text="Hayır" />
-                                                <asp:ListItem Text="Evet" />
-                                            </asp:DropDownList>
-                                        </div>
+                                    <div class="card-body">
 
-                                    </div>
-                                    <hr />
-                                    <div class="row">
-                                        <div class="col-md-12">
-                                            <asp:Label ID="Label10" CssClass=" col-form-label-lg" runat="server" Text="Bildirim Metni" />
-                                            <asp:TextBox ID="txtBildirimMetin" Height="90px" placeholder="Açıklamanızı bu alana giriniz.." CssClass=" form-control" TextMode="multiline" runat="server" />
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <asp:Label ID="Label3" CssClass=" col-form-label-lg" runat="server" Text="Tarih ve Saat" />
+                                                <asp:TextBox ID="txtTarih" runat="server" CssClass="form-control" Width="200px" TextMode="date" />
+                                                <asp:TextBox ID="txtSaat" runat="server" CssClass="form-control" Width="200px" TextMode="time" />
+                                            </div>
+                                            <div class="col-md-6">
+                                                <asp:Label ID="Label4" CssClass=" col-form-label-lg" runat="server" Text="Vardiya" />
+                                                <asp:DropDownList ID="ddlVardiya" CssClass="form-control" runat="server"></asp:DropDownList>
+                                            </div>
                                         </div>
+                                        <hr />
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <asp:Label ID="Label5" CssClass=" col-form-label-lg" runat="server" Text="Bildirim Yapan" />
+                                                <asp:DropDownList ID="ddlBildirimYapan" CssClass="form-control" runat="server"></asp:DropDownList>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <asp:Label ID="Label6" CssClass=" col-form-label-lg" runat="server" Text="Birim" />
+                                                <asp:DropDownList ID="ddlBirim" CssClass="form-control" runat="server"></asp:DropDownList>
+                                            </div>
+                                        </div>
+                                        <br />
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <asp:Label ID="Label7" CssClass=" col-form-label-lg" runat="server" Text="Kategori" />
+                                                <asp:DropDownList ID="ddlKategori" CssClass="form-control" runat="server"></asp:DropDownList>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <asp:Label ID="Label8" CssClass=" col-form-label-lg" runat="server" Text="Lokasyon" />
+                                                <asp:DropDownList ID="ddlLokasyon" CssClass="form-control" runat="server"></asp:DropDownList>
+                                            </div>
+                                        </div>
+                                        <hr />
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <asp:Label ID="Label9" CssClass=" col-form-label-lg" runat="server" Text="Önlem Gereksinimi" />
+                                                <asp:DropDownList ID="ddlOnlemBool" CssClass=" form-control" runat="server">
+                                                    <asp:ListItem Text="Hayır" />
+                                                    <asp:ListItem Text="Evet" />
+                                                </asp:DropDownList>
+                                            </div>
 
-                                    </div>
-                                    <br />
-                                    <div class="row">
-                                        <div class="col-md-12">
-                                            <asp:Label ID="Label11" CssClass="col-form-label-lg" runat="server" Text="Önerilen Aksiyon" />
-                                            <asp:TextBox ID="txtAksiyon" placeholder="Varsa aksiyon önerinizi bu alana giriniz..." Height="90px" CssClass=" form-control" TextMode="multiline" runat="server" />
                                         </div>
-                                    </div>
-                                    <hr />
-                                    <div class="row">
-                                        <div class="col-md-12">
-                                            <div class="card">
-                                                <div style="background-color: aquamarine" class="card-header">
-                                                    Görsel İçerik
-                                                </div>
-                                                <div class="card-body">
-                                                    <br>
-                                                    <div class="container">
-                                                        <div class="row">
-                                                            <div class="col-sm-2 imgUp">
-                                                                <div class="imagePreview"></div>
-                                                                <label class="btn btn-primary">
-                                                                    Yükle
-                                                                    <asp:FileUpload ID="imgBildirim" runat="server" CssClass="uploadFile img" value="Upload Photo" Style="width: 0px; height: 0px; overflow: hidden;" />
-                                                                </label>
-                                                            </div>
-                                                            <i class="fa fa-minus imgAdd"></i>
-                                                        </div>
-                                                        <!-- row -->
+                                        <hr />
+                                        <div class="row">
+                                            <div class="col-md-12">
+                                                <asp:Label ID="Label10" CssClass=" col-form-label-lg" runat="server" Text="Bildirim Metni" />
+                                                <asp:TextBox ID="txtBildirimMetin" Height="90px" placeholder="Açıklamanızı bu alana giriniz.." CssClass=" form-control" TextMode="multiline" runat="server" />
+                                            </div>
+
+                                        </div>
+                                        <br />
+                                        <div class="row">
+                                            <div class="col-md-12">
+                                                <asp:Label ID="Label11" CssClass="col-form-label-lg" runat="server" Text="Önerilen Aksiyon" />
+                                                <asp:TextBox ID="txtAksiyon" placeholder="Varsa aksiyon önerinizi bu alana giriniz..." Height="90px" CssClass=" form-control" TextMode="multiline" runat="server" />
+                                            </div>
+                                        </div>
+                                        <hr />
+                                        <div class="row">
+                                            <div class="col-md-12">
+                                                <div class="card">
+                                                    <div style="background-color: aquamarine" class="card-header">
+                                                        Görsel İçerik
                                                     </div>
-                                                    <!-- container -->
+                                                    <div class="card-body">
+                                                        <br>
+                                                        <div class="container">
+                                                            <div class="row">
+                                                                <div class="col-sm-2 imgUp">
+                                                                    <div class="imagePreview"></div>
+                                                                    <label class="btn btn-primary">
+                                                                        Yükle
+                                                                    <asp:FileUpload ID="imgBildirim" runat="server" CssClass="uploadFile img" value="Upload Photo" Style="width: 0px; height: 0px; overflow: hidden;" />
+                                                                    </label>
+                                                                </div>
+                                                                <i class="fa fa-minus imgAdd"></i>
+                                                            </div>
+                                                            <!-- row -->
+                                                        </div>
+                                                        <!-- container -->
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
-                                    </div>
-                                    <hr />
-                                    <div class="row">
-                                        <div class="col-md-12">
-                                            <div class="card">
-                                                <div style="background-color: aquamarine" class="card-header">
-                                                    Müdahil Personel
-                                                </div>
-                                                <div class="card-body">
+                                        <hr />
+                                        <div class="row">
+                                            <div class="col-md-12">
+                                                <div class="card">
+                                                    <div style="background-color: aquamarine" class="card-header">
+                                                        Müdahil Personel
+                                                    </div>
+                                                    <div class="card-body">
 
-                                                    <asp:DropDownList Style="display: none" CssClass=" form-control" ID="ddlMudahilPerson" runat="server">
-                                                    </asp:DropDownList>
-                                                    <br />
-                                                    <a href="#" id="a" class="btn btn-danger">Personel Müdahil Et</a>
-                                                    <a href="#" id="b" style="display: none" class="btn btn-danger">İptal</a>
+                                                        <asp:DropDownList Style="display: none" CssClass=" form-control" ID="ddlMudahilPerson" runat="server">
+                                                        </asp:DropDownList>
+                                                        <br />
+                                                        <a href="#" id="a" class="btn btn-danger">Personel Müdahil Et</a>
+                                                        <a href="#" id="b" style="display: none" class="btn btn-danger">İptal</a>
 
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
-                                    </div>
-                                    <div class="row">
-                                        <div class="col-md-12">
-                                            <div class="card">
-                                                <div style="background-color: aquamarine" class="card-header">
+                                        <div class="row">
+                                            <div class="col-md-12">
+                                                <div class="card">
+                                                    <div style="background-color: aquamarine" class="card-header">
 
-                                                    <label style="font-size: 18px">Uygunsuzluk</label>
-                                                    <%-- <input type="checkbox" class=" custom-checkbox" id="kontrol"  value="" />--%>
-                                                    <asp:CheckBox class=" check-mark" ID="kontrol" Text="" runat="server" />
-                                                </div>
-                                                <div class="card-body">
+                                                        <label style="font-size: 18px">Uygunsuzluk</label>
+                                                        <%-- <input type="checkbox" class=" custom-checkbox" id="kontrol"  value="" />--%>
+                                                        <asp:CheckBox class=" check-mark" ID="kontrol" Text="" runat="server" />
+                                                    </div>
+                                                    <div class="card-body">
 
-                                                    <div style="display: none" id="UygunsuzlukEkran">
-                                                        <div class="row">
-                                                            <div class="col-md-12">
-                                                                <asp:Label ID="Label17" CssClass="col-form-label-lg" runat="server" Text="Uygunsuz Durum" />
-                                                                <asp:TextBox ID="txtUygunsuzDurum" Height="80px" placeholder="Uygunsuz Durumu Açıklayınız.." onkeyup="countChar(this)" CssClass="form-control" TextMode="Multiline" runat="server"></asp:TextBox>
-                                                                <div style="display: none" id="charNum">10 Karekter Kaldı</div>
+                                                        <div style="display: none" id="UygunsuzlukEkran">
+                                                            <div class="row">
+                                                                <div class="col-md-12">
+                                                                    <asp:Label ID="Label17" CssClass="col-form-label-lg" runat="server" Text="Uygunsuz Durum" />
+                                                                    <asp:TextBox ID="txtUygunsuzDurum" Height="80px" placeholder="Uygunsuz Durumu Açıklayınız.." onkeyup="countChar(this)" CssClass="form-control" TextMode="Multiline" runat="server"></asp:TextBox>
+                                                                    <div style="display: none" id="charNum">10 Karekter Kaldı</div>
+                                                                </div>
                                                             </div>
-                                                        </div>
-                                                        <br />
-                                                        <div class="row">
-                                                            <div class="col-md-6">
-                                                                <asp:Label ID="Label19" CssClass="col-form-label-lg" runat="server" Text="Termin Tarihi" />
-                                                                <asp:TextBox ID="txtTerminTarih" CssClass="form-control" TextMode="date" runat="server"></asp:TextBox>
+                                                            <br />
+                                                            <div class="row">
+                                                                <div class="col-md-6">
+                                                                    <asp:Label ID="Label19" CssClass="col-form-label-lg" runat="server" Text="Termin Tarihi" />
+                                                                    <asp:TextBox ID="txtTerminTarih" CssClass="form-control" TextMode="date" runat="server"></asp:TextBox>
+                                                                </div>
+                                                                <div class="col-md-6">
+                                                                    <asp:Label ID="Label20" CssClass="col-form-label-lg" runat="server" Text="Sorumlu Personel" />
+                                                                    <asp:DropDownList ID="ddlSorumluPersonel" CssClass="form-control" runat="server">
+                                                                        <asp:ListItem Text="Ali" />
+                                                                        <asp:ListItem Text="mehmet" />
+                                                                    </asp:DropDownList>
+                                                                </div>
                                                             </div>
-                                                            <div class="col-md-6">
-                                                                <asp:Label ID="Label20" CssClass="col-form-label-lg" runat="server" Text="Sorumlu Personel" />
-                                                                <asp:DropDownList ID="ddlSorumluPersonel" CssClass="form-control" runat="server">
-                                                                    <asp:ListItem Text="Ali" />
-                                                                    <asp:ListItem Text="mehmet" />
-                                                                </asp:DropDownList>
-                                                            </div>
-                                                        </div>
-                                                        <br />
-                                                        <br />
-                                                        <div class="row">
-                                                            <div class="col-md-3">
-                                                                <label id="cancel" class="btn btn-danger">
-                                                                    Vazgeç
+                                                            <br />
+                                                            <br />
+                                                            <div class="row">
+                                                                <div class="col-md-3">
+                                                                    <label id="cancel" class="btn btn-danger">
+                                                                        Vazgeç
                                                                    
-                                                                </label>
-                                                            </div>
+                                                                    </label>
+                                                                </div>
 
+                                                            </div>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -434,20 +429,19 @@
                                 </div>
                             </div>
                         </div>
+
                     </div>
+                    <div class="modal-footer">
 
-                </div>
-                <div class="modal-footer">
-
-                    <button type="button" id="btn_Vazgec" class="btn btn-secondary" data-dismiss="modal">Vazgeç</button>
-                    <asp:Button ID="btnEKLE" CausesValidation="true" Width="30%" OnClick="btnEKLE_Click" CssClass="btn btn-success" margin-top="4px;" runat="server" Text="Bildir" />
+                        <button type="button" id="btn_Vazgec" class="btn btn-secondary" data-dismiss="modal">Vazgeç</button>
+                        <asp:Button ID="btnEKLE" CausesValidation="true" Width="30%" OnClick="btnEKLE_Click" CssClass="btn btn-success" margin-top="4px;" runat="server" Text="Bildir" />
+                    </div>
                 </div>
             </div>
         </div>
+
     </div>
-   
-      </div>
-      <div id="snackbar" style="width: 20%; overflow: visible; margin-left: 40%; margin-bottom:10px; position: relative; min-height: 30px;">Kayıt Eklendi</div>
+    <div id="snackbar" style="width: 20%; overflow: visible; margin-left: 40%; margin-bottom: 10px; position: relative; min-height: 30px;">Kayıt Eklendi</div>
     <script>
 
         $('#<%= kontrol.ClientID %>').click(function () {
@@ -504,7 +498,12 @@
 
 
 
+        $("#deneme").click(function () {
+            console.log("geldi");
+            $("#a").hide();
 
+
+        })
 
 
 
