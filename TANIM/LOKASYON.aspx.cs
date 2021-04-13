@@ -16,6 +16,7 @@ namespace serkanISG
             grdLOKASYON.DataSource = db.LOKASYONN.ToList();
             ddlSehir.DataSource = db.ILLER.Select(i => i.name.ToUpper()).ToList();
             ddlSehir_Edit.DataSource = db.ILLER.Select(i => i.name.ToUpper()).ToList();
+            
             if (!IsPostBack)
             {
                 grdLOKASYON.DataBind();

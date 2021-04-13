@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="BirimTanim.aspx.cs" Inherits="serkanISG.BirimTanim" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="../Site.Master" AutoEventWireup="true" CodeBehind="BirimTanim.aspx.cs" Inherits="serkanISG.BirimTanim" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
 
@@ -104,12 +104,12 @@
     <script>
         $("#btn_Vazgec").click(function () {
 
-            window.location.href = "https://localhost:44398/BirimTanim";
+            window.location.href = "https://localhost:44398/TANIM/BirimTanim";
 
         })
         $("#kapa").click(function () {
 
-            window.location.href = "https://localhost:44398/BirimTanim";
+            window.location.href = "https://localhost:44398/TANIM/BirimTanim";
 
         })
 

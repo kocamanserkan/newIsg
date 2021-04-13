@@ -11,34 +11,43 @@ namespace serkanISG
 {
 
 
-    public partial class SiteMaster
+    public partial class Giris
     {
 
         /// <summary>
-        /// lblAd control.
+        /// form1 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblAd;
+        protected global::System.Web.UI.HtmlControls.HtmlForm form1;
 
         /// <summary>
-        /// panel control.
+        /// txtKULLANICIADI control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Panel panel;
+        protected global::System.Web.UI.WebControls.TextBox txtKULLANICIADI;
 
         /// <summary>
-        /// MainContent control.
+        /// txtPAROLA control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.ContentPlaceHolder MainContent;
+        protected global::System.Web.UI.WebControls.TextBox txtPAROLA;
+
+        /// <summary>
+        /// btnGiris control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnGiris;
     }
 }

@@ -90,7 +90,7 @@
                         <asp:TemplateField HeaderText="Düzen">
                             <ItemTemplate>
                                 <asp:LinkButton runat="server" CssClass="btn btn-warning" ID="btn_edit_link" CausesValidation="false" CommandName="Select" CommandArgument='<%# Eval("ID_BILDIRIM") %>' OnClick="btn_edit_link_Click">Düzenle</asp:LinkButton>
-                                <asp:LinkButton runat="server" CssClass="btn btn-danger" style="margin-left: 97px;margin-top: -64px; " ID="btn_sil" OnClientClick="return fnConfirmDelete();" CausesValidation="false" CommandArgument='<%# Eval("ID_BILDIRIM") %>' OnClick="btn_sil_Click">Sil</asp:LinkButton>
+                                <asp:LinkButton runat="server" CssClass="btn btn-danger" Style="margin-left: 97px; margin-top: -64px;" ID="btn_sil" OnClientClick="return fnConfirmDelete();" CausesValidation="false" CommandArgument='<%# Eval("ID_BILDIRIM") %>' OnClick="btn_sil_Click">Sil</asp:LinkButton>
                             </ItemTemplate>
                         </asp:TemplateField>
                         <asp:BoundField DataField="ID_BILDIRIM" HeaderText="Bildirim Kodu" />
@@ -198,14 +198,14 @@
                                                             <div style="margin-left: 101px;" class="col-sm-4 imgUp">
 
                                                                 <div class="imagePreview">
-                                                                    <div style="height: 100%" id="a">
+                                                                    <div style="height: 100%" id="photoEdit">
                                                                         <asp:Image ID="ass" Width="100%" Height="100%" runat="server" />
                                                                     </div>
 
                                                                 </div>
                                                                 <label style="width: 180px" id="deneme" class="btn btn-primary">
                                                                     <asp:FileUpload ID="imgEdit" runat="server" CssClass="uploadFile img" value="Upload Photo" Style="width: 0px; height: 0px; overflow: hidden;" />
-                                                                   Görsek İçeriği Güncelle
+                                                                    Görsek İçeriği Güncelle
                                                                 </label>
 
                                                                 <!-- container -->
@@ -227,8 +227,7 @@
                                                             <asp:DropDownList CssClass=" form-control" ID="ddlMudahilPersonel_edit" runat="server">
                                                             </asp:DropDownList>
                                                             <br />
-                                                            <%-- <a href="#" class="btn btn-danger">Personel Müdahil Et</a>
-                                                            <a href="#" style="display: none" class="btn btn-danger">İptal</a>--%>
+
                                                         </div>
                                                     </div>
                                                 </div>
@@ -278,37 +277,48 @@
                                                 <asp:TextBox ID="txtSaat" runat="server" CssClass="form-control" Width="200px" TextMode="time" />
                                             </div>
                                             <div class="col-md-6">
-                                                <asp:Label ID="Label4" CssClass=" col-form-label-lg" runat="server" Text="Vardiya" />
-                                                <asp:DropDownList ID="ddlVardiya" CssClass="form-control" runat="server"></asp:DropDownList>
+                                                <asp:Label ID="Label4"  CssClass=" col-form-label-lg" runat="server" Text="Vardiya" />
+                                                <asp:DropDownList ID="ddlVardiya" AppendDataBoundItems="true" CssClass="form-control" runat="server">
+                                                    <asp:ListItem Text="Seçiniz" />
+                                                </asp:DropDownList>
                                             </div>
                                         </div>
                                         <hr />
                                         <div class="row">
                                             <div class="col-md-6">
                                                 <asp:Label ID="Label5" CssClass=" col-form-label-lg" runat="server" Text="Bildirim Yapan" />
-                                                <asp:DropDownList ID="ddlBildirimYapan" CssClass="form-control" runat="server"></asp:DropDownList>
+                                                <asp:DropDownList ID="ddlBildirimYapan" AppendDataBoundItems="true" CssClass="form-control" runat="server">
+                                                     <asp:ListItem Text="Seçiniz" />
+                                                </asp:DropDownList>
                                             </div>
                                             <div class="col-md-6">
                                                 <asp:Label ID="Label6" CssClass=" col-form-label-lg" runat="server" Text="Birim" />
-                                                <asp:DropDownList ID="ddlBirim" CssClass="form-control" runat="server"></asp:DropDownList>
+                                                <asp:DropDownList ID="ddlBirim" AppendDataBoundItems="true" CssClass="form-control" runat="server">
+                                                     <asp:ListItem Text="Seçiniz" />
+                                                </asp:DropDownList>
                                             </div>
                                         </div>
                                         <br />
                                         <div class="row">
                                             <div class="col-md-6">
                                                 <asp:Label ID="Label7" CssClass=" col-form-label-lg" runat="server" Text="Kategori" />
-                                                <asp:DropDownList ID="ddlKategori" CssClass="form-control" runat="server"></asp:DropDownList>
+                                                <asp:DropDownList ID="ddlKategori" AppendDataBoundItems="true" CssClass="form-control" runat="server">
+                                                     <asp:ListItem Text="Seçiniz" />
+                                                </asp:DropDownList>
                                             </div>
                                             <div class="col-md-6">
                                                 <asp:Label ID="Label8" CssClass=" col-form-label-lg" runat="server" Text="Lokasyon" />
-                                                <asp:DropDownList ID="ddlLokasyon" CssClass="form-control" runat="server"></asp:DropDownList>
+                                           
+                                                <asp:DropDownList ID="ddlLokasyon" CssClass="form-control" runat="server">
+                                                </asp:DropDownList>
                                             </div>
                                         </div>
                                         <hr />
                                         <div class="row">
                                             <div class="col-md-6">
                                                 <asp:Label ID="Label9" CssClass=" col-form-label-lg" runat="server" Text="Önlem Gereksinimi" />
-                                                <asp:DropDownList ID="ddlOnlemBool" CssClass=" form-control" runat="server">
+                                                <asp:DropDownList ID="ddlOnlemBool" AppendDataBoundItems="true" CssClass=" form-control" runat="server">
+                                                     <asp:ListItem Value=-1 Text="Seçiniz" />
                                                     <asp:ListItem Text="Hayır" />
                                                     <asp:ListItem Text="Evet" />
                                                 </asp:DropDownList>
@@ -432,23 +442,23 @@
 
                     </div>
                     <div class="modal-footer">
-
+                  
                         <button type="button" id="btn_Vazgec" class="btn btn-secondary" data-dismiss="modal">Vazgeç</button>
                         <asp:Button ID="btnEKLE" CausesValidation="true" Width="30%" OnClick="btnEKLE_Click" CssClass="btn btn-success" margin-top="4px;" runat="server" Text="Bildir" />
                     </div>
                 </div>
             </div>
+
         </div>
+        </div>
+        <div id="snackbar" style="width: 20%; overflow: visible; margin-left: 40%; margin-bottom: 10px; position: relative; min-height: 30px;">Kayıt Eklendi</div>
+        <script>
 
-    </div>
-    <div id="snackbar" style="width: 20%; overflow: visible; margin-left: 40%; margin-bottom: 10px; position: relative; min-height: 30px;">Kayıt Eklendi</div>
-    <script>
-
-        $('#<%= kontrol.ClientID %>').click(function () {
-
+            $('#<%= kontrol.ClientID %>').click(function () {
 
 
-            if ($('#<%= kontrol.ClientID %>')[0].checked == false) {
+
+                if ($('#<%= kontrol.ClientID %>')[0].checked == false) {
                 $("#UygunsuzlukEkran").hide();
                 $('#<%= txtUygunsuzDurum.ClientID %>').val("");
                 $('#<%= txtTerminTarih.ClientID %>').val("");
@@ -474,36 +484,36 @@
 
         });
 
-        function countChar(val) {
-            $('#charNum').show();
-            var len = val.value.length;
-            if (len >= 10000) {
-                val.value = val.value.substring(50, 10000);
-            } else {
-                $('#charNum').text(10 - len + " " + "Karekter Kaldı");
-                var a = 10 - len
-                if (a < 0) {
+            function countChar(val) {
+                $('#charNum').show();
+                var len = val.value.length;
+                if (len >= 10000) {
+                    val.value = val.value.substring(50, 10000);
+                } else {
+                    $('#charNum').text(10 - len + " " + "Karekter Kaldı");
+                    var a = 10 - len
+                    if (a < 0) {
 
-                    $('#charNum').text("Karekter Limiti Aşıldı");
-                    $('#charNum').css("color", "red")
+                        $('#charNum').text("Karekter Limiti Aşıldı");
+                        $('#charNum').css("color", "red")
 
+                    }
+                    else {
+                        $('#charNum').css("color", "black")
+                    }
                 }
-                else {
-                    $('#charNum').css("color", "black")
-                }
+
+
             }
 
 
-        }
+
+            $("#deneme").click(function () {
+                console.log("geldi");
+                $("#photoEdit").hide();
 
 
-
-        $("#deneme").click(function () {
-            console.log("geldi");
-            $("#a").hide();
-
-
-        })
+            })
 
 
 
@@ -512,25 +522,25 @@
 
 
 
-        $("#btn_Vazgec").click(function () {
+            $("#btn_Vazgec").click(function () {
 
-            window.location.href = "https://localhost:44398/IsgBildirim";
+                window.location.href = "https://localhost:44398/IsgBildirim";
 
-        })
-        $("#kapa").click(function () {
+            })
+            $("#kapa").click(function () {
 
-            window.location.href = "https://localhost:44398/IsgBildirim";
+                window.location.href = "https://localhost:44398/IsgBildirim";
 
-        })
+            })
 
 
-        function fnConfirmDelete() {
-            return confirm("Bildirimi silmek üzeresiniz. Onaylıyor musunuz?");
-        }
+            function fnConfirmDelete() {
+                return confirm("Bildirimi silmek üzeresiniz. Onaylıyor musunuz?");
+            }
 
-        $("#a").click(function () {
+            $("#a").click(function () {
 
-            var dll = $('#<%= ddlMudahilPerson.ClientID %>')
+                var dll = $('#<%= ddlMudahilPerson.ClientID %>')
             var butonGetir = $("#a");
             var butonCancel = $("#b");
 
@@ -539,9 +549,9 @@
             butonCancel.show();
         })
 
-        $("#b").click(function () {
+            $("#b").click(function () {
 
-            var dll = $('#<%= ddlMudahilPerson.ClientID %>')
+                var dll = $('#<%= ddlMudahilPerson.ClientID %>')
             var butonGetir = $("#a");
             var butonCancel = $("#b");
 
@@ -550,45 +560,35 @@
             butonGetir.show();
 
         })
-    </script>
+        </script>
 
 
 
-    <script>
-        $(".imgAdd").click(function () {
-            $(this).closest(".row").find('.imgAdd').before('<div class="col-sm-2 imgUp"><div class="imagePreview"></div><label class="btn btn-primary">Upload<input type="file" class="uploadFile img" value="Upload Photo" style="width:0px;height:0px;overflow:hidden;"></label><i class="fa fa-times del"></i></div>');
-        });
-        $(document).on("click", "i.del", function () {
-            $(this).parent().remove();
-        });
-        $(function () {
-            $(document).on("change", ".uploadFile", function () {
-                var uploadFile = $(this);
-                var files = !!this.files ? this.files : [];
-                if (!files.length || !window.FileReader) return; // no file selected, or no FileReader support
-
-                if (/^image/.test(files[0].type)) { // only image file
-                    var reader = new FileReader(); // instance of the FileReader
-                    reader.readAsDataURL(files[0]); // read the local file
-
-                    reader.onloadend = function () { // set image data as background of div
-                        //alert(uploadFile.closest(".upimage").find('.imagePreview').length);
-                        uploadFile.closest(".imgUp").find('.imagePreview').css("background-image", "url(" + this.result + ")");
-                    }
-                }
-
+        <script>
+            $(".imgAdd").click(function () {
+                $(this).closest(".row").find('.imgAdd').before('<div class="col-sm-2 imgUp"><div class="imagePreview"></div><label class="btn btn-primary">Upload<input type="file" class="uploadFile img" value="Upload Photo" style="width:0px;height:0px;overflow:hidden;"></label><i class="fa fa-times del"></i></div>');
             });
-        });
+            $(document).on("click", "i.del", function () {
+                $(this).parent().remove();
+            });
+            $(function () {
+                $(document).on("change", ".uploadFile", function () {
+                    var uploadFile = $(this);
+                    var files = !!this.files ? this.files : [];
+                    if (!files.length || !window.FileReader) return; // no file selected, or no FileReader support
 
-    </script>
+                    if (/^image/.test(files[0].type)) { // only image file
+                        var reader = new FileReader(); // instance of the FileReader
+                        reader.readAsDataURL(files[0]); // read the local file
 
+                        reader.onloadend = function () { // set image data as background of div
+                            //alert(uploadFile.closest(".upimage").find('.imagePreview').length);
+                            uploadFile.closest(".imgUp").find('.imagePreview').css("background-image", "url(" + this.result + ")");
+                        }
+                    }
 
+                });
+            });
 
-
-
-
-
-
-
-
+        </script>
 </asp:Content>

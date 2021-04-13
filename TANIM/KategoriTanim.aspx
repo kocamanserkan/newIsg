@@ -118,12 +118,12 @@
     <script>
         $("#btn_Vazgec").click(function () {
 
-            window.location.href = "https://localhost:44398/KategoriTanim";
+            window.location.href = "https://localhost:44398/TANIM/KategoriTanim";
 
         })
         $("#kapa").click(function () {
 
-            window.location.href = "https://localhost:44398/KategoriTanim";
+            window.location.href = "https://localhost:44398/TANIM/KategoriTanim";
 
         })
 

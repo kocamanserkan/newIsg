@@ -77,6 +77,16 @@ warning 6002: The table/view 'serkanISG.dbo.ILLER' does not have a primary key d
           <Property Name="ACIKLAMA_LOKASYON" Type="nvarchar" MaxLength="55" />
           <Property Name="KROKI_LOKASYON" Type="nvarchar(max)" />
         </EntityType>
+        <EntityType Name="MODUL_MAILAYAR">
+          <Key>
+            <PropertyRef Name="ID_MODUL" />
+          </Key>
+          <Property Name="ID_MODUL" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="AD_MODUL" Type="nvarchar" MaxLength="100" />
+          <Property Name="YENI_KAYIT" Type="nvarchar" MaxLength="100" />
+          <Property Name="GUNCELLEME_KAYIT" Type="nvarchar" MaxLength="100" />
+          <Property Name="SILME_KAYIT" Type="nvarchar" MaxLength="100" />
+        </EntityType>
         <EntityType Name="PERSONEL">
           <Key>
             <PropertyRef Name="PERSONEL_ID" />
@@ -91,6 +101,7 @@ warning 6002: The table/view 'serkanISG.dbo.ILLER' does not have a primary key d
           <Property Name="SIFRE" Type="nvarchar" MaxLength="50" />
           <Property Name="EMAIL" Type="nvarchar" MaxLength="50" />
           <Property Name="IS_BASLANGIC_TARIH" Type="datetime" />
+          <Property Name="Rol" Type="nvarchar" MaxLength="50" />
         </EntityType>
         <EntityType Name="sysdiagrams">
           <Key>
@@ -141,6 +152,7 @@ warning 6002: The table/view 'serkanISG.dbo.ILLER' does not have a primary key d
           <EntitySet Name="KATEGORI" EntityType="Self.KATEGORI" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="LogRegister" EntityType="Self.LogRegister" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="LOKASYONN" EntityType="Self.LOKASYONN" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="MODUL_MAILAYAR" EntityType="Self.MODUL_MAILAYAR" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="PERSONEL" EntityType="Self.PERSONEL" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="TANIMIS" EntityType="Self.TANIMIS" Schema="dbo" store:Type="Tables" />
@@ -178,6 +190,7 @@ warning 6002: The table/view 'serkanISG.dbo.ILLER' does not have a primary key d
           <Property Name="SIFRE" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="EMAIL" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="IS_BASLANGIC_TARIH" Type="DateTime" Precision="3" />
+          <Property Name="Rol" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
         </EntityType>
         <EntityType Name="sysdiagrams">
           <Key>
@@ -220,6 +233,7 @@ warning 6002: The table/view 'serkanISG.dbo.ILLER' does not have a primary key d
           <EntitySet Name="VARDIYA" EntityType="serkanISGModel.VARDIYA" />
           <EntitySet Name="BIRIM" EntityType="serkanISGModel.BIRIM" />
           <EntitySet Name="BILDIRIMLVL1" EntityType="serkanISGModel.BILDIRIMLVL1" />
+          <EntitySet Name="MODUL_MAILAYAR" EntityType="serkanISGModel.MODUL_MAILAYAR" />
         </EntityContainer>
         <EntityType Name="LogRegister">
           <Key>
@@ -298,6 +312,16 @@ warning 6002: The table/view 'serkanISG.dbo.ILLER' does not have a primary key d
           <Property Name="MUDAHIL_PERSONEL" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
           <Property Name="GORSEL" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
         </EntityType>
+        <EntityType Name="MODUL_MAILAYAR">
+          <Key>
+            <PropertyRef Name="ID_MODUL" />
+          </Key>
+          <Property Name="ID_MODUL" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="AD_MODUL" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="YENI_KAYIT" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="GUNCELLEME_KAYIT" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="SILME_KAYIT" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+        </EntityType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -315,6 +339,7 @@ warning 6002: The table/view 'serkanISG.dbo.ILLER' does not have a primary key d
           <EntitySetMapping Name="PERSONEL">
             <EntityTypeMapping TypeName="serkanISGModel.PERSONEL">
               <MappingFragment StoreEntitySet="PERSONEL">
+                <ScalarProperty Name="Rol" ColumnName="Rol" />
                 <ScalarProperty Name="PERSONEL_ID" ColumnName="PERSONEL_ID" />
                 <ScalarProperty Name="PERSONEL_AD" ColumnName="PERSONEL_AD" />
                 <ScalarProperty Name="PERSONEL_SOYAD" ColumnName="PERSONEL_SOYAD" />
@@ -442,7 +467,18 @@ warning 6002: The table/view 'serkanISG.dbo.ILLER' does not have a primary key d
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-        </EntityContainerMapping>
+          <EntitySetMapping Name="MODUL_MAILAYAR">
+            <EntityTypeMapping TypeName="serkanISGModel.MODUL_MAILAYAR">
+              <MappingFragment StoreEntitySet="MODUL_MAILAYAR">
+                <ScalarProperty Name="SILME_KAYIT" ColumnName="SILME_KAYIT" />
+                <ScalarProperty Name="GUNCELLEME_KAYIT" ColumnName="GUNCELLEME_KAYIT" />
+                <ScalarProperty Name="YENI_KAYIT" ColumnName="YENI_KAYIT" />
+                <ScalarProperty Name="AD_MODUL" ColumnName="AD_MODUL" />
+                <ScalarProperty Name="ID_MODUL" ColumnName="ID_MODUL" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>
   </edmx:Runtime>

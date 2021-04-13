@@ -12,6 +12,7 @@
     <EntitySetMapping Name="PERSONEL">
       <EntityTypeMapping TypeName="serkanISGModel.PERSONEL">
         <MappingFragment StoreEntitySet="PERSONEL">
+          <ScalarProperty Name="Rol" ColumnName="Rol" />
           <ScalarProperty Name="PERSONEL_ID" ColumnName="PERSONEL_ID" />
           <ScalarProperty Name="PERSONEL_AD" ColumnName="PERSONEL_AD" />
           <ScalarProperty Name="PERSONEL_SOYAD" ColumnName="PERSONEL_SOYAD" />
@@ -136,6 +137,17 @@
           <ScalarProperty Name="PERSONEL_AD" ColumnName="PERSONEL_AD" />
           <ScalarProperty Name="TARIHSAAT" ColumnName="TARIHSAAT" />
           <ScalarProperty Name="ID_BILDIRIM" ColumnName="ID_BILDIRIM" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="MODUL_MAILAYAR">
+      <EntityTypeMapping TypeName="serkanISGModel.MODUL_MAILAYAR">
+        <MappingFragment StoreEntitySet="MODUL_MAILAYAR">
+          <ScalarProperty Name="SILME_KAYIT" ColumnName="SILME_KAYIT" />
+          <ScalarProperty Name="GUNCELLEME_KAYIT" ColumnName="GUNCELLEME_KAYIT" />
+          <ScalarProperty Name="YENI_KAYIT" ColumnName="YENI_KAYIT" />
+          <ScalarProperty Name="AD_MODUL" ColumnName="AD_MODUL" />
+          <ScalarProperty Name="ID_MODUL" ColumnName="ID_MODUL" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

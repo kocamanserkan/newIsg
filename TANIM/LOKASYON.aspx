@@ -169,12 +169,12 @@
     <script>
         $("#btn_Vazgec").click(function () {
 
-            window.location.href = "https://localhost:44398/LOKASYON";
+            window.location.href = "https://localhost:44398/TANIM/LOKASYON";
 
         })
         $("#kapa").click(function () {
 
-            window.location.href = "https://localhost:44398/LOKASYON";
+            window.location.href = "https://localhost:44398/TANIM/LOKASYON";
 
         })
         $("#deneme").click(function () {

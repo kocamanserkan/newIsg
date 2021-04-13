@@ -160,12 +160,12 @@
     <script>
         $("#btn_Vazgec").click(function () {
 
-            window.location.href = "https://localhost:44398/ISTANIMLARI";
+            window.location.href = "https://localhost:44398/TANIM/ISTANIMLARI";
 
         })
         $("#kapa").click(function () {
 
-            window.location.href = "https://localhost:44398/ISTANIMLARI";
+            window.location.href = "https://localhost:44398/TANIM/ISTANIMLARI";
 
         })
 

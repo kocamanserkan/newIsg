@@ -72,6 +72,16 @@ warning 6002: The table/view 'serkanISG.dbo.ILLER' does not have a primary key d
     <Property Name="ACIKLAMA_LOKASYON" Type="nvarchar" MaxLength="55" />
     <Property Name="KROKI_LOKASYON" Type="nvarchar(max)" />
   </EntityType>
+  <EntityType Name="MODUL_MAILAYAR">
+    <Key>
+      <PropertyRef Name="ID_MODUL" />
+    </Key>
+    <Property Name="ID_MODUL" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="AD_MODUL" Type="nvarchar" MaxLength="100" />
+    <Property Name="YENI_KAYIT" Type="nvarchar" MaxLength="100" />
+    <Property Name="GUNCELLEME_KAYIT" Type="nvarchar" MaxLength="100" />
+    <Property Name="SILME_KAYIT" Type="nvarchar" MaxLength="100" />
+  </EntityType>
   <EntityType Name="PERSONEL">
     <Key>
       <PropertyRef Name="PERSONEL_ID" />
@@ -86,6 +96,7 @@ warning 6002: The table/view 'serkanISG.dbo.ILLER' does not have a primary key d
     <Property Name="SIFRE" Type="nvarchar" MaxLength="50" />
     <Property Name="EMAIL" Type="nvarchar" MaxLength="50" />
     <Property Name="IS_BASLANGIC_TARIH" Type="datetime" />
+    <Property Name="Rol" Type="nvarchar" MaxLength="50" />
   </EntityType>
   <EntityType Name="sysdiagrams">
     <Key>
@@ -136,6 +147,7 @@ warning 6002: The table/view 'serkanISG.dbo.ILLER' does not have a primary key d
     <EntitySet Name="KATEGORI" EntityType="Self.KATEGORI" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="LogRegister" EntityType="Self.LogRegister" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="LOKASYONN" EntityType="Self.LOKASYONN" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="MODUL_MAILAYAR" EntityType="Self.MODUL_MAILAYAR" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="PERSONEL" EntityType="Self.PERSONEL" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="TANIMIS" EntityType="Self.TANIMIS" Schema="dbo" store:Type="Tables" />

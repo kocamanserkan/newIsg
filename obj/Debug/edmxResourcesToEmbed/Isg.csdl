@@ -21,6 +21,7 @@
     <Property Name="SIFRE" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
     <Property Name="EMAIL" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
     <Property Name="IS_BASLANGIC_TARIH" Type="DateTime" Precision="3" />
+    <Property Name="Rol" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
   </EntityType>
   <EntityType Name="sysdiagrams">
     <Key>
@@ -63,6 +64,7 @@
     <EntitySet Name="VARDIYA" EntityType="serkanISGModel.VARDIYA" />
     <EntitySet Name="BIRIM" EntityType="serkanISGModel.BIRIM" />
     <EntitySet Name="BILDIRIMLVL1" EntityType="serkanISGModel.BILDIRIMLVL1" />
+    <EntitySet Name="MODUL_MAILAYAR" EntityType="serkanISGModel.MODUL_MAILAYAR" />
   </EntityContainer>
   <EntityType Name="LogRegister">
     <Key>
@@ -140,5 +142,15 @@
     <Property Name="VARDIYA" Type="String" MaxLength="60" FixedLength="false" Unicode="true" />
     <Property Name="MUDAHIL_PERSONEL" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
     <Property Name="GORSEL" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="MODUL_MAILAYAR">
+    <Key>
+      <PropertyRef Name="ID_MODUL" />
+    </Key>
+    <Property Name="ID_MODUL" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="AD_MODUL" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="YENI_KAYIT" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="GUNCELLEME_KAYIT" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="SILME_KAYIT" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
   </EntityType>
 </Schema>

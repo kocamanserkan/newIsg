@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "serkanISG", "serkanISG.cspr
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BarerTokenEx", "..\BarerTokenEx\BarerTokenEx.csproj", "{03D0438B-FC1F-4813-A9E2-647240F26B5A}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebApplication1", "..\WebApplication1\WebApplication1.csproj", "{124AA63A-327B-4B19-B94C-9FF3437747CB}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{03D0438B-FC1F-4813-A9E2-647240F26B5A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{03D0438B-FC1F-4813-A9E2-647240F26B5A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{03D0438B-FC1F-4813-A9E2-647240F26B5A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{124AA63A-327B-4B19-B94C-9FF3437747CB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{124AA63A-327B-4B19-B94C-9FF3437747CB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{124AA63A-327B-4B19-B94C-9FF3437747CB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{124AA63A-327B-4B19-B94C-9FF3437747CB}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

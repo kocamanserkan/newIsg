@@ -37,5 +37,6 @@ namespace serkanISG
         public virtual DbSet<VARDIYA> VARDIYA { get; set; }
         public virtual DbSet<BIRIM> BIRIM { get; set; }
         public virtual DbSet<BILDIRIMLVL1> BILDIRIMLVL1 { get; set; }
+        public virtual DbSet<MODUL_MAILAYAR> MODUL_MAILAYAR { get; set; }
     }
 }

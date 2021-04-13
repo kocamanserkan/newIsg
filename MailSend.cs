@@ -13,31 +13,37 @@ namespace serkanISG
     public class MailSend
     {
 
-        public void MailGonder(string to,string Subject,string Body)
+        public bool MailGonder(string mailOnay,string to,string Subject,string Body)
         {
-        
-            MailMessage message = new MailMessage("hissebotu41@gmailcom", to);
-            message.Subject = Subject;
-            message.Body = Body;
-            message.BodyEncoding = Encoding.UTF8;
-            message.IsBodyHtml = true;
-            SmtpClient client = new SmtpClient("smtp.gmail.com", 587); //Gmail smtp    
-            System.Net.NetworkCredential basicCredential1 = new
-            System.Net.NetworkCredential("hissebotu41@gmail.com", "ditsxjvaibhddvwd");
-            client.EnableSsl = true;
-            client.UseDefaultCredentials = false;
-            client.Credentials = basicCredential1;
-            try
+            if(mailOnay == "Aktif")
             {
-                client.Send(message);
-            }
 
-            catch (Exception ex)
+                MailMessage message = new MailMessage("hissebotu41@gmailcom", to);
+                message.Subject = Subject;
+                message.Body = Body;
+                message.BodyEncoding = Encoding.UTF8;
+                message.IsBodyHtml = true;
+                SmtpClient client = new SmtpClient("smtp.gmail.com", 587); //Gmail smtp    
+                System.Net.NetworkCredential basicCredential1 = new
+                System.Net.NetworkCredential("hissebotu41@gmail.com", "ditsxjvaibhddvwd");
+                client.EnableSsl = true;
+                client.UseDefaultCredentials = false;
+                client.Credentials = basicCredential1;
+                try
+                {
+                    client.Send(message);
+                    return true;
+                }
+
+                catch (Exception)
+                {
+                    return false;
+                }
+            }
+            else
             {
-                throw ex;
+                return false;
             }
-
-
 
 
 

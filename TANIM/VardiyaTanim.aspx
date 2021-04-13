@@ -133,12 +133,12 @@
 
         $("#btn_Vazgec").click(function () {
 
-            window.location.href = "https://localhost:44398/VardiyaTanim";
+            window.location.href = "https://localhost:44398/TANIM/VardiyaTanim";
 
         })
         $("#kapa").click(function () {
 
-            window.location.href = "https://localhost:44398/VardiyaTanim";
+            window.location.href = "https://localhost:44398/TANIM/VardiyaTanim";
 
         })
 

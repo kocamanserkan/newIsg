@@ -24,5 +24,6 @@ namespace serkanISG
         public string SIFRE { get; set; }
         public string EMAIL { get; set; }
         public Nullable<System.DateTime> IS_BASLANGIC_TARIH { get; set; }
+        public string Rol { get; set; }
     }
 }
