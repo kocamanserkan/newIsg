@@ -14,7 +14,6 @@
     <Property Name="PERSONEL_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="PERSONEL_AD" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
     <Property Name="PERSONEL_SOYAD" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-    <Property Name="TCKN" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
     <Property Name="SICIL_NO" Type="Int32" />
     <Property Name="YAPTIGI_IS" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
     <Property Name="KULLANICI_ADI" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
@@ -22,6 +21,10 @@
     <Property Name="EMAIL" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
     <Property Name="IS_BASLANGIC_TARIH" Type="DateTime" Precision="3" />
     <Property Name="Rol" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="TCNO" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="BIRIM_PERSONEL" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="UNVAN_PERSONEL" Type="String" MaxLength="90" FixedLength="false" Unicode="true" />
+    <Property Name="LOKASYON_PERSONEL" Type="String" MaxLength="90" FixedLength="false" Unicode="true" />
   </EntityType>
   <EntityType Name="sysdiagrams">
     <Key>
@@ -65,6 +68,7 @@
     <EntitySet Name="BIRIM" EntityType="serkanISGModel.BIRIM" />
     <EntitySet Name="BILDIRIMLVL1" EntityType="serkanISGModel.BILDIRIMLVL1" />
     <EntitySet Name="MODUL_MAILAYAR" EntityType="serkanISGModel.MODUL_MAILAYAR" />
+    <EntitySet Name="UNVAN" EntityType="serkanISGModel.UNVAN" />
   </EntityContainer>
   <EntityType Name="LogRegister">
     <Key>
@@ -152,5 +156,12 @@
     <Property Name="YENI_KAYIT" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
     <Property Name="GUNCELLEME_KAYIT" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
     <Property Name="SILME_KAYIT" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="UNVAN">
+    <Key>
+      <PropertyRef Name="ID_UNVAN" />
+    </Key>
+    <Property Name="ID_UNVAN" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="AD_UNVAN" Type="String" MaxLength="90" FixedLength="false" Unicode="true" />
   </EntityType>
 </Schema>

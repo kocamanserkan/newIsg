@@ -94,7 +94,6 @@ warning 6002: The table/view 'serkanISG.dbo.ILLER' does not have a primary key d
           <Property Name="PERSONEL_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="PERSONEL_AD" Type="nvarchar" MaxLength="50" />
           <Property Name="PERSONEL_SOYAD" Type="nvarchar" MaxLength="50" />
-          <Property Name="TCKN" Type="nvarchar" MaxLength="50" />
           <Property Name="SICIL_NO" Type="int" />
           <Property Name="YAPTIGI_IS" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="KULLANICI_ADI" Type="nvarchar" MaxLength="50" />
@@ -102,6 +101,10 @@ warning 6002: The table/view 'serkanISG.dbo.ILLER' does not have a primary key d
           <Property Name="EMAIL" Type="nvarchar" MaxLength="50" />
           <Property Name="IS_BASLANGIC_TARIH" Type="datetime" />
           <Property Name="Rol" Type="nvarchar" MaxLength="50" />
+          <Property Name="TCNO" Type="nvarchar" MaxLength="50" />
+          <Property Name="BIRIM_PERSONEL" Type="nvarchar" MaxLength="100" />
+          <Property Name="UNVAN_PERSONEL" Type="nvarchar" MaxLength="90" />
+          <Property Name="LOKASYON_PERSONEL" Type="nvarchar" MaxLength="90" />
         </EntityType>
         <EntityType Name="sysdiagrams">
           <Key>
@@ -119,6 +122,13 @@ warning 6002: The table/view 'serkanISG.dbo.ILLER' does not have a primary key d
           </Key>
           <Property Name="ID_IS" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="AD_IS" Type="nvarchar" MaxLength="70" />
+        </EntityType>
+        <EntityType Name="UNVAN">
+          <Key>
+            <PropertyRef Name="ID_UNVAN" />
+          </Key>
+          <Property Name="ID_UNVAN" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="AD_UNVAN" Type="nvarchar" MaxLength="90" />
         </EntityType>
         <EntityType Name="UYGUNSUZLUK">
           <Key>
@@ -156,6 +166,7 @@ warning 6002: The table/view 'serkanISG.dbo.ILLER' does not have a primary key d
           <EntitySet Name="PERSONEL" EntityType="Self.PERSONEL" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="TANIMIS" EntityType="Self.TANIMIS" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="UNVAN" EntityType="Self.UNVAN" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="UYGUNSUZLUK" EntityType="Self.UYGUNSUZLUK" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="VARDIYA" EntityType="Self.VARDIYA" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="ILLER" EntityType="Self.ILLER" store:Type="Tables" store:Schema="dbo">
@@ -183,7 +194,6 @@ warning 6002: The table/view 'serkanISG.dbo.ILLER' does not have a primary key d
           <Property Name="PERSONEL_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="PERSONEL_AD" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="PERSONEL_SOYAD" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="TCKN" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="SICIL_NO" Type="Int32" />
           <Property Name="YAPTIGI_IS" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="KULLANICI_ADI" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
@@ -191,6 +201,10 @@ warning 6002: The table/view 'serkanISG.dbo.ILLER' does not have a primary key d
           <Property Name="EMAIL" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="IS_BASLANGIC_TARIH" Type="DateTime" Precision="3" />
           <Property Name="Rol" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="TCNO" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="BIRIM_PERSONEL" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="UNVAN_PERSONEL" Type="String" MaxLength="90" FixedLength="false" Unicode="true" />
+          <Property Name="LOKASYON_PERSONEL" Type="String" MaxLength="90" FixedLength="false" Unicode="true" />
         </EntityType>
         <EntityType Name="sysdiagrams">
           <Key>
@@ -234,6 +248,7 @@ warning 6002: The table/view 'serkanISG.dbo.ILLER' does not have a primary key d
           <EntitySet Name="BIRIM" EntityType="serkanISGModel.BIRIM" />
           <EntitySet Name="BILDIRIMLVL1" EntityType="serkanISGModel.BILDIRIMLVL1" />
           <EntitySet Name="MODUL_MAILAYAR" EntityType="serkanISGModel.MODUL_MAILAYAR" />
+          <EntitySet Name="UNVAN" EntityType="serkanISGModel.UNVAN" />
         </EntityContainer>
         <EntityType Name="LogRegister">
           <Key>
@@ -322,6 +337,13 @@ warning 6002: The table/view 'serkanISG.dbo.ILLER' does not have a primary key d
           <Property Name="GUNCELLEME_KAYIT" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
           <Property Name="SILME_KAYIT" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
         </EntityType>
+        <EntityType Name="UNVAN">
+          <Key>
+            <PropertyRef Name="ID_UNVAN" />
+          </Key>
+          <Property Name="ID_UNVAN" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="AD_UNVAN" Type="String" MaxLength="90" FixedLength="false" Unicode="true" />
+        </EntityType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -339,11 +361,14 @@ warning 6002: The table/view 'serkanISG.dbo.ILLER' does not have a primary key d
           <EntitySetMapping Name="PERSONEL">
             <EntityTypeMapping TypeName="serkanISGModel.PERSONEL">
               <MappingFragment StoreEntitySet="PERSONEL">
+                <ScalarProperty Name="LOKASYON_PERSONEL" ColumnName="LOKASYON_PERSONEL" />
+                <ScalarProperty Name="UNVAN_PERSONEL" ColumnName="UNVAN_PERSONEL" />
+                <ScalarProperty Name="BIRIM_PERSONEL" ColumnName="BIRIM_PERSONEL" />
+                <ScalarProperty Name="TCNO" ColumnName="TCNO" />
                 <ScalarProperty Name="Rol" ColumnName="Rol" />
                 <ScalarProperty Name="PERSONEL_ID" ColumnName="PERSONEL_ID" />
                 <ScalarProperty Name="PERSONEL_AD" ColumnName="PERSONEL_AD" />
                 <ScalarProperty Name="PERSONEL_SOYAD" ColumnName="PERSONEL_SOYAD" />
-                <ScalarProperty Name="TCKN" ColumnName="TCKN" />
                 <ScalarProperty Name="SICIL_NO" ColumnName="SICIL_NO" />
                 <ScalarProperty Name="YAPTIGI_IS" ColumnName="YAPTIGI_IS" />
                 <ScalarProperty Name="KULLANICI_ADI" ColumnName="KULLANICI_ADI" />
@@ -475,6 +500,14 @@ warning 6002: The table/view 'serkanISG.dbo.ILLER' does not have a primary key d
                 <ScalarProperty Name="YENI_KAYIT" ColumnName="YENI_KAYIT" />
                 <ScalarProperty Name="AD_MODUL" ColumnName="AD_MODUL" />
                 <ScalarProperty Name="ID_MODUL" ColumnName="ID_MODUL" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="UNVAN">
+            <EntityTypeMapping TypeName="serkanISGModel.UNVAN">
+              <MappingFragment StoreEntitySet="UNVAN">
+                <ScalarProperty Name="AD_UNVAN" ColumnName="AD_UNVAN" />
+                <ScalarProperty Name="ID_UNVAN" ColumnName="ID_UNVAN" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

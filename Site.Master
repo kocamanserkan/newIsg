@@ -7,7 +7,7 @@
 
     <!-- Basic Page Info -->
     <meta charset="utf-8">
-    <title>Uygunsuzluk Modülü</title>
+    <title>ISG</title>
 
     <!-- Site favicon -->
     <link rel="apple-touch-icon" sizes="180x180" href="../vendors/images/apple-touch-icon.png">
@@ -22,8 +22,14 @@
     <!-- CSS -->
     <link rel="stylesheet" type="text/css" href="../vendors/styles/core.css">
     <link rel="stylesheet" type="text/css" href="../vendors/styles/icon-font.min.css">
+    <link rel="stylesheet" type="text/css" href="../src/plugins/switchery/switchery.min.css">
+	<!-- bootstrap-tagsinput css -->
+	<link rel="stylesheet" type="text/css" href="../src/plugins/bootstrap-tagsinput/bootstrap-tagsinput.css">
+	<!-- bootstrap-touchspin css -->
+	<link rel="stylesheet" type="text/css" href="../src/plugins/bootstrap-touchspin/jquery.bootstrap-touchspin.css">
     <link rel="stylesheet" type="text/css" href="../vendors/styles/style.css">
-
+    <link href="Content/MyCSS.css" rel="stylesheet" />
+    <script src="Scripts/MyFunctions.js"></script>
     <!-- Global site tag (gtag.js) - Google Analytics -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=UA-119386393-1"></script>
     <script>
@@ -135,7 +141,7 @@
                             </a>
                             <ul class="submenu">
 
-                                <li><a href="../AYARLAR/MailAyarlari.aspx">Mail Ayarları</a></li>
+                                <li><a href="../YONETIM/Kullanicilar.aspx">Kullanıcılar</a></li>
                              
 
                             </ul>
@@ -166,5 +172,16 @@
     <script src="../vendors/scripts/script.min.js"></script>
     <script src="../vendors/scripts/process.js"></script>
     <script src="../vendors/scripts/layout-settings.js"></script>
+   <script src="src/plugins/switchery/switchery.min.js"></script>
+	<!-- bootstrap-tagsinput js -->
+	<script src="../src/plugins/bootstrap-tagsinput/bootstrap-tagsinput.js"></script>
+	<!-- bootstrap-touchspin js -->
+	<script src="../src/plugins/bootstrap-touchspin/jquery.bootstrap-touchspin.js"></script>
+	<script src="../vendors/scripts/advanced-components.js"></script>
+
+
+
+
 </body>
+
 </html>

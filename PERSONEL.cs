@@ -17,7 +17,6 @@ namespace serkanISG
         public int PERSONEL_ID { get; set; }
         public string PERSONEL_AD { get; set; }
         public string PERSONEL_SOYAD { get; set; }
-        public string TCKN { get; set; }
         public Nullable<int> SICIL_NO { get; set; }
         public string YAPTIGI_IS { get; set; }
         public string KULLANICI_ADI { get; set; }
@@ -25,5 +24,9 @@ namespace serkanISG
         public string EMAIL { get; set; }
         public Nullable<System.DateTime> IS_BASLANGIC_TARIH { get; set; }
         public string Rol { get; set; }
+        public string TCNO { get; set; }
+        public string BIRIM_PERSONEL { get; set; }
+        public string UNVAN_PERSONEL { get; set; }
+        public string LOKASYON_PERSONEL { get; set; }
     }
 }

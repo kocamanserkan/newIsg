@@ -11,204 +11,156 @@ namespace serkanISG
 {
     public partial class Uygunsuzluk : System.Web.UI.Page
     {
-        DataBase db = new DataBase();
-        Kontrol kontrol = new Kontrol();
-        serkanISGEntities1 db2 = new serkanISGEntities1();
-        string cs = "server=.;Initial Catalog=serkanISG;Integrated Security=SSPI";
-        SqlConnection con;
-
+        
+        serkanISGEntities1 db = new serkanISGEntities1();
+      
 
         protected void Page_Load(object sender, EventArgs e)
         {
-
-
-            //lblAd.Text = Request.Cookies["Kurabiye"]["full_ad"].ToString();
-
-
-
-            //if (!string.IsNullOrEmpty(Request.Cookies["Username"].Value.ToString()))
-            //{
-
-            //    lblAd.Text = Request.Cookies["Username"].Value.ToString();
-            //}
-            //else
-            //{
-            //    Response.Redirect("login.aspx");
-
-            //}
-            // grdUygunsuzlukListe.DataSource = db2.UYGUNSUZLUK.ToList();
-
-            //grdUygunsuzlukListe.DataBind();
-
-
-            db.UygunsuzlukListele(grdUygunsuzlukListe);
-
-
-            ddlSorumlu.DataSource =  db2.PERSONEL.Select(i => i.PERSONEL_AD +" "+ i.PERSONEL_SOYAD).ToList();
-             
-            ddlTespitEden.DataSource = db2.PERSONEL.Select(i => i.PERSONEL_AD + " " + i.PERSONEL_SOYAD).ToList();
-            
-
-
-            //db.personelListesi(ddlSorumlu);
-            //db.personelListesi(ddlTespitEden);
-
-            db.personelListesi(ddlSorumlua);
-            db.personelListesi(ddlTespitedena);
-
-            //lblAd.Text = Request.Cookies["Kurabiye"]["full_ad"].ToString();
-
-
-
-            if (!Page.IsPostBack)
+            if(!IsPostBack && !IsCallback)
             {
-                ddlSorumlu.DataBind();
-                ddlTespitEden.DataBind();
-                grdUygunsuzlukListe.DataBind();
-                ddlSorumlua.DataBind();
-                ddlTespitedena.DataBind();
-
-                //grdUygunsuzlukListe.DataSource = db2.UYGUNSUZLUK.ToList();
-
-                //grdUygunsuzlukListe.DataBind();
-
-                ////db.UygunsuzlukListele(grdUygunsuzlukListe);
-
-                //db.personelListesi(ddlSorumlu);
-                //db.personelListesi(ddlTespitEden);
-                //db.personelListesi(ddlSorumlua);
-                //db.personelListesi(ddlTespitedena);
-                //ddlTespitEden.DataBind();
-                //ddlTespitEden.DataBind();
-
-                //lblAd.Text = Request.Cookies["Kurabiye"]["full_ad"].ToString();
-
+                bind();
 
             }
+            //ScriptManager.RegisterStartupScript(this, this.GetType(), "script", "myFunction('Uygunsuzluk Güncellendi','succsess');", true);
+            
 
         }
-
-
-        protected void grdUygunsuzlukListe_RowEditing(object sender, System.Web.UI.WebControls.GridViewEditEventArgs e)
+        private void bind()
         {
-
-            grdUygunsuzlukListe.EditIndex = e.NewEditIndex;
-            db.UygunsuzlukListele(grdUygunsuzlukListe);
-
-        }
-        protected void grdUygunsuzlukListe_RowUpdating(object sender, System.Web.UI.WebControls.GridViewUpdateEventArgs e)
-        {
-
-            Label label_ID = grdUygunsuzlukListe.Rows[e.RowIndex].FindControl("label_ID") as Label;
-            DropDownList aktif = grdUygunsuzlukListe.Rows[e.RowIndex].FindControl("ddldurum") as DropDownList;
-            DropDownList tur = grdUygunsuzlukListe.Rows[e.RowIndex].FindControl("ddlTura") as DropDownList;
-            TextBox uygunsuzDurum = grdUygunsuzlukListe.Rows[e.RowIndex].FindControl("txtUygnsuzDuruma") as TextBox;
-            TextBox aksiyon = grdUygunsuzlukListe.Rows[e.RowIndex].FindControl("txtaksiyona") as TextBox;
-            TextBox tespitTarih = grdUygunsuzlukListe.Rows[e.RowIndex].FindControl("dtpTespitTariha") as TextBox;
-            TextBox terminTarih = grdUygunsuzlukListe.Rows[e.RowIndex].FindControl("dtpTerminTariha") as TextBox;
-            DropDownList birim = grdUygunsuzlukListe.Rows[e.RowIndex].FindControl("ddlBirima") as DropDownList;
-            DropDownList ddlSorumlua = grdUygunsuzlukListe.Rows[e.RowIndex].FindControl("txtSorumlua") as DropDownList;
-            DropDownList ddlTespitedena = grdUygunsuzlukListe.Rows[e.RowIndex].FindControl("txtTespitedena") as DropDownList;
-
-            con = new SqlConnection(cs);
-            con.Open();
-
-            SqlCommand cmd = new SqlCommand("Update UYGUNSUZLUK set AKTIFLIK='" + Convert.ToInt32(ddldurum.Text) + "',TUR='" + tur.Text + "',UYGUNSUZ_DURUM='" + uygunsuzDurum.Text + "',ONERI_AKSIYON='" + aksiyon.Text + "',TESPIT_TARIH='" + tespitTarih.Text + "',TERMIN_TARIH='" + terminTarih.Text + "',BIRIM='" + birim.Text + "',SORUMLU_AD='" + ddlSorumlua.Text + "',TESPIT_EDEN_AD='" + ddlTespitedena.Text + "' where ID_UYGUNSUZLUK=" + Convert.ToInt32(label_ID.Text), con);
-            cmd.ExecuteNonQuery();
-            con.Close();
+            try
+            {
+                if (ddlAktiflik.SelectedValue == "Pasif")
+                {
+                    grdUygunsuz.DataSource = db.UYGUNSUZLUK.Where(i => i.AKTIFLIK == "Pasif").ToList();
+                    grdUygunsuz.DataBind();
+                   
+                }
+                else
+                {
+                    grdUygunsuz.DataSource = db.UYGUNSUZLUK.Where(i => i.AKTIFLIK == "Aktif").ToList();
+                    grdUygunsuz.DataBind();
 
 
-            db.UygunsuzlukListele(grdUygunsuzlukListe);
+                }
 
-        }
-        protected void grdUygunsuzlukListe_RowCancelingEdit(object sender, System.Web.UI.WebControls.GridViewCancelEditEventArgs e)
-        {
+                ddlBirim.DataSource = db.BIRIM.Select(i => i.AD_BIRIM.ToUpper()).ToList();
+                ddlBirim.DataBind(); ;
+                dtpTespitTarih.Text = DateTime.Now.ToString("yyyy-MM-dd");
+                ddlSorumlu.DataSource = db.PERSONEL.Select(i => i.PERSONEL_AD.ToUpper() + " " + i.PERSONEL_SOYAD.ToUpper()).ToList();
+                ddlTespitEden.DataSource = db.PERSONEL.Select(i => i.PERSONEL_AD.ToUpper() + " " + i.PERSONEL_SOYAD.ToUpper()).ToList();
 
+                ddlSorumlu.DataBind();
+                ddlTespitEden.DataBind();
+                ddlTespitEden.Text = Session["FullName"].ToString().ToUpper();
+                ddlBirim_edit.DataSource = db.BIRIM.Select(i => i.AD_BIRIM.ToUpper()).ToList();
+                ddlBirim.DataBind();
+                ddlTespiteden_edit.DataSource = db.PERSONEL.Select(i => i.PERSONEL_AD.ToUpper() + " " + i.PERSONEL_SOYAD.ToUpper()).ToList();
+                ddlSorumlu_edit.DataSource = db.PERSONEL.Select(i => i.PERSONEL_AD.ToUpper() + " " + i.PERSONEL_SOYAD.ToUpper()).ToList();
+                ddlTespiteden_edit.DataBind();
+                ddlSorumlu_edit.DataBind();
+                ddlBirim_edit.DataSource = db.BIRIM.Select(i => i.AD_BIRIM.ToUpper()).ToList();
+                ddlBirim_edit.DataBind();
+            }
+            catch (Exception)
+            {
 
-
-            db.UygunsuzlukListele(grdUygunsuzlukListe);
-
-        }
-
-        protected void grdUygunsuzlukListe_RowDeleting(object sender, GridViewDeleteEventArgs e)
-        {
-            Label ID = grdUygunsuzlukListe.Rows[e.RowIndex].FindControl("lbl_ID") as Label;
-            con = new SqlConnection(cs);
-            con.Open();
-
-            SqlCommand cmd = new SqlCommand("Delete UYGUNSUZLUK where ID_UYGUNSUZLUK=" + Convert.ToInt32(ID.Text), con);
-            cmd.ExecuteNonQuery();
-            con.Close();
-
-
-
-            db.UygunsuzlukListele(grdUygunsuzlukListe);
+                Response.Redirect("~/giris.aspx");
+            }
+          
 
 
         }
 
         protected void btnUygunsuzlukSave_Click(object sender, EventArgs e)
         {
-            string c = ddlTespitEden.Text;
-            string v = txtUygnsuzDurum.Text;
-            string a = ddlSorumlu.Text;
-
-
-            if (kontrol.uygunsuzlukFormKontrol(dtpTespitTarih, txtUygnsuzDurum, txtAksiyon, dateTerminTarihi, ddlSorumlu, ddlTespitEden))
+            try
             {
 
-                if (ddlTespitEden.Text != ddlSorumlu.Text)
+                UYGUNSUZLUK yeniUyg = new UYGUNSUZLUK();
+                yeniUyg.TUR = ddlTur.Text;
+                yeniUyg.BIRIM = ddlBirim.SelectedValue;
+                yeniUyg.TESPIT_TARIH = Convert.ToDateTime(dtpTespitTarih.Text);
+                yeniUyg.UYGUNSUZ_DURUM = txtUygnsuzDurum.Text;
+                yeniUyg.ONERI_AKSIYON = txtAksiyon.Text;
+                yeniUyg.TESPIT_EDEN_AD = ddlTespitEden.SelectedValue;
+                yeniUyg.SORUMLU_AD = ddlSorumlu.SelectedValue;
+                yeniUyg.AKTIFLIK = "Aktif";
+                yeniUyg.TERMIN_TARIH = Convert.ToDateTime(dateTerminTarihi.Text);
+                db.UYGUNSUZLUK.Add(yeniUyg);
+                if (db.SaveChanges() > 0)
                 {
+                    MODUL_MAILAYAR mailOnay = new MODUL_MAILAYAR();
+                    mailOnay = db.MODUL_MAILAYAR.FirstOrDefault(i => i.ID_MODUL == 2);
+                    MailSend ms = new MailSend();
+                    PERSONEL per = new PERSONEL();
+                    string fullad = ddlSorumlu.Text;
+                    string[] parce = fullad.Split(' ');
+                    string ad = parce[0];
 
-                    string SORGU = " insert into UYGUNSUZLUK (BIRIM,TESPIT_TARIH,UYGUNSUZ_DURUM,ONERI_AKSIYON,SORUMLU_AD,TESPIT_EDEN_AD,TERMIN_TARIH,TUR) values ( '" + ddlBirim.Text + "','" + dtpTespitTarih.Text + "', '" + txtUygnsuzDurum.Text + "','" + (txtAksiyon.Text) + "','" + ddlSorumlu.Text + "','" + ddlTespitEden.Text + "','" + dateTerminTarihi.Text + "','" + ddlTur.Text + "')";
+                    per = db.PERSONEL.FirstOrDefault(i => i.PERSONEL_AD.ToUpper() == ad.ToUpper());
+                    string MudahilMail = per.EMAIL;
 
-                    db.uygunsuzlukEkle(SORGU);
+                    string mail = "&lt;table width=&quot;100%&quot; border=&quot;0&quot; cellspacing=&quot;0&quot;&gt; &lt;tbody&gt; &lt;tr&gt; &lt;td align=&quot;center&quot; valign=&quot;top&quot; style=&quot;background-color: #f0f0f0; padding: 20px&quot;&gt; &lt;table width=&quot;100%&quot; border=&quot;0&quot; cellspacing=&quot;0&quot; style=&quot;box-sizing: border-box;&quot;&gt; &lt;tbody&gt; &lt;tr&gt; &lt;td style=&quot;background-color: #4791d2; border-bottom: 2px solid #367fbe; height: 6px;&quot;&gt;&lt;/td&gt; &lt;/tr&gt; &lt;tr&gt; &lt;td style=&quot;background-color: #fff; text-align: left; padding: 20px;&quot;&gt; &lt;p style=&quot;font-family: Tahoma; font-size: 12px&quot;&gt; Sayın "+ddlSorumlu.SelectedValue+",&lt;br /&gt; &lt;br /&gt; Adınıza uygunsuzluk kaydı oluşturulmuştur. Aşağıdaki tablodan detayları inceleyebilirsiniz. &lt;/p&gt; &lt;table style=&quot;width: 100%; border-width: 1px; border-style: solid; border-collapse: collapse; font-size: 10pt; font-family: Tahoma;&quot; bordercolor=&quot;black&quot;&gt; &lt;tbody&gt; &lt;tr style=&quot;width: 100%; border: 1px solid black; border-collapse: collapse; background-color: #FFFFFF;&quot;&gt; &lt;td style=&quot;width: 20%; border: 1px solid black; border-collapse: collapse; text-align: left; font-weight: bold;&quot;&gt;Tespit Tarihi&lt;/td&gt; &lt;td style=&quot;width: 80%; border: 1px solid black; border-collapse: collapse; text-align: left;&quot;&gt; "+dtpTespitTarih.Text+" &lt;/td&gt; &lt;/tr&gt; &lt;tr style=&quot;width: 100%; border: 1px solid black; border-collapse: collapse; background-color: #FFFFFF;&quot;&gt; &lt;td style=&quot;width: 20%; border: 1px solid black; border-collapse: collapse; text-align: left; font-weight: bold;&quot;&gt;Termin Tarihi&lt;/td&gt; &lt;td style=&quot;width: 80%; border: 1px solid black; border-collapse: collapse; text-align: left;&quot;&gt;"+dateTerminTarihi.Text+" &lt;/td&gt; &lt;/tr&gt; &lt;tr style=&quot;width: 100%; border: 1px solid black; border-collapse: collapse; background-color: #F7FBFF;&quot;&gt; &lt;td style=&quot;width: 20%; border: 1px solid black; border-collapse: collapse; text-align: left; font-weight: bold;&quot;&gt;Birim&lt;/td&gt; &lt;td style=&quot;width: 80%; border: 1px solid black; border-collapse: collapse; text-align: left;&quot;&gt; "+ddlBirim.SelectedValue+"&lt;/td&gt; &lt;/tr&gt; &lt;tr style=&quot;width: 100%; border: 1px solid black; border-collapse: collapse; background-color: #FFFFFF;&quot;&gt; &lt;td style=&quot;width: 20%; border: 1px solid black; border-collapse: collapse; text-align: left; font-weight: bold;&quot;&gt;Uygunsuz Durum&lt;/td&gt; &lt;td style=&quot;width: 80%; border: 1px solid black; border-collapse: collapse; text-align: left;&quot;&gt; "+txtUygnsuzDurum.Text+" &lt;/td&gt; &lt;/tr&gt; &lt;tr style=&quot;width: 100%; border: 1px solid black; border-collapse: collapse; background-color: #F7FBFF;&quot;&gt; &lt;td style=&quot;width: 20%; border: 1px solid black; border-collapse: collapse; text-align: left; font-weight: bold;&quot;&gt;&#214;nerilen Aksiyon &lt;/td&gt; &lt;td style=&quot;width: 80%; border: 1px solid black; border-collapse: collapse; text-align: left;&quot;&gt; "+txtAksiyon.Text+" &lt;/tr&gt; &lt;tr style=&quot;width: 100%; border: 1px solid black; border-collapse: collapse; background-color: #FFFFFF;&quot;&gt; &lt;td style=&quot;width: 20%; border: 1px solid black; border-collapse: collapse; text-align: left; font-weight: bold;&quot;&gt;T&#252;r&lt;/td&gt; &lt;td style=&quot;width: 80%; border: 1px solid black; border-collapse: collapse; text-align: left;&quot;&gt;"+ddlTur.SelectedValue+" &lt;/td&gt; &lt;/tr&gt; &lt;tr style=&quot;width: 100%; border: 1px solid black; border-collapse: collapse; background-color: #FFFFFF;&quot;&gt; &lt;td style=&quot;width: 20%; border: 1px solid black; border-collapse: collapse; text-align: left; font-weight: bold;&quot;&gt;Tespit Eden&lt;/td&gt; &lt;td style=&quot;width: 80%; border: 1px solid black; border-collapse: collapse; text-align: left;&quot;&gt;"+ddlTespitEden.SelectedValue+"&lt;/td&gt; &lt;/tr&gt; &lt;tr style=&quot;width: 100%; border: 1px solid black; border-collapse: collapse; background-color: #FFFFFF;&quot;&gt; &lt;td style=&quot;width: 20%; border: 1px solid black; border-collapse: collapse; text-align: left; font-weight: bold;&quot;&gt;Sorumlu&lt;/td&gt; &lt;td style=&quot;width: 80%; border: 1px solid black; border-collapse: collapse; text-align: left;&quot;&gt;"+ddlSorumlu.Text+"&lt;/td&gt; &lt;/tr&gt; &lt;/tbody&gt; &lt;/table&gt; &lt;/td&gt; &lt;/tr&gt; &lt;tr&gt; &lt;td style=&quot;background-color: #4791d2; border-top: 2px solid #367fbe; height: 6px;&quot;&gt;&lt;/td&gt; &lt;/tr&gt; &lt;/tbody&gt; &lt;/table&gt; &lt;/td&gt; &lt;/tr&gt; &lt;/tbody&gt; &lt;/table&gt;";
 
 
-                    ClientScript.RegisterStartupScript(this.GetType(), "myalert", "alert('" + " Uygunsuzluk kaydedilmiştir " + "');", true);
+                    ms.MailGonder(mailOnay.YENI_KAYIT, MudahilMail, "Uygunsuzluk Bildirim Maili", HttpUtility.HtmlDecode(mail).ToString());
+                    ScriptManager.RegisterStartupScript(this, this.GetType(), "script", "myFunction('Uygunsuzluk Eklendi','succsess');", true);
 
-                    db.UygunsuzlukListele(grdUygunsuzlukListe);
+                    bind();
+                    
+
 
                 }
                 else
                 {
-                    ClientScript.RegisterStartupScript(this.GetType(), "myalert", "alert('" + " Tespit eden ile Sorumlu aynı kişi olamaz." + "');", true);
-
+                    ScriptManager.RegisterStartupScript(this, this.GetType(), "script", "myFunction('Uygunsuzluk Kaydı Oluşturulamadı','fail');", true);
                 }
-
+      
+                
 
             }
-            else
+            catch (Exception)
             {
 
-
-
-                ClientScript.RegisterStartupScript(this.GetType(), "myalert", "alert('" + " Formdaki gerekli yerleri doldurunuz." + "');", true);
+                ScriptManager.RegisterStartupScript(this, this.GetType(), "script", "myFunction('Hay Aksi!  Beklenmedik bir hata oluştu :(','fail');", true);
             }
-
-
-
 
 
         }
 
-        protected void grdUygunsuzlukListe_SelectedIndexChanged(object sender, EventArgs e)
+        protected void link_Click(object sender, EventArgs e)
         {
-      
+            try
+            {
+                UYGUNSUZLUK edit = new UYGUNSUZLUK();
 
-                label_ID.Text = grdUygunsuzlukListe.SelectedRow.Cells[1].Text;
-                ddldurum.Text = grdUygunsuzlukListe.SelectedRow.Cells[2].Text;
-                ddlTura.Text = grdUygunsuzlukListe.SelectedRow.Cells[3].Text;
-                txtUygnsuzDuruma.Text = grdUygunsuzlukListe.SelectedRow.Cells[4].Text;
-                txtaksiyona.Text = grdUygunsuzlukListe.SelectedRow.Cells[5].Text;
-                dtpTespitTariha.Text = Convert.ToDateTime(grdUygunsuzlukListe.SelectedRow.Cells[6].Text).ToString("yyyy-MM-dd");
-                dtpTerminTariha.Text = Convert.ToDateTime(grdUygunsuzlukListe.SelectedRow.Cells[7].Text).ToString("yyyy-MM-dd");
-                ddlBirima.Text = grdUygunsuzlukListe.SelectedRow.Cells[8].Text;
-                ddlSorumlua.Text = Convert.ToString(grdUygunsuzlukListe.SelectedRow.Cells[9].Text);
-                ddlTespitedena.Text = Convert.ToString(grdUygunsuzlukListe.SelectedRow.Cells[10].Text);
+                LinkButton linkbutton = (LinkButton)sender;  // get the link button which trigger the event
+                GridViewRow row = (GridViewRow)linkbutton.NamingContainer; // get the GridViewRow that contains the linkbutton
 
-          
+                int editID = Convert.ToInt32(linkbutton.CommandArgument);
+                edit = db.UYGUNSUZLUK.FirstOrDefault(i => i.ID_UYGUNSUZLUK == editID);
 
+                label_ID.Text = Convert.ToString(edit.ID_UYGUNSUZLUK);
+                ddlTur_edit.Text = edit.TUR;
+                ddlDurum_Edit.Text = edit.AKTIFLIK;
+                ddlBirim_edit.Text = edit.BIRIM;
+                dtpTespitTarih_Edit.Text = Convert.ToDateTime(edit.TESPIT_TARIH).ToString("yyyy-MM-dd");
+                txtUygnsuzDurum_Edit.Text = edit.UYGUNSUZ_DURUM;
+                txtAksiyon_Edit.Text = edit.ONERI_AKSIYON;
+                ddlTespiteden_edit.Text = edit.TESPIT_EDEN_AD.ToUpper();
+                ddlSorumlu_edit.Text = edit.SORUMLU_AD.ToUpper();
+                dtpTerminTarih_edit.Text = Convert.ToDateTime(edit.TERMIN_TARIH).ToString("yyyy-MM-dd");
+
+
+                ScriptManager.RegisterStartupScript(this, GetType(), "serkan", "$('#edit_Modal').modal()", true);//show the modal
+            }
+            catch (Exception)
+            {
+
+                ScriptManager.RegisterStartupScript(this, this.GetType(), "script", "myFunction('Hay Aksi!  Beklenmedik bir hata oluştu :(','fail');", true);
+            }
+           
 
 
 
@@ -216,34 +168,84 @@ namespace serkanISG
 
         protected void Guncelle_Click(object sender, EventArgs e)
         {
+            try
+            {
+                UYGUNSUZLUK upd = new UYGUNSUZLUK();
+                int uptID = Convert.ToInt32(label_ID.Text);
+                upd = db.UYGUNSUZLUK.FirstOrDefault(i => i.ID_UYGUNSUZLUK == uptID);
 
-            con = new SqlConnection(cs);
-            con.Open();
+                upd.TUR = ddlTur_edit.SelectedValue;
+                upd.AKTIFLIK = ddlDurum_Edit.SelectedValue;
+                upd.BIRIM = ddlBirim_edit.SelectedValue;
+                upd.TESPIT_TARIH = Convert.ToDateTime(dtpTespitTarih_Edit.Text);
+                upd.UYGUNSUZ_DURUM = txtUygnsuzDurum_Edit.Text;
+                upd.ONERI_AKSIYON = txtAksiyon_Edit.Text;
+                upd.TESPIT_EDEN_AD = ddlTespiteden_edit.SelectedValue;
+                upd.SORUMLU_AD = ddlSorumlu_edit.SelectedValue;
+                upd.TERMIN_TARIH = Convert.ToDateTime(dtpTerminTarih_edit.Text);
 
-            SqlCommand cmd = new SqlCommand("Update UYGUNSUZLUK set AKTIFLIK='" + Convert.ToInt32(ddldurum.Text) + "',TUR='" + ddlTura.Text + "',UYGUNSUZ_DURUM='" + txtUygnsuzDuruma.Text + "',ONERI_AKSIYON='" + txtaksiyona.Text + "',TESPIT_TARIH='" + dtpTespitTariha.Text + "',TERMIN_TARIH='" + dtpTerminTariha.Text + "',BIRIM='" + ddlBirima.Text + "',SORUMLU_AD='" + ddlSorumlua.Text + "',TESPIT_EDEN_AD='" + ddlSorumlua.Text + "' where ID_UYGUNSUZLUK=" + Convert.ToInt32(label_ID.Text), con);
-            cmd.ExecuteNonQuery();
-            con.Close();
+                if (db.SaveChanges() > 0)
+                {
 
-            ClientScript.RegisterClientScriptBlock(this.GetType(), "myalert", "alert('" + " Uygunsuzluk Listesi Güncellenmiştir" + "'); return false;", true);
-            db.UygunsuzlukListele(grdUygunsuzlukListe);
+                    ScriptManager.RegisterStartupScript(this, this.GetType(), "script", "myFunction('Uygunsuzluk Güncellendi','succsess');", true);
 
+                    bind();
+
+
+
+                }
+                else
+                {
+                    ScriptManager.RegisterStartupScript(this, this.GetType(), "script", "myFunction('Güncelleme işlemi başarısız','fail');", true);
+
+                }
+            }
+            catch (Exception)
+            {
+
+                ScriptManager.RegisterStartupScript(this, this.GetType(), "script", "myFunction('Hay Aksi!  Beklenmedik bir hata oluştu :(','fail');", true);
+            }
         }
 
-        protected void Sil_Click(object sender, EventArgs e)
+        protected void btn_sil_Click(object sender, EventArgs e)
         {
 
-            con = new SqlConnection(cs);
-            con.Open();
 
-            SqlCommand cmd = new SqlCommand("Delete UYGUNSUZLUK where ID_UYGUNSUZLUK=" + Convert.ToInt32(label_ID.Text), con);
-            cmd.ExecuteNonQuery();
-            con.Close();
+            try
+            {
+                UYGUNSUZLUK delete = new UYGUNSUZLUK();
 
-            ClientScript.RegisterStartupScript(this.GetType(), "myalert", "alert('" + " Uygunsuzluk Silinmiştir" + "');", true);
+                LinkButton linkbutton = (LinkButton)sender;  // get the link button which trigger the event
+                GridViewRow row = (GridViewRow)linkbutton.NamingContainer; // get the GridViewRow that contains the linkbutton
 
-            db.UygunsuzlukListele(grdUygunsuzlukListe);
+                int editID = Convert.ToInt32(linkbutton.CommandArgument);
+                delete = db.UYGUNSUZLUK.FirstOrDefault(i => i.ID_UYGUNSUZLUK == editID);
+
+                delete.AKTIFLIK = "Pasif";
+
+                if (db.SaveChanges() > 0)
+                {
+                    ScriptManager.RegisterStartupScript(this, this.GetType(), "script", "myFunction('Uygunsuzluk Silindi','succsess');", true);
+
+                    bind();
+                }
+                else
+                {
+                    ScriptManager.RegisterStartupScript(this, this.GetType(), "script", "myFunction('Silme işlemi başarısız','fail');", true);
+                }
+            }
+            catch (Exception)
+            {
+                ScriptManager.RegisterStartupScript(this, this.GetType(), "script", "myFunction('Hay Aksi!  Beklenmedik bir hata oluştu :(','fail');", true);
+            }
+          
+
 
         }
 
+        protected void ddlAktiflik_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            bind();
+        }
     }
 }

@@ -12,11 +12,14 @@
     <EntitySetMapping Name="PERSONEL">
       <EntityTypeMapping TypeName="serkanISGModel.PERSONEL">
         <MappingFragment StoreEntitySet="PERSONEL">
+          <ScalarProperty Name="LOKASYON_PERSONEL" ColumnName="LOKASYON_PERSONEL" />
+          <ScalarProperty Name="UNVAN_PERSONEL" ColumnName="UNVAN_PERSONEL" />
+          <ScalarProperty Name="BIRIM_PERSONEL" ColumnName="BIRIM_PERSONEL" />
+          <ScalarProperty Name="TCNO" ColumnName="TCNO" />
           <ScalarProperty Name="Rol" ColumnName="Rol" />
           <ScalarProperty Name="PERSONEL_ID" ColumnName="PERSONEL_ID" />
           <ScalarProperty Name="PERSONEL_AD" ColumnName="PERSONEL_AD" />
           <ScalarProperty Name="PERSONEL_SOYAD" ColumnName="PERSONEL_SOYAD" />
-          <ScalarProperty Name="TCKN" ColumnName="TCKN" />
           <ScalarProperty Name="SICIL_NO" ColumnName="SICIL_NO" />
           <ScalarProperty Name="YAPTIGI_IS" ColumnName="YAPTIGI_IS" />
           <ScalarProperty Name="KULLANICI_ADI" ColumnName="KULLANICI_ADI" />
@@ -148,6 +151,14 @@
           <ScalarProperty Name="YENI_KAYIT" ColumnName="YENI_KAYIT" />
           <ScalarProperty Name="AD_MODUL" ColumnName="AD_MODUL" />
           <ScalarProperty Name="ID_MODUL" ColumnName="ID_MODUL" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="UNVAN">
+      <EntityTypeMapping TypeName="serkanISGModel.UNVAN">
+        <MappingFragment StoreEntitySet="UNVAN">
+          <ScalarProperty Name="AD_UNVAN" ColumnName="AD_UNVAN" />
+          <ScalarProperty Name="ID_UNVAN" ColumnName="ID_UNVAN" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

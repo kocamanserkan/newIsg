@@ -89,7 +89,6 @@ warning 6002: The table/view 'serkanISG.dbo.ILLER' does not have a primary key d
     <Property Name="PERSONEL_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="PERSONEL_AD" Type="nvarchar" MaxLength="50" />
     <Property Name="PERSONEL_SOYAD" Type="nvarchar" MaxLength="50" />
-    <Property Name="TCKN" Type="nvarchar" MaxLength="50" />
     <Property Name="SICIL_NO" Type="int" />
     <Property Name="YAPTIGI_IS" Type="nvarchar" MaxLength="50" Nullable="false" />
     <Property Name="KULLANICI_ADI" Type="nvarchar" MaxLength="50" />
@@ -97,6 +96,10 @@ warning 6002: The table/view 'serkanISG.dbo.ILLER' does not have a primary key d
     <Property Name="EMAIL" Type="nvarchar" MaxLength="50" />
     <Property Name="IS_BASLANGIC_TARIH" Type="datetime" />
     <Property Name="Rol" Type="nvarchar" MaxLength="50" />
+    <Property Name="TCNO" Type="nvarchar" MaxLength="50" />
+    <Property Name="BIRIM_PERSONEL" Type="nvarchar" MaxLength="100" />
+    <Property Name="UNVAN_PERSONEL" Type="nvarchar" MaxLength="90" />
+    <Property Name="LOKASYON_PERSONEL" Type="nvarchar" MaxLength="90" />
   </EntityType>
   <EntityType Name="sysdiagrams">
     <Key>
@@ -114,6 +117,13 @@ warning 6002: The table/view 'serkanISG.dbo.ILLER' does not have a primary key d
     </Key>
     <Property Name="ID_IS" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="AD_IS" Type="nvarchar" MaxLength="70" />
+  </EntityType>
+  <EntityType Name="UNVAN">
+    <Key>
+      <PropertyRef Name="ID_UNVAN" />
+    </Key>
+    <Property Name="ID_UNVAN" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="AD_UNVAN" Type="nvarchar" MaxLength="90" />
   </EntityType>
   <EntityType Name="UYGUNSUZLUK">
     <Key>
@@ -151,6 +161,7 @@ warning 6002: The table/view 'serkanISG.dbo.ILLER' does not have a primary key d
     <EntitySet Name="PERSONEL" EntityType="Self.PERSONEL" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="TANIMIS" EntityType="Self.TANIMIS" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="UNVAN" EntityType="Self.UNVAN" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="UYGUNSUZLUK" EntityType="Self.UYGUNSUZLUK" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="VARDIYA" EntityType="Self.VARDIYA" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="ILLER" EntityType="Self.ILLER" store:Type="Tables" store:Schema="dbo">

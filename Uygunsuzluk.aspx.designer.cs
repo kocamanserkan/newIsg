@@ -15,6 +15,15 @@ namespace serkanISG
     {
 
         /// <summary>
+        /// ddlAktiflik control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList ddlAktiflik;
+
+        /// <summary>
         /// ddlTur control.
         /// </summary>
         /// <remarks>
@@ -40,15 +49,6 @@ namespace serkanISG
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox dtpTespitTarih;
-
-        /// <summary>
-        /// timeValidator control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.RangeValidator timeValidator;
 
         /// <summary>
         /// txtUygnsuzDurum control.
@@ -96,15 +96,6 @@ namespace serkanISG
         protected global::System.Web.UI.WebControls.TextBox dateTerminTarihi;
 
         /// <summary>
-        /// val_termintarih control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.RangeValidator val_termintarih;
-
-        /// <summary>
         /// btnUygunsuzlukSave control.
         /// </summary>
         /// <remarks>
@@ -114,13 +105,13 @@ namespace serkanISG
         protected global::System.Web.UI.WebControls.Button btnUygunsuzlukSave;
 
         /// <summary>
-        /// grdUygunsuzlukListe control.
+        /// grdUygunsuz control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.GridView grdUygunsuzlukListe;
+        protected global::System.Web.UI.WebControls.GridView grdUygunsuz;
 
         /// <summary>
         /// label_ID control.
@@ -132,103 +123,85 @@ namespace serkanISG
         protected global::System.Web.UI.WebControls.Label label_ID;
 
         /// <summary>
-        /// ddlTura control.
+        /// ddlTur_edit control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddlTura;
+        protected global::System.Web.UI.WebControls.DropDownList ddlTur_edit;
 
         /// <summary>
-        /// ddldurum control.
+        /// ddlDurum_Edit control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddldurum;
+        protected global::System.Web.UI.WebControls.DropDownList ddlDurum_Edit;
 
         /// <summary>
-        /// ddlBirima control.
+        /// ddlBirim_edit control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddlBirima;
+        protected global::System.Web.UI.WebControls.DropDownList ddlBirim_edit;
 
         /// <summary>
-        /// dtpTespitTariha control.
+        /// dtpTespitTarih_Edit control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox dtpTespitTariha;
+        protected global::System.Web.UI.WebControls.TextBox dtpTespitTarih_Edit;
 
         /// <summary>
-        /// timeValidatora control.
+        /// txtUygnsuzDurum_Edit control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.RangeValidator timeValidatora;
+        protected global::System.Web.UI.WebControls.TextBox txtUygnsuzDurum_Edit;
 
         /// <summary>
-        /// txtUygnsuzDuruma control.
+        /// txtAksiyon_Edit control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtUygnsuzDuruma;
+        protected global::System.Web.UI.WebControls.TextBox txtAksiyon_Edit;
 
         /// <summary>
-        /// txtaksiyona control.
+        /// ddlTespiteden_edit control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtaksiyona;
+        protected global::System.Web.UI.WebControls.DropDownList ddlTespiteden_edit;
 
         /// <summary>
-        /// ddlTespitedena control.
+        /// ddlSorumlu_edit control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddlTespitedena;
+        protected global::System.Web.UI.WebControls.DropDownList ddlSorumlu_edit;
 
         /// <summary>
-        /// ddlSorumlua control.
+        /// dtpTerminTarih_edit control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddlSorumlua;
-
-        /// <summary>
-        /// dtpTerminTariha control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox dtpTerminTariha;
-
-        /// <summary>
-        /// RangeValidator1 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.RangeValidator RangeValidator1;
+        protected global::System.Web.UI.WebControls.TextBox dtpTerminTarih_edit;
 
         /// <summary>
         /// Guncelle control.
@@ -238,14 +211,5 @@ namespace serkanISG
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button Guncelle;
-
-        /// <summary>
-        /// Sil control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button Sil;
     }
 }

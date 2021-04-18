@@ -33,12 +33,6 @@ namespace serkanISG
 
 
 
-                //HttpCookie cookie = new HttpCookie("Kurabiye");
-                //cookie.Expires = DateTime.Now.AddHours(3);
-                //cookie.Values.Add("kullanici_Adi", txtKULLANICIADI.Text);
-                //cookie.Values.Add("full_ad", db.fullAd(txtKULLANICIADI).Text);
-                //Response.Cookies.Add(cookie);
-
 
 
             }
