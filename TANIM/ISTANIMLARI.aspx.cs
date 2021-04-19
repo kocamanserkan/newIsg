@@ -13,27 +13,39 @@ namespace serkanISG
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            grdISTANIM.DataSource = db.TANIMIS.ToList();
-            if (!IsPostBack)
+          
+            if (!IsPostBack && !IsCallback )
             {
-                grdISTANIM.DataBind();
+                bind();
             }
-
+            
 
 
 
         }
 
+        private void bind()
+        {
+            if (ddlAktiflik.SelectedValue == "Pasif")
+            {
+                grdISTANIM.DataSource = db.TANIMIS.Where(i => i.DURUM_IS == "Pasif").ToList();
+                grdISTANIM.DataBind();
+
+            }
+            else
+            {
+
+                grdISTANIM.DataSource = db.TANIMIS.Where(i => i.DURUM_IS == "Aktif").ToList();
+                grdISTANIM.DataBind();
+            }
+
+        }
         protected void btn_Click(object sender, EventArgs e)
         {
-            //ISTANIM1 IS = new ISTANIM1();
+ 
             TANIMIS IS = new TANIMIS();
-           
-            ISTANIM a = new ISTANIM();
-
-            //ISTANIM IS = new ISTANIM();
-            IS.AD_IS = txtISADI.Text.ToUpper();
-            if (db.TANIMIS.Any(i => i.AD_IS == txtISADI.Text))
+                 
+            if (db.TANIMIS.Any(i => i.AD_IS.ToUpper() == txtISADI.Text.ToUpper()))
             {
                 ScriptManager.RegisterStartupScript(this, this.GetType(), "script", "myFunction('"+ txtISADI.Text.ToString().ToUpper() + " Kayıtlarda Var.. Ekleme işlemi başarısız. !','fail');", true);
                 //ScriptManager.RegisterStartupScript(this, this.GetType(), "script", "alert('" + txtISADI.Text.ToString().ToUpper() + " Kayıtlarda Var.. Ekleme işlemi başarısız.');", true);
@@ -41,15 +53,14 @@ namespace serkanISG
             }
             else
             {
+                IS.AD_IS = txtISADI.Text.ToUpper();
+                IS.DURUM_IS = "Aktif";
                 
                  db.TANIMIS.Add(IS);
 
 
                 db.SaveChanges();
-                grdISTANIM.DataSource = db.TANIMIS.ToList();
-                grdISTANIM.DataBind();
-
-
+                bind();
                 ScriptManager.RegisterStartupScript(this, this.GetType(), "script", "myFunction('Kayıt Eklendi!','succsess');", true);
 
                 txtISADI.Text = string.Empty;
@@ -67,47 +78,58 @@ namespace serkanISG
 
             LinkButton linkbutton = (LinkButton)sender;  // get the link button which trigger the event
             GridViewRow row = (GridViewRow)linkbutton.NamingContainer; // get the GridViewRow that contains the linkbutton
-            txtIsAdi_edit.Text = HttpUtility.HtmlDecode(row.Cells[2].Text.ToString());  // get the first cell value of the row
-                                                                                        // if you want to get controls in templatefield , just use row.FindControl
+            TANIMIS edit = new TANIMIS();
+
+
+            int editID = Convert.ToInt32(linkbutton.CommandArgument);
+            edit = db.TANIMIS.FirstOrDefault(i => i.ID_IS == editID);
+
+
+            txtIsAdi_edit.Text = edit.AD_IS;  // get the first cell value of the row
+            Durum_edit.Text = edit.DURUM_IS;
+            // if you want to get controls in templatefield , just use row.FindControl
             lblISid_edit.Text = linkbutton.CommandArgument;
             ScriptManager.RegisterStartupScript(this, GetType(), "serkan", "$('#myModal').modal()", true);//show the modal
-
+           
 
         }
 
         protected void edit_Kaydet_Click(object sender, EventArgs e)
         {
-
-            //ISTANIM editIS = new ISTANIM();
-            TANIMIS editIS = new TANIMIS();
-            int newID = Convert.ToInt32(lblISid_edit.Text);
-
-
-            editIS = db.TANIMIS.FirstOrDefault(i => i.ID_IS == newID);
-
-            if (db.ISTANIM.FirstOrDefault(i => i.ISADI.ToUpper() == txtIsAdi_edit.Text.ToUpper()) != null)
+            try
             {
-                ScriptManager.RegisterStartupScript(this, this.GetType(), "script", "myFunction('İş Tanım güncellemesi yapılamamıştır. Güncellenen iş tanımı hali hazırda mevcut!','fail');", true);
-            }
-            else
-            {
+                //ISTANIM editIS = new ISTANIM();
+                TANIMIS editIS = new TANIMIS();
+                int newID = Convert.ToInt32(lblISid_edit.Text);
 
-                editIS.AD_IS = txtIsAdi_edit.Text;
+
+                editIS = db.TANIMIS.FirstOrDefault(i => i.ID_IS == newID);
+
+                editIS.AD_IS = txtIsAdi_edit.Text.ToUpper();
+                editIS.DURUM_IS = Durum_edit.SelectedValue;
 
 
                 if (db.SaveChanges() > 0)
                 {
                     ScriptManager.RegisterStartupScript(this, this.GetType(), "script", "myFunction('Kayıt başarıyle güncellendi!','succsess');", true);
-                    grdISTANIM.DataBind();
+                    bind();
+
                 }
                 else
                 {
                     ScriptManager.RegisterStartupScript(this, this.GetType(), "script", "myFunction('Güncelleme sırasında hata oluştu!','fail');", true);
-                    grdISTANIM.DataBind();
+                    bind();
                 }
 
 
             }
+            catch (Exception)
+            {
+
+                ScriptManager.RegisterStartupScript(this, this.GetType(), "script", "myFunction('Hay Aksi!  Beklenmedik bir hata oluştu :(','fail');", true);
+            }
+
+          
 
 
         
@@ -126,15 +148,15 @@ namespace serkanISG
 
             deleteIS = db.TANIMIS.FirstOrDefault(i => i.ID_IS == deleteID);
 
-            db.TANIMIS.Remove(deleteIS);
+            deleteIS.DURUM_IS = "Pasif";
+
+      
 
             if (db.SaveChanges() > 0)
             {
 
                 ScriptManager.RegisterStartupScript(this, this.GetType(), "script", "myFunction('Kayıt sss silindi!','succsess');", true);
-                grdISTANIM.DataSource = db.TANIMIS.ToList();
-                grdISTANIM.DataBind();
-
+                bind();
 
                 //Response.Write("<script>MyFunction('İş Tanımı Silindi..','succsess');window.location = 'ISTANIMLARI.aspx';</script>");
 
@@ -143,7 +165,7 @@ namespace serkanISG
             else
             {
                 ScriptManager.RegisterStartupScript(this, this.GetType(), "script", "Myfunction('iş Tanımı silme işlemi sırasında Hata oluştu','fail');", true);
-                grdISTANIM.DataBind();
+                bind();
             }
 
 
@@ -154,6 +176,60 @@ namespace serkanISG
         protected void Unnamed_Click(object sender, EventArgs e)
         {
             ScriptManager.RegisterStartupScript(this, this.GetType(), "script", "myFunction('serkan','succsess');", true);
+        }
+
+        protected void ddlAktiflik_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+
+            if (ddlAktiflik.SelectedValue == "Pasif")
+            {
+                grdISTANIM.DataSource = db.TANIMIS.Where(i => i.DURUM_IS == "Pasif").ToList();
+                bind();
+
+            }
+            else
+            {
+
+                grdISTANIM.DataSource = db.TANIMIS.Where(i => i.DURUM_IS == "Aktif").ToList();
+                bind();
+
+
+
+
+            }
+
+
+        }
+
+        protected void reload_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                LinkButton linkbutton = (LinkButton)sender;  // get the link button which trigger the event
+                GridViewRow row = (GridViewRow)linkbutton.NamingContainer; // get the GridViewRow that contains the linkbutton
+                TANIMIS aktif = new TANIMIS();
+
+                int aktifID = Convert.ToInt32(linkbutton.CommandArgument);
+                aktif = db.TANIMIS.FirstOrDefault(i => i.ID_IS == aktifID);
+                aktif.DURUM_IS = "Aktif";
+                if (db.SaveChanges() > 0)
+                {
+                    ScriptManager.RegisterStartupScript(this, this.GetType(), "script", "myFunction('Kayıt başarıyla aktife alındı','succsess');", true);
+                    bind();
+                }
+                {
+                    ScriptManager.RegisterStartupScript(this, this.GetType(), "script", "Myfunction('Aktife alma işlemi sırasında Hata oluştu','fail');", true);
+                    bind();
+                }
+
+            }
+            catch (Exception)
+            {
+
+                ScriptManager.RegisterStartupScript(this, this.GetType(), "script", "myFunction('Hay Aksi!  Beklenmedik bir hata oluştu :(','fail');", true);
+            }
+           
         }
     }
 }

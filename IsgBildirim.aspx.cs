@@ -16,59 +16,14 @@ namespace serkanISG
         protected void Page_Load(object sender, EventArgs e)
         {
 
-            grdBILDIRIM.DataSource = db.BILDIRIMLVL1.ToList();
-            if (!IsPostBack)
+          
+            if (!IsPostBack && !IsCallback)
             {
 
                 try
                 {
-                    
-          
-                    grdBILDIRIM.DataBind();
-                    
-                    ddlVardiya.DataSource = db.VARDIYA.Select(i => i.AD_VARDIYA).ToList();
-                    ddlBildirimYapan.DataSource = db.PERSONEL.Select(i => i.PERSONEL_AD.ToUpper() + " " + i.PERSONEL_SOYAD.ToUpper()).ToList();
-                    ddlBirim.DataSource = db.BIRIM.Select(i => i.AD_BIRIM).ToList();
-                    ddlKategori.DataSource = db.KATEGORI.Where(i => i.DURUM == true).Select(i => i.AD_KATEGORI).ToList();
-                    ddlLokasyon.DataSource = db.LOKASYONN.Select(i => i.AD_LOKASYON).ToList();
-                    ddlMudahilPerson.DataSource = db.PERSONEL.Select(i => i.PERSONEL_AD.ToUpper() + " " + i.PERSONEL_SOYAD.ToUpper()).ToList();
-                    ddlSorumluPersonel.DataSource = db.PERSONEL.Select(i => i.PERSONEL_AD.ToUpper() + " " + i.PERSONEL_SOYAD.ToUpper()).ToList();
 
-                    //SAdsad
-                    ddlVardiya_Edit.DataSource = db.VARDIYA.Select(i => i.AD_VARDIYA).ToList();
-                    ddlBildirimYapan_Edit.DataSource = db.PERSONEL.Select(i => i.PERSONEL_AD.ToUpper() + " " + i.PERSONEL_SOYAD.ToUpper()).ToList();
-                    ddlBirim_Edit.DataSource = db.BIRIM.Select(i => i.AD_BIRIM).ToList();
-                    ddlKategori_Edit.DataSource = db.KATEGORI.Where(i => i.DURUM == true).Select(i => i.AD_KATEGORI).ToList();
-                    ddl_Lokasyon_Edit.DataSource = db.LOKASYONN.Select(i => i.AD_LOKASYON).ToList();
-                    ddlMudahilPersonel_edit.DataSource = db.PERSONEL.Select(i => i.PERSONEL_AD.ToUpper() + " " + i.PERSONEL_SOYAD.ToUpper()).ToList();
-
-                    ddlLokasyon.AppendDataBoundItems = true;
-                    ddlLokasyon.Items.Insert(0, new ListItem("Seçiniz", ""));
-
-                    ddlVardiya.DataBind();
-                    ddlBildirimYapan.DataBind();
-                    ddlBirim.DataBind();
-                    ddlKategori.DataBind();
-                    ddlLokasyon.DataBind();
-                    ddlMudahilPerson.DataBind();
-                    ddlSorumluPersonel.DataBind();
-                
-
-                    //
-
-                    ddlVardiya_Edit.DataBind();
-                    ddlBildirimYapan_Edit.DataBind();
-                    ddlBirim_Edit.DataBind();
-                    ddlKategori_Edit.DataBind();
-                    ddl_Lokasyon_Edit.DataBind();
-                    ddlMudahilPersonel_edit.DataBind();
-                
-
-
-                    txtTarih.Text = DateTime.Now.ToString("yyyy-MM-dd");
-                    txtSaat.Text = DateTime.Now.ToString("HH:mm");
-                    txtTerminTarih.Text = DateTime.Now.ToString("yyyy-MM-dd");
-
+                    bind();
                   
                 }
                 catch (Exception)
@@ -82,6 +37,78 @@ namespace serkanISG
 
             }
         }
+
+        private void bind()
+        {
+
+            if (ddlAktiflik.SelectedValue == "Pasif")
+            {
+                grdBILDIRIM.DataSource = db.BILDIRIMLVL1.Where(i => i.DURUM == "Pasif").ToList();
+                grdBILDIRIM.DataBind();
+
+            }
+            else
+            {
+
+                grdBILDIRIM.DataSource = db.BILDIRIMLVL1.Where(i => i.DURUM == "Aktif").ToList();
+                grdBILDIRIM.DataBind();
+
+
+
+            }
+
+
+          
+
+
+
+            ddlVardiya.DataSource = db.VARDIYA.Select(i => i.AD_VARDIYA).ToList();
+            ddlBildirimYapan.DataSource = db.PERSONEL.Select(i => i.PERSONEL_AD.ToUpper() + " " + i.PERSONEL_SOYAD.ToUpper()).ToList();
+            ddlBirim.DataSource = db.BIRIM.Select(i => i.AD_BIRIM).ToList();
+            ddlKategori.DataSource = db.KATEGORI.Where(i => i.DURUM == true).Select(i => i.AD_KATEGORI).ToList();
+            ddlLokasyon.DataSource = db.LOKASYONN.Select(i => i.AD_LOKASYON).ToList();
+            ddlMudahilPerson.DataSource = db.PERSONEL.Select(i => i.PERSONEL_AD.ToUpper() + " " + i.PERSONEL_SOYAD.ToUpper()).ToList();
+            ddlSorumluPersonel.DataSource = db.PERSONEL.Select(i => i.PERSONEL_AD.ToUpper() + " " + i.PERSONEL_SOYAD.ToUpper()).ToList();
+
+            //SAdsad
+            ddlVardiya_Edit.DataSource = db.VARDIYA.Select(i => i.AD_VARDIYA).ToList();
+            ddlBildirimYapan_Edit.DataSource = db.PERSONEL.Select(i => i.PERSONEL_AD.ToUpper() + " " + i.PERSONEL_SOYAD.ToUpper()).ToList();
+            ddlBirim_Edit.DataSource = db.BIRIM.Select(i => i.AD_BIRIM).ToList();
+            ddlKategori_Edit.DataSource = db.KATEGORI.Where(i => i.DURUM == true).Select(i => i.AD_KATEGORI).ToList();
+            ddl_Lokasyon_Edit.DataSource = db.LOKASYONN.Select(i => i.AD_LOKASYON).ToList();
+            ddlMudahilPersonel_edit.DataSource = db.PERSONEL.Select(i => i.PERSONEL_AD.ToUpper() + " " + i.PERSONEL_SOYAD.ToUpper()).ToList();
+
+            ddlLokasyon.AppendDataBoundItems = true;
+            ddlLokasyon.Items.Insert(0, new ListItem("Seçiniz", ""));
+
+            ddlVardiya.DataBind();
+            ddlBildirimYapan.DataBind();
+            ddlBirim.DataBind();
+            ddlKategori.DataBind();
+            ddlLokasyon.DataBind();
+            ddlMudahilPerson.DataBind();
+            ddlSorumluPersonel.DataBind();
+
+
+            //
+
+            ddlVardiya_Edit.DataBind();
+            ddlBildirimYapan_Edit.DataBind();
+            ddlBirim_Edit.DataBind();
+            ddlKategori_Edit.DataBind();
+            ddl_Lokasyon_Edit.DataBind();
+            ddlMudahilPersonel_edit.DataBind();
+
+
+
+            txtTarih.Text = DateTime.Now.ToString("yyyy-MM-dd");
+            txtSaat.Text = DateTime.Now.ToString("HH:mm");
+            txtTerminTarih.Text = DateTime.Now.ToString("yyyy-MM-dd");
+
+        }
+
+
+
 
         protected void btnEKLE_Click(object sender, EventArgs e)
         {
@@ -139,8 +166,7 @@ namespace serkanISG
 
 
                     ScriptManager.RegisterStartupScript(this, this.GetType(), "script", "myFunction('Bildirim Eklendi','succsess');", true);
-                    grdBILDIRIM.DataSource = db.BILDIRIMLVL1.ToList();
-                    grdBILDIRIM.DataBind();
+                    bind();
 
                 }
                 else
@@ -176,6 +202,7 @@ namespace serkanISG
                 yeniUygsunsuzluk.TUR = "Minör";
                 yeniUygsunsuzluk.UYGUNSUZ_DURUM = txtUygunsuzDurum.Text;
                 yeniUygsunsuzluk.SORUMLU_AD = ddlSorumluPersonel.Text;
+                yeniUygsunsuzluk.AKTIFLIK = "Aktif";
                 db.UYGUNSUZLUK.Add(yeniUygsunsuzluk);
 
 
@@ -232,9 +259,7 @@ namespace serkanISG
                     ScriptManager.RegisterStartupScript(this, this.GetType(), "script", "myFunction('Bildirim silindi','succsess');", true);
 
 
-                    grdBILDIRIM.DataSource = db.BILDIRIMLVL1.ToList();
-                        grdBILDIRIM.DataBind();
-
+                    bind();
 
                     
 
@@ -262,33 +287,118 @@ namespace serkanISG
 
         protected void btn_edit_link_Click(object sender, EventArgs e)
         {
-         
-            BILDIRIMLVL1 edit = new BILDIRIMLVL1();
+            try
+            {
+                BILDIRIMLVL1 edit = new BILDIRIMLVL1();
 
-            LinkButton linkbutton = (LinkButton)sender;  // get the link button which trigger the event
-            GridViewRow row = (GridViewRow)linkbutton.NamingContainer; // get the GridViewRow that contains the linkbutton
+                LinkButton linkbutton = (LinkButton)sender;  // get the link button which trigger the event
+                GridViewRow row = (GridViewRow)linkbutton.NamingContainer; // get the GridViewRow that contains the linkbutton
+
+                int editID = Convert.ToInt32(linkbutton.CommandArgument);
+                edit = db.BILDIRIMLVL1.FirstOrDefault(i => i.ID_BILDIRIM == editID);
+                var FullDate = edit.TARIHSAAT;
+                string[] parce = FullDate.Split(' ');
+
+
+
+                IDsecret.Text = Convert.ToString(edit.ID_BILDIRIM);
+                txtTarih_Edit.Text = parce[0];
+                txtSaat_Edit.Text = parce[1];
+                ddlMudahilPersonel_edit.Text = edit.MUDAHIL_PERSONEL.ToUpper();
+                ddlKategori_Edit.Text = edit.KATEGORI;
+                txtBildirimMetin_Edit.Text = edit.ACIKLAMA;
+                ddlOnlemBool_edit.Text = edit.ONLEMBOOL;
+                ddlBirim_Edit.Text = edit.BIRIM;
+                ddl_Lokasyon_Edit.Text = edit.LOKASYON;
+                ddlBildirimYapan_Edit.Text = edit.PERSONEL_AD.ToUpper();
+                ass.ImageUrl = "~/Upload/" + edit.GORSEL.ToString();
+                ddlDurumEdit.Text = edit.DURUM;
+                ScriptManager.RegisterStartupScript(this, GetType(), "serkan", "$('#myModal').modal()", true);//show the modal
+            }
+            catch (Exception)
+            {
+
+                ScriptManager.RegisterStartupScript(this, this.GetType(), "script", "myFunction('Hay Aksi!  Beklenmedik bir hata oluştu :(','fail');", true);
+            }
            
-            int editID = Convert.ToInt32(linkbutton.CommandArgument);
-            edit = db.BILDIRIMLVL1.FirstOrDefault(i => i.ID_BILDIRIM == editID);
-            var FullDate = HttpUtility.HtmlDecode(row.Cells[2].Text.ToString());
-            string[] parce = FullDate.Split(' ');
 
 
 
+        }
 
-            txtTarih_Edit.Text = parce[0];
-            txtSaat_Edit.Text = parce[1];
-            ddlMudahilPersonel_edit.Text = HttpUtility.HtmlDecode(row.Cells[3].Text.ToString());
-            ddlKategori_Edit.Text = HttpUtility.HtmlDecode(row.Cells[4].Text.ToString());
-            txtBildirimMetin_Edit.Text = HttpUtility.HtmlDecode(row.Cells[5].Text.ToString());
-            ddlOnlemBool_edit.Text = HttpUtility.HtmlDecode(row.Cells[6].Text.ToString());
-            ddlBirim_Edit.Text = HttpUtility.HtmlDecode(row.Cells[8].Text.ToString());
-            ddl_Lokasyon_Edit.Text = HttpUtility.HtmlDecode(row.Cells[9].Text.ToString());
-            ddlBildirimYapan_Edit.Text = HttpUtility.HtmlDecode(row.Cells[11].Text.ToString());
-            ass.ImageUrl = "~/Upload/" + edit.GORSEL.ToString();
+        protected void ddlAktiflik_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (ddlAktiflik.SelectedValue == "Pasif")
+            {
+                grdBILDIRIM.DataSource = db.BILDIRIMLVL1.Where(i => i.DURUM == "Pasif").ToList();
+                grdBILDIRIM.DataBind();
 
-            ScriptManager.RegisterStartupScript(this, GetType(), "serkan", "$('#myModal').modal()", true);//show the modal
+            }
+            else
+            {
 
+                grdBILDIRIM.DataSource = db.BILDIRIMLVL1.Where(i => i.DURUM == "Aktif").ToList();
+                grdBILDIRIM.DataBind();
+
+
+
+            }
+        }
+
+        protected void edit_Kaydet_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                //
+                BILDIRIMLVL1 edit = new BILDIRIMLVL1();
+
+                int editID = Convert.ToInt32(IDsecret.Text);
+
+                edit = db.BILDIRIMLVL1.FirstOrDefault(i => i.ID_BILDIRIM == editID);
+
+                string tarih = txtTarih_Edit.Text;
+                string saat = txtSaat_Edit.Text;
+                string Date = tarih + " " + saat;
+                edit.TARIHSAAT = Date;
+                edit.VARDIYA = ddlVardiya_Edit.SelectedValue;
+                edit.PERSONEL_AD = ddlBildirimYapan_Edit.SelectedValue;
+                edit.BIRIM = ddlBirim_Edit.SelectedValue;
+                edit.KATEGORI = ddlKategori_Edit.SelectedValue;
+                edit.LOKASYON = ddl_Lokasyon_Edit.SelectedValue;
+                edit.ONLEMBOOL = ddlOnlemBool_edit.SelectedValue;
+                edit.DURUM = ddlDurumEdit.SelectedValue;
+                edit.ACIKLAMA = txtBildirimMetin_Edit.Text;
+                edit.AKSIYON = txtAksiyon_Edit.Text;
+               if(edit.GORSEL.ToUpper() == imgEdit.FileName.ToString())
+                {
+                    edit.GORSEL = imgEdit.FileName.ToString();
+                }
+                edit.MUDAHIL_PERSONEL = ddlMudahilPersonel_edit.SelectedValue;
+
+                if (db.SaveChanges() > 0)
+                {
+
+
+                    ScriptManager.RegisterStartupScript(this, this.GetType(), "script", "myFunction('Bildirim Güncellendi','succsess');", true);
+                        bind();
+
+                }
+                else
+                {
+
+                    ScriptManager.RegisterStartupScript(this, this.GetType(), "script", "myFunction('Bildirim güncellenemedi','fail');", true);
+
+                }
+
+
+
+            }
+            catch (Exception)
+            {
+
+                ScriptManager.RegisterStartupScript(this, this.GetType(), "script", "myFunction('Hay Aksi!  Beklenmedik bir hata oluştu :(','fail');", true);
+            }
+           
 
 
 

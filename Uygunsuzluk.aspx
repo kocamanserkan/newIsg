@@ -159,9 +159,9 @@
                         <asp:TemplateField HeaderText="Düzen">
                             <ItemTemplate>
                                 
-                                <asp:LinkButton runat="server" CssClass="btn btn-warning" ID="link" CausesValidation="false" OnClick="link_Click"  CommandName="Select" CommandArgument='<%# Eval("ID_UYGUNSUZLUK") %>'>Düzenle</asp:LinkButton>
+                                <asp:LinkButton runat="server" CssClass="btn btn-warning" ID="link" CausesValidation="false" OnClick="link_Click" Text="<i class='icon-copy fi-pencil'></i>" ToolTip="Düzenle"  CommandName="Select" CommandArgument='<%# Eval("ID_UYGUNSUZLUK") %>'></asp:LinkButton>
                                 <div class="as">
-                                <asp:LinkButton runat="server" ClientIDMode="Inherit"  OnClick="btn_sil_Click" Style="margin-left: 103px; margin-top: -62px;"  CssClass="btn btn-danger" ID="btn_sil" OnClientClick="return fnConfirmDelete();" CausesValidation="false"  CommandArgument='<%# Eval("ID_UYGUNSUZLUK") %>'>Sil</asp:LinkButton>
+                                <asp:LinkButton runat="server" ClientIDMode="Inherit"  OnClick="btn_sil_Click"   Style="margin-left:53px; margin-top: -62px;" ToolTip="Sil"  CssClass="btn btn-danger" ID="btn_sil"  OnClientClick="return fnConfirmDelete();" CausesValidation="false"  Text="<i class='fa fa-trash-o' aria-hidden='true'></i>" CommandArgument='<%# Eval("ID_UYGUNSUZLUK") %>'></asp:LinkButton>
                                     </div>
 
                             </ItemTemplate>

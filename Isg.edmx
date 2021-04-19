@@ -30,6 +30,7 @@
           </Key>
           <Property Name="ID_BIRIM" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="AD_BIRIM" Type="nvarchar" MaxLength="100" />
+          <Property Name="DURUM_BIRIM" Type="nvarchar" MaxLength="50" />
         </EntityType>
         <!--Errors Found During Generation:
 warning 6002: The table/view 'serkanISG.dbo.ILLER' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
@@ -47,6 +48,7 @@ warning 6002: The table/view 'serkanISG.dbo.ILLER' does not have a primary key d
           </Key>
           <Property Name="ISID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="ISADI" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Durum" Type="nvarchar" MaxLength="50" />
         </EntityType>
         <EntityType Name="KATEGORI">
           <Key>
@@ -76,6 +78,7 @@ warning 6002: The table/view 'serkanISG.dbo.ILLER' does not have a primary key d
           <Property Name="SEHIR_LOKASYON" Type="nvarchar" MaxLength="55" />
           <Property Name="ACIKLAMA_LOKASYON" Type="nvarchar" MaxLength="55" />
           <Property Name="KROKI_LOKASYON" Type="nvarchar(max)" />
+          <Property Name="DURUM_LOKASYON" Type="nvarchar" MaxLength="50" />
         </EntityType>
         <EntityType Name="MODUL_MAILAYAR">
           <Key>
@@ -122,6 +125,7 @@ warning 6002: The table/view 'serkanISG.dbo.ILLER' does not have a primary key d
           </Key>
           <Property Name="ID_IS" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="AD_IS" Type="nvarchar" MaxLength="70" />
+          <Property Name="DURUM_IS" Type="nvarchar" MaxLength="50" />
         </EntityType>
         <EntityType Name="UNVAN">
           <Key>
@@ -129,6 +133,7 @@ warning 6002: The table/view 'serkanISG.dbo.ILLER' does not have a primary key d
           </Key>
           <Property Name="ID_UNVAN" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="AD_UNVAN" Type="nvarchar" MaxLength="90" />
+          <Property Name="DURUM_UNVAN" Type="nchar" MaxLength="10" />
         </EntityType>
         <EntityType Name="UYGUNSUZLUK">
           <Key>
@@ -154,6 +159,7 @@ warning 6002: The table/view 'serkanISG.dbo.ILLER' does not have a primary key d
           </Key>
           <Property Name="ID_VARDIYA" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="AD_VARDIYA" Type="nvarchar" MaxLength="50" />
+          <Property Name="DURUM_VARDIYAa" Type="nvarchar" MaxLength="50" />
         </EntityType>
         <EntityContainer Name="serkanISGModelStoreContainer">
           <EntitySet Name="BILDIRIMLVL1" EntityType="Self.BILDIRIMLVL1" Schema="dbo" store:Type="Tables" />
@@ -186,6 +192,7 @@ warning 6002: The table/view 'serkanISG.dbo.ILLER' does not have a primary key d
           </Key>
           <Property Name="ISID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="ISADI" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Durum" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
         </EntityType>
         <EntityType Name="PERSONEL">
           <Key>
@@ -270,6 +277,7 @@ warning 6002: The table/view 'serkanISG.dbo.ILLER' does not have a primary key d
           <Property Name="SEHIR_LOKASYON" Type="String" MaxLength="55" FixedLength="false" Unicode="true" />
           <Property Name="ACIKLAMA_LOKASYON" Type="String" MaxLength="55" FixedLength="false" Unicode="true" />
           <Property Name="KROKI_LOKASYON" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="DURUM_LOKASYON" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
         </EntityType>
         <EntityType Name="ILLER">
           <Key>
@@ -285,6 +293,7 @@ warning 6002: The table/view 'serkanISG.dbo.ILLER' does not have a primary key d
           </Key>
           <Property Name="ID_IS" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="AD_IS" Type="String" MaxLength="70" FixedLength="false" Unicode="true" />
+          <Property Name="DURUM_IS" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
         </EntityType>
         <EntityType Name="KATEGORI">
           <Key>
@@ -300,6 +309,7 @@ warning 6002: The table/view 'serkanISG.dbo.ILLER' does not have a primary key d
           </Key>
           <Property Name="ID_VARDIYA" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="AD_VARDIYA" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="DURUM_VARDIYAa" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
         </EntityType>
         <EntityType Name="BIRIM">
           <Key>
@@ -307,6 +317,7 @@ warning 6002: The table/view 'serkanISG.dbo.ILLER' does not have a primary key d
           </Key>
           <Property Name="ID_BIRIM" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="AD_BIRIM" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="DURUM_BIRIM" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
         </EntityType>
         <EntityType Name="BILDIRIMLVL1">
           <Key>
@@ -343,6 +354,7 @@ warning 6002: The table/view 'serkanISG.dbo.ILLER' does not have a primary key d
           </Key>
           <Property Name="ID_UNVAN" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="AD_UNVAN" Type="String" MaxLength="90" FixedLength="false" Unicode="true" />
+          <Property Name="DURUM_UNVAN" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
         </EntityType>
       </Schema>
     </edmx:ConceptualModels>
@@ -353,6 +365,7 @@ warning 6002: The table/view 'serkanISG.dbo.ILLER' does not have a primary key d
           <EntitySetMapping Name="ISTANIM">
             <EntityTypeMapping TypeName="serkanISGModel.ISTANIM">
               <MappingFragment StoreEntitySet="ISTANIM">
+                <ScalarProperty Name="Durum" ColumnName="Durum" />
                 <ScalarProperty Name="ISID" ColumnName="ISID" />
                 <ScalarProperty Name="ISADI" ColumnName="ISADI" />
               </MappingFragment>
@@ -423,6 +436,7 @@ warning 6002: The table/view 'serkanISG.dbo.ILLER' does not have a primary key d
           <EntitySetMapping Name="LOKASYONN">
             <EntityTypeMapping TypeName="serkanISGModel.LOKASYONN">
               <MappingFragment StoreEntitySet="LOKASYONN">
+                <ScalarProperty Name="DURUM_LOKASYON" ColumnName="DURUM_LOKASYON" />
                 <ScalarProperty Name="KROKI_LOKASYON" ColumnName="KROKI_LOKASYON" />
                 <ScalarProperty Name="ACIKLAMA_LOKASYON" ColumnName="ACIKLAMA_LOKASYON" />
                 <ScalarProperty Name="SEHIR_LOKASYON" ColumnName="SEHIR_LOKASYON" />
@@ -442,6 +456,7 @@ warning 6002: The table/view 'serkanISG.dbo.ILLER' does not have a primary key d
           <EntitySetMapping Name="TANIMIS">
             <EntityTypeMapping TypeName="serkanISGModel.TANIMIS">
               <MappingFragment StoreEntitySet="TANIMIS">
+                <ScalarProperty Name="DURUM_IS" ColumnName="DURUM_IS" />
                 <ScalarProperty Name="AD_IS" ColumnName="AD_IS" />
                 <ScalarProperty Name="ID_IS" ColumnName="ID_IS" />
               </MappingFragment>
@@ -459,6 +474,7 @@ warning 6002: The table/view 'serkanISG.dbo.ILLER' does not have a primary key d
           <EntitySetMapping Name="VARDIYA">
             <EntityTypeMapping TypeName="serkanISGModel.VARDIYA">
               <MappingFragment StoreEntitySet="VARDIYA">
+                <ScalarProperty Name="DURUM_VARDIYAa" ColumnName="DURUM_VARDIYAa" />
                 <ScalarProperty Name="AD_VARDIYA" ColumnName="AD_VARDIYA" />
                 <ScalarProperty Name="ID_VARDIYA" ColumnName="ID_VARDIYA" />
               </MappingFragment>
@@ -467,6 +483,7 @@ warning 6002: The table/view 'serkanISG.dbo.ILLER' does not have a primary key d
           <EntitySetMapping Name="BIRIM">
             <EntityTypeMapping TypeName="serkanISGModel.BIRIM">
               <MappingFragment StoreEntitySet="BIRIM">
+                <ScalarProperty Name="DURUM_BIRIM" ColumnName="DURUM_BIRIM" />
                 <ScalarProperty Name="AD_BIRIM" ColumnName="AD_BIRIM" />
                 <ScalarProperty Name="ID_BIRIM" ColumnName="ID_BIRIM" />
               </MappingFragment>
@@ -506,6 +523,7 @@ warning 6002: The table/view 'serkanISG.dbo.ILLER' does not have a primary key d
           <EntitySetMapping Name="UNVAN">
             <EntityTypeMapping TypeName="serkanISGModel.UNVAN">
               <MappingFragment StoreEntitySet="UNVAN">
+                <ScalarProperty Name="DURUM_UNVAN" ColumnName="DURUM_UNVAN" />
                 <ScalarProperty Name="AD_UNVAN" ColumnName="AD_UNVAN" />
                 <ScalarProperty Name="ID_UNVAN" ColumnName="ID_UNVAN" />
               </MappingFragment>

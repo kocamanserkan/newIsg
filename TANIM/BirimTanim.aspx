@@ -31,8 +31,8 @@
                     <Columns>
                         <asp:TemplateField HeaderText="Düzen">
                             <ItemTemplate>
-                                <asp:LinkButton runat="server" CssClass="btn btn-warning" ID="btn_edit_link" CausesValidation="false" CommandName="Select" CommandArgument='<%# Eval("ID_BIRIM") %>' OnClick="btn_edit_link_Click">Düzenle</asp:LinkButton>
-                                <asp:LinkButton runat="server" CssClass="btn btn-danger" ID="btn_sil" OnClientClick="return fnConfirmDelete();" CausesValidation="false" CommandArgument='<%# Eval("ID_BIRIM") %>' OnClick="btn_sil_Click">Sil</asp:LinkButton>
+                                <asp:LinkButton runat="server" CssClass="btn btn-warning" ID="btn_edit_link" CausesValidation="false" CommandName="Select" CommandArgument='<%# Eval("ID_BIRIM") %>' OnClick="btn_edit_link_Click">Düzen</asp:LinkButton>
+                                <asp:LinkButton runat="server" CssClass="btn btn-danger" ID="btn_sil" Text="<i class='fa fa-trash-o' aria-hidden='true'></i>" OnClientClick="return fnConfirmDelete();" CausesValidation="false" CommandArgument='<%# Eval("ID_BIRIM") %>' OnClick="btn_sil_Click"></asp:LinkButton>
                             </ItemTemplate>
                         </asp:TemplateField>
                         <asp:BoundField DataField="ID_BIRIM" HeaderText="BİRİM ID'si" />

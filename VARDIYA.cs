@@ -16,5 +16,6 @@ namespace serkanISG
     {
         public int ID_VARDIYA { get; set; }
         public string AD_VARDIYA { get; set; }
+        public string DURUM_VARDIYAa { get; set; }
     }
 }

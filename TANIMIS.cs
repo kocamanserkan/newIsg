@@ -16,5 +16,6 @@ namespace serkanISG
     {
         public int ID_IS { get; set; }
         public string AD_IS { get; set; }
+        public string DURUM_IS { get; set; }
     }
 }

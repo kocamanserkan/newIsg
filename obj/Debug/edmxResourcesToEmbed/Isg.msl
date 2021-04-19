@@ -4,6 +4,7 @@
     <EntitySetMapping Name="ISTANIM">
       <EntityTypeMapping TypeName="serkanISGModel.ISTANIM">
         <MappingFragment StoreEntitySet="ISTANIM">
+          <ScalarProperty Name="Durum" ColumnName="Durum" />
           <ScalarProperty Name="ISID" ColumnName="ISID" />
           <ScalarProperty Name="ISADI" ColumnName="ISADI" />
         </MappingFragment>
@@ -74,6 +75,7 @@
     <EntitySetMapping Name="LOKASYONN">
       <EntityTypeMapping TypeName="serkanISGModel.LOKASYONN">
         <MappingFragment StoreEntitySet="LOKASYONN">
+          <ScalarProperty Name="DURUM_LOKASYON" ColumnName="DURUM_LOKASYON" />
           <ScalarProperty Name="KROKI_LOKASYON" ColumnName="KROKI_LOKASYON" />
           <ScalarProperty Name="ACIKLAMA_LOKASYON" ColumnName="ACIKLAMA_LOKASYON" />
           <ScalarProperty Name="SEHIR_LOKASYON" ColumnName="SEHIR_LOKASYON" />
@@ -93,6 +95,7 @@
     <EntitySetMapping Name="TANIMIS">
       <EntityTypeMapping TypeName="serkanISGModel.TANIMIS">
         <MappingFragment StoreEntitySet="TANIMIS">
+          <ScalarProperty Name="DURUM_IS" ColumnName="DURUM_IS" />
           <ScalarProperty Name="AD_IS" ColumnName="AD_IS" />
           <ScalarProperty Name="ID_IS" ColumnName="ID_IS" />
         </MappingFragment>
@@ -110,6 +113,7 @@
     <EntitySetMapping Name="VARDIYA">
       <EntityTypeMapping TypeName="serkanISGModel.VARDIYA">
         <MappingFragment StoreEntitySet="VARDIYA">
+          <ScalarProperty Name="DURUM_VARDIYAa" ColumnName="DURUM_VARDIYAa" />
           <ScalarProperty Name="AD_VARDIYA" ColumnName="AD_VARDIYA" />
           <ScalarProperty Name="ID_VARDIYA" ColumnName="ID_VARDIYA" />
         </MappingFragment>
@@ -118,6 +122,7 @@
     <EntitySetMapping Name="BIRIM">
       <EntityTypeMapping TypeName="serkanISGModel.BIRIM">
         <MappingFragment StoreEntitySet="BIRIM">
+          <ScalarProperty Name="DURUM_BIRIM" ColumnName="DURUM_BIRIM" />
           <ScalarProperty Name="AD_BIRIM" ColumnName="AD_BIRIM" />
           <ScalarProperty Name="ID_BIRIM" ColumnName="ID_BIRIM" />
         </MappingFragment>
@@ -157,6 +162,7 @@
     <EntitySetMapping Name="UNVAN">
       <EntityTypeMapping TypeName="serkanISGModel.UNVAN">
         <MappingFragment StoreEntitySet="UNVAN">
+          <ScalarProperty Name="DURUM_UNVAN" ColumnName="DURUM_UNVAN" />
           <ScalarProperty Name="AD_UNVAN" ColumnName="AD_UNVAN" />
           <ScalarProperty Name="ID_UNVAN" ColumnName="ID_UNVAN" />
         </MappingFragment>

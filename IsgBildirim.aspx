@@ -77,20 +77,29 @@
             </div>
             <br />
             <ul>
-                <li>
+                <li  style="float:left;">
 
                     <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myyModal">Bildirim Ekle</button>
+                                    
+                </li>
+                <li style="float:left;" >
+                    <asp:DropDownList ID="ddlAktiflik" AutoPostBack="true"  OnSelectedIndexChanged="ddlAktiflik_SelectedIndexChanged"  CssClass="form-control" style="width:200px; margin-left: 840px;" runat="server">
+                         
+                        <asp:ListItem Selected hidden Text="Listeleme Durumu" />
+                        <asp:ListItem Text="Aktif" />
+                        <asp:ListItem Text="Pasif" />
+                    </asp:DropDownList>
                 </li>
             </ul>
             <br />
             <%--  GRIDVIEW--%>
-            <div style="width: 100%; height: 400px; overflow: scroll">
+            <div style="width: 100%; height: 480px; overflow: scroll">
                 <asp:GridView ID="grdBILDIRIM" CssClass="data-table table stripe hover nowrap" AutoGenerateColumns="False" GridLines="None" runat="server">
                     <Columns>
                         <asp:TemplateField HeaderText="Düzen">
                             <ItemTemplate>
-                                <asp:LinkButton runat="server" CssClass="btn btn-warning" ID="btn_edit_link" CausesValidation="false" CommandName="Select" CommandArgument='<%# Eval("ID_BILDIRIM") %>' OnClick="btn_edit_link_Click">Düzenle</asp:LinkButton>
-                                <asp:LinkButton runat="server" CssClass="btn btn-danger" Style="margin-left: 97px; margin-top: -64px;" ID="btn_sil" OnClientClick="return fnConfirmDelete();" CausesValidation="false" CommandArgument='<%# Eval("ID_BILDIRIM") %>' OnClick="btn_sil_Click">Sil</asp:LinkButton>
+                                <asp:LinkButton runat="server" CssClass="btn btn-warning" ID="btn_edit_link" CausesValidation="false" Text="<i class='icon-copy fi-pencil'></i>" CommandName="Select" CommandArgument='<%# Eval("ID_BILDIRIM") %>' OnClick="btn_edit_link_Click"></asp:LinkButton>
+                                <asp:LinkButton runat="server" CssClass="btn btn-danger" Style="margin-left: 50px; margin-top: -64px;" ID="btn_sil" OnClientClick="return fnConfirmDelete();"  Text="<i class='fa fa-trash-o' aria-hidden='true'></i>" CausesValidation="false" CommandArgument='<%# Eval("ID_BILDIRIM") %>' OnClick="btn_sil_Click"></asp:LinkButton>
                             </ItemTemplate>
                         </asp:TemplateField>
                         <asp:BoundField DataField="ID_BILDIRIM" HeaderText="Bildirim Kodu" />
@@ -104,6 +113,7 @@
                         <asp:BoundField DataField="LOKASYON" HeaderText="Lokasyon" />
                         <asp:BoundField DataField="DURUM" HeaderText="Durumu" />
                         <asp:BoundField DataField="PERSONEL_AD" HeaderText="Oluşturan" />
+                        <asp:BoundField DataField="DURUM" HeaderText="Aktiflik" />
                     </Columns>
                 </asp:GridView>
             </div>
@@ -112,7 +122,7 @@
                 <div class="modal-dialog modal-lg" role="document">
                     <div class="modal-content">
                         <div class="modal-header">
-                            <h5 class="modal-title">Birim Tanım Düzen Ekranı</h5>
+                            <h5 class="modal-title">Bildirim Düzen Ekranı</h5>
                             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                 <span aria-hidden="true">&times;</span>
                             </button>
@@ -122,7 +132,7 @@
                             <div class="row">
                                 <div class="col-md-12">
                                     <div class="card">
-                                        <div class="card-header">
+                                        <div style="background-color: aquamarine" class="card-header">
                                             Bildirim Bilgileri
                                         </div>
                                         <div class="card-body">
@@ -136,6 +146,8 @@
                                                 <div class="col-md-6">
                                                     <asp:Label ID="Label2" CssClass=" col-form-label-lg" runat="server" Text="Vardiya" />
                                                     <asp:DropDownList ID="ddlVardiya_Edit" CssClass="form-control" runat="server"></asp:DropDownList>
+                                                    <br />
+                                                    <asp:Label ID="IDsecret" Enabled="false"  style="display:block" CssClass="form-control"  runat="server" />
                                                 </div>
                                             </div>
                                             <hr />
@@ -167,6 +179,13 @@
                                                     <asp:DropDownList ID="ddlOnlemBool_edit" CssClass=" form-control" runat="server">
                                                         <asp:ListItem Text="Hayır" />
                                                         <asp:ListItem Text="Evet" />
+                                                    </asp:DropDownList>
+                                                </div>
+                                                   <div class="col-md-6">
+                                                    <asp:Label ID="Label21" CssClass=" col-form-label-lg" runat="server" Text="Durum" />
+                                                    <asp:DropDownList ID="ddlDurumEdit" CssClass=" form-control" runat="server">
+                                                        <asp:ListItem Text="Aktif" />
+                                                        <asp:ListItem Text="Pasif" />
                                                     </asp:DropDownList>
                                                 </div>
 
@@ -241,7 +260,7 @@
                         <div class="modal-footer">
 
                             <button type="button" class="btn btn-secondary" data-dismiss="modal">Kapat</button>
-                            <asp:Button ID="edit_Kaydet" CausesValidation="False" CssClass=" btn btn-success" Text="Güncelle" runat="server" />
+                            <asp:Button ID="edit_Kaydet" OnClick="edit_Kaydet_Click" CausesValidation="False" CssClass=" btn btn-success" Text="Güncelle" runat="server" />
                         </div>
                     </div>
                 </div>
@@ -265,7 +284,7 @@
                         <div class="row">
                             <div class="col-md-12">
                                 <div class="card">
-                                    <div class="card-header">
+                                    <div style="background-color: aquamarine" class="card-header">
                                         Bildirim Bilgileri
                                     </div>
                                     <div class="card-body">

@@ -15,6 +15,15 @@ namespace serkanISG
     {
 
         /// <summary>
+        /// ddlAktiflik control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList ddlAktiflik;
+
+        /// <summary>
         /// grdBILDIRIM control.
         /// </summary>
         /// <remarks>
@@ -67,6 +76,15 @@ namespace serkanISG
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.DropDownList ddlVardiya_Edit;
+
+        /// <summary>
+        /// IDsecret control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label IDsecret;
 
         /// <summary>
         /// Label12 control.
@@ -157,6 +175,24 @@ namespace serkanISG
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.DropDownList ddlOnlemBool_edit;
+
+        /// <summary>
+        /// Label21 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label Label21;
+
+        /// <summary>
+        /// ddlDurumEdit control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList ddlDurumEdit;
 
         /// <summary>
         /// ss control.

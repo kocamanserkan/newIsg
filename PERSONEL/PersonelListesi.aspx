@@ -16,17 +16,18 @@
 
                 </div>
                 
-                    <asp:GridView ID="grdPersonelListesi" runat="server" CssClass="data-table table stripe hover nowrap" gridlines="None" AutoGenerateColumns="False" CellPadding="6" OnRowCancelingEdit="grdPersonelListesi_RowCancelingEdit"
+                    <asp:GridView ID="grdPersonelListesi" runat="server" CssClass="data-table table stripe hover nowrap" gridlines="None" SelectedRowStyle-BackColor="red" AutoGenerateColumns="False" CellPadding="6" OnRowCancelingEdit="grdPersonelListesi_RowCancelingEdit"
                         OnRowEditing="grdPersonelListesi_RowEditing" OnRowUpdating="grdPersonelListesi_RowUpdating" OnRowDeleting="grdPersonelListesi_RowDeleting">
                         <Columns>
                             <asp:TemplateField HeaderText="Düzenle" > 
                                 <ItemTemplate>       
-                                   <asp:LinkButton runat="server" ID="btn_Edit" Text="<i class='icon-copy fi-pencil'></i>" CommandName="Edit" CssClass="greenButton" />
+                                   <asp:LinkButton    CssClass="btn btn-warning" runat="server" ID="btn_Edit" Text="<i class='icon-copy fi-pencil'></i>" ToolTip="Düzenle" CommandName="Edit"  />
+                                  <%-- <asp:LinkButton  class="btn btn-success" runat="server" ID="btn_Edit" Text="<i class='icon-copy fi-pencil'></i>" CommandName="Edit" CssClass="greenButton" />--%>
                                 </ItemTemplate>
                                 <EditItemTemplate>
-                                    <asp:Button ID="btn_Update" runat="server" Text="OK" CommandName="Update" />
-                                     <asp:Button ID="btn_sil" runat="server" Text="Sil" CommandName="Delete" />
-                                    <asp:Button ID="btn_Cancel" runat="server" Text="İptal" CommandName="Cancel" />
+                                    <asp:Button ID="btn_Update" CssClass="btn btn-warning" runat="server" Text="OK" CommandName="Update" />
+                                     <asp:Button ID="btn_sil" CssClass="btn btn-danger"  runat="server" Text="Sil" CommandName="Delete" />
+                                    <asp:Button ID="btn_Cancel" CssClass="btn btn-secondary" runat="server" Text="İptal" CommandName="Cancel" />
                                   
                                 </EditItemTemplate>
                             </asp:TemplateField>

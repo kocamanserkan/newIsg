@@ -19,5 +19,6 @@ namespace serkanISG
         public string SEHIR_LOKASYON { get; set; }
         public string ACIKLAMA_LOKASYON { get; set; }
         public string KROKI_LOKASYON { get; set; }
+        public string DURUM_LOKASYON { get; set; }
     }
 }
