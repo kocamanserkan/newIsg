@@ -65,6 +65,7 @@ namespace serkanISG
             catch (Exception)
             {
 
+                ScriptManager.RegisterStartupScript(this, this.GetType(), "script", "myFunction('Hay Aksi!  Beklenmedik bir hata oluştu :(','fail');", true);
                 Response.Redirect("~/giris.aspx");
             }
           
@@ -246,6 +247,35 @@ namespace serkanISG
         protected void ddlAktiflik_SelectedIndexChanged(object sender, EventArgs e)
         {
             bind();
+        }
+
+        protected void reload_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                LinkButton linkbutton = (LinkButton)sender;  // get the link button which trigger the event
+                GridViewRow row = (GridViewRow)linkbutton.NamingContainer; // get the GridViewRow that contains the linkbutton
+                UYGUNSUZLUK aktif = new UYGUNSUZLUK();
+
+                int aktifID = Convert.ToInt32(linkbutton.CommandArgument);
+                aktif = db.UYGUNSUZLUK.FirstOrDefault(i => i.ID_UYGUNSUZLUK == aktifID);
+                aktif.AKTIFLIK = "Aktif";
+                if (db.SaveChanges() > 0)
+                {
+                    ScriptManager.RegisterStartupScript(this, this.GetType(), "script", "myFunction('Kayıt başarıyla aktife alındı','succsess');", true);
+                    bind();
+                }
+                {
+                    ScriptManager.RegisterStartupScript(this, this.GetType(), "script", "Myfunction('Aktife alma işlemi sırasında Hata oluştu','fail');", true);
+                    bind();
+                }
+
+            }
+            catch (Exception)
+            {
+
+                ScriptManager.RegisterStartupScript(this, this.GetType(), "script", "myFunction('Hay Aksi!  Beklenmedik bir hata oluştu :(','fail');", true);
+            }
         }
     }
 }

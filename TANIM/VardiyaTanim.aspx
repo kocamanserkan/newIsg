@@ -21,8 +21,16 @@
             </div>
             <br />
             <ul>
-                <li>
+                <li style="float: left">
                     <button type="button" id="AddItem" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myyModal">Yeni Vardiya Belirle</button>
+                </li>
+                <li style="float: left;">
+                    <asp:DropDownList ID="ddlAktiflik" AutoPostBack="true" OnSelectedIndexChanged="ddlAktiflik_SelectedIndexChanged" CssClass="form-control" Style="width: 200px; margin-left: 350%" runat="server">
+
+                        <asp:ListItem Selected hidden Text="Listeleme Durumu" />
+                        <asp:ListItem Text="Aktif" />
+                        <asp:ListItem Text="Pasif" />
+                    </asp:DropDownList>
                 </li>
             </ul>
             <br />
@@ -31,12 +39,19 @@
                     <Columns>
                         <asp:TemplateField HeaderText="Düzen">
                             <ItemTemplate>
-                                <asp:LinkButton runat="server" CssClass="btn btn-warning" ID="link" CausesValidation="false" CommandName="Select" CommandArgument='<%# Eval("ID_VARDIYA") %>' OnClick="link_Click">Düzenle</asp:LinkButton>
-                                <asp:LinkButton runat="server" CssClass="btn btn-danger" ID="btn_sil" OnClientClick="return fnConfirmDelete();" CausesValidation="false" CommandArgument='<%# Eval("ID_VARDIYA") %>' OnClick="btn_sil_Click">Sil</asp:LinkButton>
+                                <asp:LinkButton runat="server" CssClass="btn btn-warning" ID="link" Text="<i class='icon-copy fi-pencil'></i>" ToolTip="Düzenle" CausesValidation="false" CommandName="Select" CommandArgument='<%# Eval("ID_VARDIYA") %>' OnClick="link_Click"></asp:LinkButton>
+                                <div class="pasif">
+                                    <asp:LinkButton runat="server" style="margin-left: 53px;margin-top: -62px;" CssClass="btn btn-danger" ID="btn_sil" Text="<i class='fa fa-trash-o' aria-hidden='true'></i>" OnClientClick="return fnConfirmDelete();" CausesValidation="false" CommandArgument='<%# Eval("ID_VARDIYA") %>' OnClick="btn_sil_Click"></asp:LinkButton>
+                                </div>
+                                <div style="display: none;" class="reload">
+                                    <asp:LinkButton runat="server" Style="margin-left: 49px; margin-top: -64px;" CssClass="btn btn-success" Text="<i class='fa fa-refresh' aria-hidden='true'></i>" ToolTip="Aktif Et" ID="reload" OnClick="reload_Click" OnClientClick="return fnConfirmActive();" CausesValidation="false" CommandArgument='<%# Eval("ID_VARDIYA") %>'></asp:LinkButton>
+
+                                </div>
                             </ItemTemplate>
                         </asp:TemplateField>
                         <asp:BoundField DataField="ID_VARDIYA" HeaderText="VARDIYA KODU" />
                         <asp:BoundField DataField="AD_VARDIYA" HeaderText="VARDIYA ŞEKLİ" />
+                        <asp:BoundField DataField="DURUM_VARDIYAa" HeaderText="Aktiflik" />
 
                     </Columns>
                 </asp:GridView>
@@ -50,30 +65,42 @@
 
                         </div>
                         <div class="modal-body">
+
                             <div class="row">
-                                <div class="col-md-4">
+                                <div class="col-md-12">
                                     <asp:Label Text="Vardiya Kodu:" CssClass=" col-form-label-lg" runat="server" />
-                                    &nbsp;  
-                                </div>
-                                <div class="col-md-1">
+                                    &nbsp; 
                                     <asp:Label ID="lblVardiyaKodu" CssClass=" col-form-label-lg" runat="server" Text="Label"></asp:Label>
                                 </div>
-
                             </div>
                             <br />
                             <label class="col-form-label-lg">Başlangıç*</label>
+
                             <div class="row">
-
-                                <asp:TextBox ID="txtBaslamaEdit" runat="server" CssClass=" form-control" TextMode="time" />
-
+                                <div class="col-md-10">
+                                    <asp:TextBox ID="txtBaslamaEdit" runat="server" CssClass=" form-control" TextMode="time" />
+                                </div>
                             </div>
-                            <br />
                             <br />
                             <label class="col-form-label-lg">Bitiş*</label>
                             <div class="row">
-
-                                <asp:TextBox ID="txtBitisEdit" runat="server" CssClass=" form-control" TextMode="time" />
+                                <div class="col-md-10">
+                                    <asp:TextBox ID="txtBitisEdit" runat="server" CssClass=" form-control" TextMode="time" />
+                                </div>
                             </div>
+                            <br />
+                            <label class="col-form-label-lg">Durum*</label>
+
+                            <div class="row">
+                                <div class="col-md-10">
+                                    <asp:DropDownList ID="ddlDurumEdit" CssClass="form-control" runat="server">
+                                        <asp:ListItem Text="Aktif" />
+                                        <asp:ListItem Text="Pasif" />
+                                    </asp:DropDownList>
+                                </div>
+                            </div>
+
+
 
                         </div>
                         <div class="modal-footer">
@@ -86,7 +113,7 @@
                 </div>
             </div>
         </div>
-    
+
     </div>
 
     <!-- Button trigger modal -->
@@ -97,23 +124,29 @@
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h4 class="modal-title" id="myModalLabel">Vardiya Tanım Ekranı</h4>
+                    <h4 class="modal-title" id="myModalLabel">Vardiya Tanım  Ekranı</h4>
                     <button type="button" id="kapa" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
 
                 </div>
                 <div class="modal-body">
                     <label class="form-group-item">Başlangıç*</label>
                     <div class="row">
-
-                        <asp:TextBox ID="txtbaslangicSaat" runat="server" CssClass=" form-control" TextMode="time" />
-
+                        <div class="col-md-10">
+                            <asp:TextBox ID="txtbaslangicSaat" runat="server" CssClass=" form-control" TextMode="time" />
+                        </div>
                     </div>
-                    <br />
                     <br />
                     <label class="form-group-item">Bitiş*</label>
                     <div class="row">
-                        <asp:TextBox ID="txtBitisSaat" runat="server" CssClass=" form-control" TextMode="time" />
+                        <div class="col-md-10">
+                            <asp:TextBox ID="txtBitisSaat" runat="server" CssClass=" form-control" TextMode="time" />
+                        </div>
                     </div>
+
+                    <br />
+                    <br />
+
+
                 </div>
                 <div class="modal-footer">
 
@@ -146,9 +179,17 @@
 
 
         function fnConfirmDelete() {
-            return confirm("İş Tanımını silmek üzeresiniz. Onaylıyor musunuz?");
+            return confirm("Vardiya Tanımını silmek üzeresiniz. Onaylıyor musunuz?");
         }
 
+        if ($('#<%= ddlAktiflik.ClientID %>').val() == "Pasif") {
+            $(".pasif").css("display", "none");
+            $(".reload").css("display", "block");
+
+        }
+        function fnConfirmActive() {
+            return confirm("Vardiya tanımını aktife almak istiyor musunuz?");
+        }
 
 
 

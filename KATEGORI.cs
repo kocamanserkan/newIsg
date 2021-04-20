@@ -16,6 +16,6 @@ namespace serkanISG
     {
         public int ID_KATEGORI { get; set; }
         public string AD_KATEGORI { get; set; }
-        public Nullable<bool> DURUM { get; set; }
+        public string DURUM { get; set; }
     }
 }

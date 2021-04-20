@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Linq;
 using System.Web;
 using System.Web.UI;
@@ -14,9 +15,22 @@ namespace serkanISG
         {
             try
             {
-               
+                string chldPage = Page.AppRelativeVirtualPath;
+                if ((chldPage == "~/Uygunsuzluk.aspx"))
+                {
+                    Page.Title = "Uygunsuzluk";
+                }
+                if ((chldPage == "~/ISGBildirim.aspx"))
+                {
+                    Page.Title = "Seviye-1 ISG Bildirim";
+                }
+                if ((chldPage == "~/TANIM/Lokasyon.aspx"))
+                {
+                    Page.Title = "Lokasyon";
+                }
 
-                    lblAd.Text = Session["FullName"].ToString();
+
+                lblAd.Text = Session["FullName"].ToString();
                     string username = Session["UserName"].ToString();
                     PERSONEL rolUser = new PERSONEL();
                     rolUser = db.PERSONEL.FirstOrDefault(i => i.KULLANICI_ADI == username);
@@ -25,9 +39,11 @@ namespace serkanISG
                     if (rolUser.Rol != "Admin")
                     {
                         panel.Visible = false;
+                       
                     }
+               
 
-                
+
             }
             catch (Exception)
             {

@@ -13,16 +13,18 @@ namespace serkanISG
     {
 
         serkanISGEntities1 db = new serkanISGEntities1();
+
+       
         protected void Page_Load(object sender, EventArgs e)
         {
+            Page.Title = "Serkan";
 
-          
             if (!IsPostBack && !IsCallback)
             {
 
                 try
                 {
-
+                   
                     bind();
                   
                 }
@@ -65,7 +67,7 @@ namespace serkanISG
             ddlVardiya.DataSource = db.VARDIYA.Select(i => i.AD_VARDIYA).ToList();
             ddlBildirimYapan.DataSource = db.PERSONEL.Select(i => i.PERSONEL_AD.ToUpper() + " " + i.PERSONEL_SOYAD.ToUpper()).ToList();
             ddlBirim.DataSource = db.BIRIM.Select(i => i.AD_BIRIM).ToList();
-            ddlKategori.DataSource = db.KATEGORI.Where(i => i.DURUM == true).Select(i => i.AD_KATEGORI).ToList();
+            ddlKategori.DataSource = db.KATEGORI.Where(i => i.DURUM == "Aktif").Select(i => i.AD_KATEGORI).ToList();
             ddlLokasyon.DataSource = db.LOKASYONN.Select(i => i.AD_LOKASYON).ToList();
             ddlMudahilPerson.DataSource = db.PERSONEL.Select(i => i.PERSONEL_AD.ToUpper() + " " + i.PERSONEL_SOYAD.ToUpper()).ToList();
             ddlSorumluPersonel.DataSource = db.PERSONEL.Select(i => i.PERSONEL_AD.ToUpper() + " " + i.PERSONEL_SOYAD.ToUpper()).ToList();
@@ -74,7 +76,7 @@ namespace serkanISG
             ddlVardiya_Edit.DataSource = db.VARDIYA.Select(i => i.AD_VARDIYA).ToList();
             ddlBildirimYapan_Edit.DataSource = db.PERSONEL.Select(i => i.PERSONEL_AD.ToUpper() + " " + i.PERSONEL_SOYAD.ToUpper()).ToList();
             ddlBirim_Edit.DataSource = db.BIRIM.Select(i => i.AD_BIRIM).ToList();
-            ddlKategori_Edit.DataSource = db.KATEGORI.Where(i => i.DURUM == true).Select(i => i.AD_KATEGORI).ToList();
+            ddlKategori_Edit.DataSource = db.KATEGORI.Where(i => i.DURUM == "Aktif").Select(i => i.AD_KATEGORI).ToList();
             ddl_Lokasyon_Edit.DataSource = db.LOKASYONN.Select(i => i.AD_LOKASYON).ToList();
             ddlMudahilPersonel_edit.DataSource = db.PERSONEL.Select(i => i.PERSONEL_AD.ToUpper() + " " + i.PERSONEL_SOYAD.ToUpper()).ToList();
 
@@ -231,6 +233,7 @@ namespace serkanISG
 
                 deleteBILDIRIM = db.BILDIRIMLVL1.FirstOrDefault(i => i.ID_BILDIRIM == deleteID);
                 deleteBILDIRIM.DURUM = "Pasif";
+                deleteBILDIRIM.BILDIRIM_DURUM = "Silinmiş";
 
                 PERSONEL per = new PERSONEL();
                 string fullad = deleteBILDIRIM.MUDAHIL_PERSONEL;
@@ -328,6 +331,7 @@ namespace serkanISG
 
         protected void ddlAktiflik_SelectedIndexChanged(object sender, EventArgs e)
         {
+
             if (ddlAktiflik.SelectedValue == "Pasif")
             {
                 grdBILDIRIM.DataSource = db.BILDIRIMLVL1.Where(i => i.DURUM == "Pasif").ToList();
@@ -400,6 +404,44 @@ namespace serkanISG
             }
            
 
+
+
+
+
+
+
+        }
+
+        protected void reload_Click(object sender, EventArgs e)
+        {
+
+
+            try
+            {
+                LinkButton linkbutton = (LinkButton)sender;  // get the link button which trigger the event
+                GridViewRow row = (GridViewRow)linkbutton.NamingContainer; // get the GridViewRow that contains the linkbutton
+                BILDIRIMLVL1 aktif = new BILDIRIMLVL1();
+
+                int aktifID = Convert.ToInt32(linkbutton.CommandArgument);
+                aktif = db.BILDIRIMLVL1.FirstOrDefault(i => i.ID_BILDIRIM == aktifID);
+                aktif.DURUM = "Aktif";
+                aktif.BILDIRIM_DURUM = "Onay Bekliyor";
+                if (db.SaveChanges() > 0)
+                {
+                    ScriptManager.RegisterStartupScript(this, this.GetType(), "script", "myFunction('Kayıt başarıyla aktife alındı','succsess');", true);
+                    bind();
+                }
+                {
+                    ScriptManager.RegisterStartupScript(this, this.GetType(), "script", "Myfunction('Aktife alma işlemi sırasında Hata oluştu','fail');", true);
+                    bind();
+                }
+
+            }
+            catch (Exception)
+            {
+
+                ScriptManager.RegisterStartupScript(this, this.GetType(), "script", "myFunction('Hay Aksi!  Beklenmedik bir hata oluştu :(','fail');", true);
+            }
 
 
 

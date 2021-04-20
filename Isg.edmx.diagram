@@ -18,7 +18,7 @@
         <EntityTypeShape EntityType="serkanISGModel.BIRIM" Width="1.5" PointX="2.75" PointY="7.5" />
         <EntityTypeShape EntityType="serkanISGModel.BILDIRIMLVL1" Width="1.5" PointX="9.375" PointY="3.75" />
         <EntityTypeShape EntityType="serkanISGModel.MODUL_MAILAYAR" Width="1.5" PointX="0.75" PointY="9.75" />
-        <EntityTypeShape EntityType="serkanISGModel.UNVAN" Width="1.5" PointX="3.375" PointY="9.75" />
+        <EntityTypeShape EntityType="serkanISGModel.UNVAN" Width="1.5" PointX="4.5" PointY="9.125" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

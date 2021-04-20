@@ -155,7 +155,7 @@ namespace serkanISG
             if (db.SaveChanges() > 0)
             {
 
-                ScriptManager.RegisterStartupScript(this, this.GetType(), "script", "myFunction('Kayıt sss silindi!','succsess');", true);
+                ScriptManager.RegisterStartupScript(this, this.GetType(), "script", "myFunction('Kayıt silindi!','succsess');", true);
                 bind();
 
                 //Response.Write("<script>MyFunction('İş Tanımı Silindi..','succsess');window.location = 'ISTANIMLARI.aspx';</script>");

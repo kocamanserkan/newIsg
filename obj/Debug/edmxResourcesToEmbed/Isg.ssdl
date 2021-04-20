@@ -51,7 +51,7 @@ warning 6002: The table/view 'serkanISG.dbo.ILLER' does not have a primary key d
     </Key>
     <Property Name="ID_KATEGORI" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="AD_KATEGORI" Type="nvarchar(max)" />
-    <Property Name="DURUM" Type="bit" />
+    <Property Name="DURUM" Type="nvarchar" MaxLength="50" />
   </EntityType>
   <EntityType Name="LogRegister">
     <Key>

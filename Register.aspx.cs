@@ -26,29 +26,13 @@ namespace serkanISG
             if (!Page.IsPostBack)
             {
 
-                ddlIS.DataSource = db2.ISTANIM.Select(i => i.ISADI).ToList();
-                ddlIS.DataBind();
                 
 
-                //ddlIS.DataSource = a;
-
-
-
-
-                //db.isListesi(ddlIS);
-
-
+                ddlIS.DataSource = db2.TANIMIS.Select(i => i.AD_IS).ToList();
+                ddlIS.DataBind();
                
 
-
-
             }
-
-
-
-
-
-
         }
 
         protected void btnSave_Click(object sender, EventArgs e)
@@ -86,7 +70,7 @@ namespace serkanISG
 
                         Thread.Sleep(2000);
 
-                        Response.Redirect("login.aspx");
+                        Response.Redirect("giris.aspx");
                     }
                     else
                     {
@@ -109,24 +93,8 @@ namespace serkanISG
 
         protected void btnLoginEkran_Click(object sender, EventArgs e)
         {
-            Response.Redirect("login.aspx");
-            //or
-            //Server.Transfer("YourPage.aspx");
-
-            //TimeSpan fark = new TimeSpan();
-            //fark = Convert.ToDateTime(dtpIS_BASLANGIC_TARIH.Text).Subtract(DateTime.Now);
-
-            //if (fark.Days < 0)
-            //{
-            //    CustomValidator1.ErrorMessage = "amkkkk";
-
-
-            //}
-            //else
-            //{
-            //    CustomValidator1.ErrorMessage = "ohhh";
-
-            //}
+            Response.Redirect("Giris.aspx");
+            
 
 
 

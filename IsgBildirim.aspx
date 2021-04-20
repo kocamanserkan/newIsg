@@ -1,6 +1,10 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="IsgBildirim.aspx.cs" Inherits="serkanISG.IsgBildirim" %>
+﻿<%@ Page Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="IsgBildirim.aspx.cs" Inherits="serkanISG.IsgBildirim" %>
 
-<asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
+
+<asp:Content ID="Content1"  ContentPlaceHolderID="MainContent" runat="server">
+    
+   
+
 
     <script src="Scripts/MyFunctions.js"></script>
     <link href="Content/MyCSS.css" rel="stylesheet" />
@@ -9,8 +13,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js" integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T" crossorigin="anonymous"></script>
 
-
-
+    
     <style>
         body {
             background-color: #f5f5f5;
@@ -77,14 +80,14 @@
             </div>
             <br />
             <ul>
-                <li  style="float:left;">
+                <li style="float: left;">
 
                     <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myyModal">Bildirim Ekle</button>
-                                    
+
                 </li>
-                <li style="float:left;" >
-                    <asp:DropDownList ID="ddlAktiflik" AutoPostBack="true"  OnSelectedIndexChanged="ddlAktiflik_SelectedIndexChanged"  CssClass="form-control" style="width:200px; margin-left: 840px;" runat="server">
-                         
+                <li style="float: left;">
+                    <asp:DropDownList ID="ddlAktiflik" AutoPostBack="true" OnSelectedIndexChanged="ddlAktiflik_SelectedIndexChanged" CssClass="form-control" Style="width: 200px; margin-left: 840px;" runat="server">
+
                         <asp:ListItem Selected hidden Text="Listeleme Durumu" />
                         <asp:ListItem Text="Aktif" />
                         <asp:ListItem Text="Pasif" />
@@ -98,8 +101,15 @@
                     <Columns>
                         <asp:TemplateField HeaderText="Düzen">
                             <ItemTemplate>
-                                <asp:LinkButton runat="server" CssClass="btn btn-warning" ID="btn_edit_link" CausesValidation="false" Text="<i class='icon-copy fi-pencil'></i>" CommandName="Select" CommandArgument='<%# Eval("ID_BILDIRIM") %>' OnClick="btn_edit_link_Click"></asp:LinkButton>
-                                <asp:LinkButton runat="server" CssClass="btn btn-danger" Style="margin-left: 50px; margin-top: -64px;" ID="btn_sil" OnClientClick="return fnConfirmDelete();"  Text="<i class='fa fa-trash-o' aria-hidden='true'></i>" CausesValidation="false" CommandArgument='<%# Eval("ID_BILDIRIM") %>' OnClick="btn_sil_Click"></asp:LinkButton>
+                                <asp:LinkButton runat="server" CssClass="btn btn-warning" ID="btn_edit_link" ToolTip="Düzenle" CausesValidation="false" Text="<i class='icon-copy fi-pencil'></i>" CommandName="Select" CommandArgument='<%# Eval("ID_BILDIRIM") %>' OnClick="btn_edit_link_Click"></asp:LinkButton>
+                                <div class="sil">
+                                    <asp:LinkButton runat="server" ToolTip="Sil" CssClass="btn btn-danger" Style="margin-left: 50px; margin-top: -64px;" ID="btn_sil" OnClientClick="return fnConfirmDelete();" Text="<i class='fa fa-trash-o' aria-hidden='true'></i>" CausesValidation="false" CommandArgument='<%# Eval("ID_BILDIRIM") %>' OnClick="btn_sil_Click"></asp:LinkButton>
+                                </div>
+                                <div style="display: none;" class="reload">
+                                    <asp:LinkButton runat="server" Style="margin-left: 49px; margin-top: -64px;" CssClass="btn btn-success" Text="<i class='fa fa-refresh' aria-hidden='true'></i>" ToolTip="Aktif Et" ID="reload" OnClick="reload_Click" OnClientClick="return fnConfirmActive();" CausesValidation="false" CommandArgument='<%# Eval("ID_BILDIRIM") %>'></asp:LinkButton>
+
+                                </div>
+
                             </ItemTemplate>
                         </asp:TemplateField>
                         <asp:BoundField DataField="ID_BILDIRIM" HeaderText="Bildirim Kodu" />
@@ -147,7 +157,7 @@
                                                     <asp:Label ID="Label2" CssClass=" col-form-label-lg" runat="server" Text="Vardiya" />
                                                     <asp:DropDownList ID="ddlVardiya_Edit" CssClass="form-control" runat="server"></asp:DropDownList>
                                                     <br />
-                                                    <asp:Label ID="IDsecret" Enabled="false"  style="display:block" CssClass="form-control"  runat="server" />
+                                                    <asp:Label ID="IDsecret" Enabled="false" Style="display: block" CssClass="form-control" runat="server" />
                                                 </div>
                                             </div>
                                             <hr />
@@ -181,7 +191,7 @@
                                                         <asp:ListItem Text="Evet" />
                                                     </asp:DropDownList>
                                                 </div>
-                                                   <div class="col-md-6">
+                                                <div class="col-md-6">
                                                     <asp:Label ID="Label21" CssClass=" col-form-label-lg" runat="server" Text="Durum" />
                                                     <asp:DropDownList ID="ddlDurumEdit" CssClass=" form-control" runat="server">
                                                         <asp:ListItem Text="Aktif" />
@@ -296,7 +306,7 @@
                                                 <asp:TextBox ID="txtSaat" runat="server" CssClass="form-control" Width="200px" TextMode="time" />
                                             </div>
                                             <div class="col-md-6">
-                                                <asp:Label ID="Label4"  CssClass=" col-form-label-lg" runat="server" Text="Vardiya" />
+                                                <asp:Label ID="Label4" CssClass=" col-form-label-lg" runat="server" Text="Vardiya" />
                                                 <asp:DropDownList ID="ddlVardiya" AppendDataBoundItems="true" CssClass="form-control" runat="server">
                                                     <asp:ListItem Text="Seçiniz" />
                                                 </asp:DropDownList>
@@ -307,13 +317,13 @@
                                             <div class="col-md-6">
                                                 <asp:Label ID="Label5" CssClass=" col-form-label-lg" runat="server" Text="Bildirim Yapan" />
                                                 <asp:DropDownList ID="ddlBildirimYapan" AppendDataBoundItems="true" CssClass="form-control" runat="server">
-                                                     <asp:ListItem Text="Seçiniz" />
+                                                    <asp:ListItem Text="Seçiniz" />
                                                 </asp:DropDownList>
                                             </div>
                                             <div class="col-md-6">
                                                 <asp:Label ID="Label6" CssClass=" col-form-label-lg" runat="server" Text="Birim" />
                                                 <asp:DropDownList ID="ddlBirim" AppendDataBoundItems="true" CssClass="form-control" runat="server">
-                                                     <asp:ListItem Text="Seçiniz" />
+                                                    <asp:ListItem Text="Seçiniz" />
                                                 </asp:DropDownList>
                                             </div>
                                         </div>
@@ -322,12 +332,12 @@
                                             <div class="col-md-6">
                                                 <asp:Label ID="Label7" CssClass=" col-form-label-lg" runat="server" Text="Kategori" />
                                                 <asp:DropDownList ID="ddlKategori" AppendDataBoundItems="true" CssClass="form-control" runat="server">
-                                                     <asp:ListItem Text="Seçiniz" />
+                                                    <asp:ListItem Text="Seçiniz" />
                                                 </asp:DropDownList>
                                             </div>
                                             <div class="col-md-6">
                                                 <asp:Label ID="Label8" CssClass=" col-form-label-lg" runat="server" Text="Lokasyon" />
-                                           
+
                                                 <asp:DropDownList ID="ddlLokasyon" CssClass="form-control" runat="server">
                                                 </asp:DropDownList>
                                             </div>
@@ -337,7 +347,7 @@
                                             <div class="col-md-6">
                                                 <asp:Label ID="Label9" CssClass=" col-form-label-lg" runat="server" Text="Önlem Gereksinimi" />
                                                 <asp:DropDownList ID="ddlOnlemBool" AppendDataBoundItems="true" CssClass=" form-control" runat="server">
-                                                     <asp:ListItem Value=-1 Text="Seçiniz" />
+                                                    <asp:ListItem Value="-1" Text="Seçiniz" />
                                                     <asp:ListItem Text="Hayır" />
                                                     <asp:ListItem Text="Evet" />
                                                 </asp:DropDownList>
@@ -395,10 +405,12 @@
                                                     </div>
                                                     <div class="card-body">
 
-                                                        <asp:DropDownList Style="display: none" CssClass=" form-control" ID="ddlMudahilPerson" runat="server">
+                                                        <asp:DropDownList Style="display: none" AppendDataBoundItems="true" CssClass=" form-control" ID="ddlMudahilPerson" runat="server">
+                                                            <asp:ListItem Text="SEÇİNİZ" />
                                                         </asp:DropDownList>
-                                                        <br />
+
                                                         <a href="#" id="a" class="btn btn-danger">Personel Müdahil Et</a>
+                                                        <br />
                                                         <a href="#" id="b" style="display: none" class="btn btn-danger">İptal</a>
 
                                                     </div>
@@ -461,7 +473,7 @@
 
                     </div>
                     <div class="modal-footer">
-                  
+
                         <button type="button" id="btn_Vazgec" class="btn btn-secondary" data-dismiss="modal">Vazgeç</button>
                         <asp:Button ID="btnEKLE" CausesValidation="true" Width="30%" OnClick="btnEKLE_Click" CssClass="btn btn-success" margin-top="4px;" runat="server" Text="Bildir" />
                     </div>
@@ -469,29 +481,29 @@
             </div>
 
         </div>
-        </div>
-        <div id="snackbar" style="width: 20%; overflow: visible; margin-left: 40%; margin-bottom: 10px; position: relative; min-height: 30px;">Kayıt Eklendi</div>
-        <script>
+    </div>
+    <div id="snackbar" style="width: 20%; overflow: visible; margin-left: 40%; margin-bottom: 10px; position: relative; min-height: 30px;">Kayıt Eklendi</div>
+    <script>
 
-            $('#<%= kontrol.ClientID %>').click(function () {
+        $('#<%= kontrol.ClientID %>').click(function () {
 
 
 
-                if ($('#<%= kontrol.ClientID %>')[0].checked == false) {
-                $("#UygunsuzlukEkran").hide();
-                $('#<%= txtUygunsuzDurum.ClientID %>').val("");
-                $('#<%= txtTerminTarih.ClientID %>').val("");
-                $('#<%= ddlSorumluPersonel.ClientID %>').val("");
-                $('#charNum').val("");
-                $('#charNum').hide();
-            }
-            else {
-                $("#UygunsuzlukEkran").show();
-            }
+            if ($('#<%= kontrol.ClientID %>')[0].checked == false) {
+                    $("#UygunsuzlukEkran").hide();
+                    $('#<%= txtUygunsuzDurum.ClientID %>').val("");
+                    $('#<%= txtTerminTarih.ClientID %>').val("");
+                    $('#<%= ddlSorumluPersonel.ClientID %>').val("");
+                    $('#charNum').val("");
+                    $('#charNum').hide();
+                }
+                else {
+                    $("#UygunsuzlukEkran").show();
+                }
 
-            $("#cancel").click(function () {
-                $("#UygunsuzlukEkran").hide();
-                $('#<%= kontrol.ClientID %>').prop('checked', false);
+                $("#cancel").click(function () {
+                    $("#UygunsuzlukEkran").hide();
+                    $('#<%= kontrol.ClientID %>').prop('checked', false);
                 $('#<%= txtUygunsuzDurum.ClientID %>').val("");
                 $('#<%= txtTerminTarih.ClientID %>').val("");
                 $('#charNum').val("");
@@ -501,113 +513,124 @@
             });
 
 
+            });
+
+        function countChar(val) {
+            $('#charNum').show();
+            var len = val.value.length;
+            if (len >= 10000) {
+                val.value = val.value.substring(50, 10000);
+            } else {
+                $('#charNum').text(10 - len + " " + "Karekter Kaldı");
+                var a = 10 - len
+                if (a < 0) {
+
+                    $('#charNum').text("Karekter Limiti Aşıldı");
+                    $('#charNum').css("color", "red")
+
+                }
+                else {
+                    $('#charNum').css("color", "black")
+                }
+            }
+
+
+        }
+
+
+
+        $("#deneme").click(function () {
+            console.log("geldi");
+            $("#photoEdit").hide();
+
+
+        })
+
+
+        if ($('#<%= ddlAktiflik.ClientID %>').val() == "Pasif") {
+            $(".sil").css("display", "none");
+            $(".reload").css("display", "block");
+
+        }
+        function fnConfirmActive() {
+            return confirm("İş tanımını aktife almak istiyor musunuz?");
+        }
+
+
+
+
+
+
+
+        $("#btn_Vazgec").click(function () {
+
+            window.location.href = "https://localhost:44398/IsgBildirim";
+
+        })
+        $("#kapa").click(function () {
+
+            window.location.href = "https://localhost:44398/IsgBildirim";
+
+        })
+
+
+        function fnConfirmDelete() {
+            return confirm("Bildirimi silmek üzeresiniz. Onaylıyor musunuz?");
+        }
+
+        $("#a").click(function () {
+
+            var dll = $('#<%= ddlMudahilPerson.ClientID %>')
+                var butonGetir = $("#a");
+                var butonCancel = $("#b");
+
+                dll.show();
+                butonGetir.hide();
+                butonCancel.show();
+            })
+
+        $("#b").click(function () {
+
+            var dll = $('#<%= ddlMudahilPerson.ClientID %>')
+                var butonGetir = $("#a");
+                var butonCancel = $("#b");
+
+                dll.hide();
+                dll.val("SEÇİNİZ");
+
+                butonCancel.hide();
+                butonGetir.show();
+
+            })
+    </script>
+
+
+
+    <script>
+        $(".imgAdd").click(function () {
+            $(this).closest(".row").find('.imgAdd').before('<div class="col-sm-2 imgUp"><div class="imagePreview"></div><label class="btn btn-primary">Upload<input type="file" class="uploadFile img" value="Upload Photo" style="width:0px;height:0px;overflow:hidden;"></label><i class="fa fa-times del"></i></div>');
         });
+        $(document).on("click", "i.del", function () {
+            $(this).parent().remove();
+        });
+        $(function () {
+            $(document).on("change", ".uploadFile", function () {
+                var uploadFile = $(this);
+                var files = !!this.files ? this.files : [];
+                if (!files.length || !window.FileReader) return; // no file selected, or no FileReader support
 
-            function countChar(val) {
-                $('#charNum').show();
-                var len = val.value.length;
-                if (len >= 10000) {
-                    val.value = val.value.substring(50, 10000);
-                } else {
-                    $('#charNum').text(10 - len + " " + "Karekter Kaldı");
-                    var a = 10 - len
-                    if (a < 0) {
+                if (/^image/.test(files[0].type)) { // only image file
+                    var reader = new FileReader(); // instance of the FileReader
+                    reader.readAsDataURL(files[0]); // read the local file
 
-                        $('#charNum').text("Karekter Limiti Aşıldı");
-                        $('#charNum').css("color", "red")
-
-                    }
-                    else {
-                        $('#charNum').css("color", "black")
+                    reader.onloadend = function () { // set image data as background of div
+                        //alert(uploadFile.closest(".upimage").find('.imagePreview').length);
+                        uploadFile.closest(".imgUp").find('.imagePreview').css("background-image", "url(" + this.result + ")");
                     }
                 }
 
-
-            }
-
-
-
-            $("#deneme").click(function () {
-                console.log("geldi");
-                $("#photoEdit").hide();
-
-
-            })
-
-
-
-
-
-
-
-
-            $("#btn_Vazgec").click(function () {
-
-                window.location.href = "https://localhost:44398/IsgBildirim";
-
-            })
-            $("#kapa").click(function () {
-
-                window.location.href = "https://localhost:44398/IsgBildirim";
-
-            })
-
-
-            function fnConfirmDelete() {
-                return confirm("Bildirimi silmek üzeresiniz. Onaylıyor musunuz?");
-            }
-
-            $("#a").click(function () {
-
-                var dll = $('#<%= ddlMudahilPerson.ClientID %>')
-            var butonGetir = $("#a");
-            var butonCancel = $("#b");
-
-            dll.show();
-            butonGetir.hide();
-            butonCancel.show();
-        })
-
-            $("#b").click(function () {
-
-                var dll = $('#<%= ddlMudahilPerson.ClientID %>')
-            var butonGetir = $("#a");
-            var butonCancel = $("#b");
-
-            dll.hide();
-            butonCancel.hide();
-            butonGetir.show();
-
-        })
-        </script>
-
-
-
-        <script>
-            $(".imgAdd").click(function () {
-                $(this).closest(".row").find('.imgAdd').before('<div class="col-sm-2 imgUp"><div class="imagePreview"></div><label class="btn btn-primary">Upload<input type="file" class="uploadFile img" value="Upload Photo" style="width:0px;height:0px;overflow:hidden;"></label><i class="fa fa-times del"></i></div>');
             });
-            $(document).on("click", "i.del", function () {
-                $(this).parent().remove();
-            });
-            $(function () {
-                $(document).on("change", ".uploadFile", function () {
-                    var uploadFile = $(this);
-                    var files = !!this.files ? this.files : [];
-                    if (!files.length || !window.FileReader) return; // no file selected, or no FileReader support
+        });
 
-                    if (/^image/.test(files[0].type)) { // only image file
-                        var reader = new FileReader(); // instance of the FileReader
-                        reader.readAsDataURL(files[0]); // read the local file
-
-                        reader.onloadend = function () { // set image data as background of div
-                            //alert(uploadFile.closest(".upimage").find('.imagePreview').length);
-                            uploadFile.closest(".imgUp").find('.imagePreview').css("background-image", "url(" + this.result + ")");
-                        }
-                    }
-
-                });
-            });
-
-        </script>
+    </script>
 </asp:Content>

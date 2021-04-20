@@ -14,12 +14,40 @@ namespace serkanISG
         protected void Page_Load(object sender, EventArgs e)
         {
             grdVardiya.DataSource = db.VARDIYA.ToList();
-            if (!IsPostBack)
+            if (!IsPostBack && !IsCallback)
             {
-
-                grdVardiya.DataBind();
+                bind();
 
             }
+        }
+        private void bind()
+        {
+            try
+            {
+
+                txtbaslangicSaat.Text = DateTime.Now.ToString("HH:mm");
+                txtBitisSaat.Text = DateTime.Now.AddHours(8.0).ToString("HH:mm");
+
+                if (ddlAktiflik.SelectedValue == "Pasif")
+                {
+                    grdVardiya.DataSource = db.VARDIYA.Where(i => i.DURUM_VARDIYAa == "Pasif").ToList();
+                    grdVardiya.DataBind();
+
+                }
+                else
+                {
+
+                    grdVardiya.DataSource = db.VARDIYA.Where(i => i.DURUM_VARDIYAa == "Aktif").ToList();
+                    grdVardiya.DataBind();
+                }
+
+            }
+            catch (Exception)
+            {
+
+                ScriptManager.RegisterStartupScript(this, this.GetType(), "script", "myFunction('Hay Aksi!  Beklenmedik bir hata oluştu :(','fail');", true);
+            }
+
         }
         protected void btnNewVardiya_Click(object sender, EventArgs e)
         {
@@ -35,15 +63,16 @@ namespace serkanISG
 
 
             //ISTANIM IS = new ISTANIM();
-           
-              string vardiyaFinal  = vardiyaBaslangic +"/"+ vardiyaBitis;
+
+            string vardiyaFinal = vardiyaBaslangic + "/" + vardiyaBitis;
             newVardiya.AD_VARDIYA = vardiyaFinal;
+            newVardiya.DURUM_VARDIYAa = "Aktif";
 
             if (db.VARDIYA.Any(i => i.AD_VARDIYA.ToUpper() == vardiyaFinal.ToUpper()))
             {
                 ScriptManager.RegisterStartupScript(this, this.GetType(), "script", "myFunction('" + vardiyaFinal.ToUpper() + " Kayıtlarda Var.. Ekleme işlemi başarısız. !','fail');", true);
                 //ScriptManager.RegisterStartupScript(this, this.GetType(), "script", "alert('" + txtISADI.Text.ToString().ToUpper() + " Kayıtlarda Var.. Ekleme işlemi başarısız.');", true);
-             
+
             }
             else
             {
@@ -51,12 +80,10 @@ namespace serkanISG
                 db.VARDIYA.Add(newVardiya);
 
 
-                db.SaveChanges();                
-           
-                ScriptManager.RegisterStartupScript(this, this.GetType(), "script", "myFunction('Kayıt Eklendi!','succsess');", true);
-                grdVardiya.DataSource = db.VARDIYA.ToList();
-                grdVardiya.DataBind();
+                db.SaveChanges();
 
+                ScriptManager.RegisterStartupScript(this, this.GetType(), "script", "myFunction('Kayıt Eklendi!','succsess');", true);
+                bind();
 
             }
 
@@ -64,15 +91,21 @@ namespace serkanISG
 
         protected void link_Click(object sender, EventArgs e)
         {
-           
-          
-           
+
+
+
             LinkButton linkbutton = (LinkButton)sender;  // get the link button which trigger the event
             GridViewRow row = (GridViewRow)linkbutton.NamingContainer; // get the GridViewRow that contains the linkbutton
+            VARDIYA edt = new VARDIYA();
+            int editId = Convert.ToInt32(linkbutton.CommandArgument);
+            edt = db.VARDIYA.FirstOrDefault(i => i.ID_VARDIYA == editId);
+
+
             lblVardiyaKodu.Text = linkbutton.CommandArgument;
 
 
-            string vardiya = HttpUtility.HtmlDecode(row.Cells[2].Text.ToString());
+            //string vardiya = HttpUtility.HtmlDecode(row.Cells[2].Text.ToString());
+            string vardiya = edt.AD_VARDIYA;
 
             string[] subs = vardiya.Split('/');
             string start = subs[0];
@@ -88,18 +121,9 @@ namespace serkanISG
 
             txtBaslamaEdit.Text = subs[0];
             txtBitisEdit.Text = subs[1];
+            ddlDurumEdit.Text = edt.DURUM_VARDIYAa;
 
 
-
-            //ddlBasSaat_Edit.SelectedValue = startSaat;
-            //ddlBasDak_Edit.Text = startDak;
-            //ddlBitSaat_Edit.Text = finishSaat;
-            //ddlBitDak_Edit.Text = finishDak;
-
-
-            //txtKategoriAd_edit.Text = HttpUtility.HtmlDecode(row.Cells[2].Text.ToString());  // get the first cell value of the row
-            //                                                                                 // if you want to get controls in templatefield , just use row.FindControl
-            //lbl_KategoriEdit.Text = linkbutton.CommandArgument;
             ScriptManager.RegisterStartupScript(this, GetType(), "script", "$('#myModal').modal()", true);//show the modal
 
 
@@ -115,79 +139,108 @@ namespace serkanISG
 
             editVardiya = db.VARDIYA.FirstOrDefault(i => i.ID_VARDIYA == editID);
 
+            editVardiya.AD_VARDIYA = txtBaslamaEdit.Text + "/" + txtBitisEdit.Text;
+            editVardiya.DURUM_VARDIYAa = ddlDurumEdit.SelectedValue;
 
 
-
-            if (db.VARDIYA.FirstOrDefault(i => i.AD_VARDIYA.ToUpper() == txtBaslamaEdit.Text.ToUpper()) != null)
+            if (db.SaveChanges() > 0)
             {
-                ScriptManager.RegisterStartupScript(this, this.GetType(), "script", "myFunction('Vardiya Tanım güncellemesi yapılamamıştır. Güncellenen vardiya tanımı hali hazırda mevcut! >>> ','fail');", true);
+                ScriptManager.RegisterStartupScript(this, this.GetType(), "script", "myFunction('Kayıt başarıyle güncellendi!','succsess');", true);
+                bind();
             }
             else
             {
 
-                editVardiya.AD_VARDIYA = txtBaslamaEdit.Text + "/" + txtBitisEdit.Text;
-                
-
-
-                if (db.SaveChanges() > 0)
-                {
-                    ScriptManager.RegisterStartupScript(this, this.GetType(), "script", "myFunction('Kayıt başarıyle güncellendi!','succsess');", true);
-                    grdVardiya.DataBind();
-                }
-                else
-                {
-                   
-                    ScriptManager.RegisterStartupScript(this, this.GetType(), "script", "myFunction('Güncelleme sırasında hata oluştu!','fail');", true);
-                    grdVardiya.DataBind();
-                }
-
+                ScriptManager.RegisterStartupScript(this, this.GetType(), "script", "myFunction('Güncelleme sırasında hata oluştu!','fail');", true);
+                bind();
             }
+
+
 
         }
 
 
         protected void btn_sil_Click(object sender, EventArgs e)
         {
-            //KATEGORI deleteKategori = new KATEGORI();
-            VARDIYA deleteVardiye = new VARDIYA();
-
-            
-
-            LinkButton linkbutton = (LinkButton)sender;  // get the link button which trigger the event
-            GridViewRow row = (GridViewRow)linkbutton.NamingContainer; // get the GridViewRow that contains the linkbutton
-                                                                       // get the first cell value of the row
-                                                                       // if you want to get controls in templatefield , just use row.FindControl
-            int deleteID = Convert.ToInt32(linkbutton.CommandArgument);
-
-            deleteVardiye = db.VARDIYA.FirstOrDefault(i => i.ID_VARDIYA == deleteID);
-
-            db.VARDIYA.Remove(deleteVardiye);
+            try
+            {  //KATEGORI deleteKategori = new KATEGORI();
+                VARDIYA deleteVardiye = new VARDIYA();
 
 
-            if (db.SaveChanges() > 0)
-            {
-                ScriptManager.RegisterStartupScript(this, this.GetType(), "script", "myFunction('Kayıt silindi!','succsess');window.location = 'VardiyaTanim.aspx';", true);
-          
-                grdVardiya.DataBind();
+
+                LinkButton linkbutton = (LinkButton)sender;  // get the link button which trigger the event
+                GridViewRow row = (GridViewRow)linkbutton.NamingContainer; // get the GridViewRow that contains the linkbutton
+                                                                           // get the first cell value of the row
+                                                                           // if you want to get controls in templatefield , just use row.FindControl
+                int deleteID = Convert.ToInt32(linkbutton.CommandArgument);
+
+                deleteVardiye = db.VARDIYA.FirstOrDefault(i => i.ID_VARDIYA == deleteID);
+                deleteVardiye.DURUM_VARDIYAa = "Pasif";
 
 
-                //Response.Write("<script>MyFunction('İş Tanımı Silindi..','succsess');window.location = 'ISTANIMLARI.aspx';</script>");
+                if (db.SaveChanges() > 0)
+                {
+                    ScriptManager.RegisterStartupScript(this, this.GetType(), "script", "myFunction('Kayıt silindi!','succsess')", true);
+
+                    bind();
+
+                    //Response.Write("<script>MyFunction('İş Tanımı Silindi..','succsess');window.location = 'ISTANIMLARI.aspx';</script>");
+
+
+                }
+                else
+                {
+                    ScriptManager.RegisterStartupScript(this, this.GetType(), "script", "Myfunction('iş Tanımı silme işlemi sırasında Hata oluştu','fail');", true);
+
+                    bind();
+
+                }
+
+
+
 
 
             }
-            else
+            catch (Exception)
             {
-                ScriptManager.RegisterStartupScript(this, this.GetType(), "script", "Myfunction('iş Tanımı silme işlemi sırasında Hata oluştu','fail');", true);
-             
-                grdVardiya.DataBind();
-               
+
+                ScriptManager.RegisterStartupScript(this, this.GetType(), "script", "myFunction('Hay Aksi!  Beklenmedik bir hata oluştu :(','fail');", true);
             }
-
-
-
 
         }
 
+        protected void ddlAktiflik_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            bind();
+        }
 
+        protected void reload_Click(object sender, EventArgs e)
+        {
+
+            try
+            {
+                VARDIYA deleteKategori = new VARDIYA();
+
+                LinkButton linkbutton = (LinkButton)sender;  // get the link button which trigger the event
+                GridViewRow row = (GridViewRow)linkbutton.NamingContainer; // get the GridViewRow that contains the linkbutton
+                                                                           // get the first cell value of the row
+                                                                           // if you want to get controls in templatefield , just use row.FindControl
+                int deleteID = Convert.ToInt32(linkbutton.CommandArgument);
+
+                deleteKategori = db.VARDIYA.FirstOrDefault(i => i.ID_VARDIYA == deleteID);
+                deleteKategori.DURUM_VARDIYAa = "Aktif";
+                db.SaveChanges();
+                ScriptManager.RegisterStartupScript(this, this.GetType(), "script", "myFunction('Kayıt aktife alındı!','succsess');", true);
+                bind();
+
+            }
+            catch (Exception)
+            {
+
+                ScriptManager.RegisterStartupScript(this, this.GetType(), "script", "myFunction('Hay Aksi!  Beklenmedik bir hata oluştu :(','fail');", true);
+
+
+            }
+        }
     }
 }

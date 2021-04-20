@@ -115,7 +115,7 @@
     </Key>
     <Property Name="ID_KATEGORI" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="AD_KATEGORI" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-    <Property Name="DURUM" Type="Boolean" />
+    <Property Name="DURUM" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
   </EntityType>
   <EntityType Name="VARDIYA">
     <Key>

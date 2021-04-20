@@ -798,6 +798,7 @@ function paginationClickHandler(event)
             break;
 
         case "next":
+
             goToNextStep(wizard, options, state);
             break;
 
@@ -2006,7 +2007,7 @@ var defaults = $.fn.steps.defaults = {
          * @default "Finish"
          * @for defaults
          **/
-        finish: "Finish",
+        finish: "Kaydet",
 
         /**
          * Label for the next button.
@@ -2016,7 +2017,7 @@ var defaults = $.fn.steps.defaults = {
          * @default "Next"
          * @for defaults
          **/
-        next: "Next",
+        next: "Ýleri",
 
         /**
          * Label for the previous button.
@@ -2026,7 +2027,7 @@ var defaults = $.fn.steps.defaults = {
          * @default "Previous"
          * @for defaults
          **/
-        previous: "Previous",
+        previous: "Geri",
 
         /**
          * Label for the loading animation.

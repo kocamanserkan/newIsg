@@ -3952,6 +3952,7 @@
     <Content Include="faker.js-master\vendor\unique.js" />
     <Content Include="faker.js-master\vendor\user-agent.js" />
     <Content Include="Giris.aspx" />
+    <Content Include="KayitOl.aspx" />
     <Content Include="Scripts\ddlJs.js" />
     <Content Include="Scripts\jquery.searchabledropdown-1.0.8.min.js" />
     <Content Include="src\fonts\dropways\dropways.css" />
@@ -4641,6 +4642,13 @@
     </Compile>
     <Compile Include="Giris.aspx.designer.cs">
       <DependentUpon>Giris.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="KayitOl.aspx.cs">
+      <DependentUpon>KayitOl.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="KayitOl.aspx.designer.cs">
+      <DependentUpon>KayitOl.aspx</DependentUpon>
     </Compile>
     <Compile Include="UNVAN.cs">
       <DependentUpon>Isg.tt</DependentUpon>

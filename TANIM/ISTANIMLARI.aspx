@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="ISTANIMLARI.aspx.cs" Inherits="serkanISG.ISTANIMLARI" %>
+﻿<%@ Page Title="İş Tanımları" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="ISTANIMLARI.aspx.cs" Inherits="serkanISG.ISTANIMLARI" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
     <link href="../Content/MyCSS.css" rel="stylesheet" />
